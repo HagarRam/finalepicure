@@ -3,6 +3,7 @@ import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
 import NavBar from '../NavBar/NavBar';
 import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
+import SignatureDish from '../SignatureDish/SignatureDish';
 // import NavBar from '../NavBar/Navbar';
 // import Footer from '../Footer/Footer';
 // import Hero from '../Hero/Hero';
@@ -23,6 +24,9 @@ const Home: React.FC = () => {
 			</div>
 			<div>
 				<PopularRestaurants />
+			</div>
+			<div>
+				<SignatureDish />
 			</div>
 			{
 				/* <div id="hero">

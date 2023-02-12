@@ -1,9 +1,9 @@
 import React from 'react';
 import './PopularRestaurants.css';
 import RestaurantCard from './RestaurantCard';
-import MenuIcon from './imageCard/claro.svg';
-import dish1 from './imageCard/Lumina.svg';
-import dish2 from './imageCard/tiger-lily.svg';
+import MenuIcon from '../../assets/claro.svg';
+import dish1 from '../../assets/Lumina.svg';
+import dish2 from '../../assets/tiger-lily.svg';
 import { useNavigate } from 'react-router-dom';
 
 interface Restaurant {
