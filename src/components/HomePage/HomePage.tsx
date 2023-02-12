@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
+import IconMenu from '../IconMenu/IconMenu';
 import NavBar from '../NavBar/NavBar';
 import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
 import SignatureDish from '../SignatureDish/SignatureDish';
@@ -18,15 +19,14 @@ const Home: React.FC = () => {
 		<div id="homePage">
 			<div id="`navbar">
 				<NavBar />
-			</div>
-			<div>
+
 				<Hero />
-			</div>
-			<div>
+
 				<PopularRestaurants />
-			</div>
-			<div>
+
 				<SignatureDish />
+
+				<IconMenu />
 			</div>
 			{
 				/* <div id="hero">
