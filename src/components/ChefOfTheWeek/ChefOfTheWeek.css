@@ -1,0 +1,61 @@
+#restaurants-card {
+	display: flex;
+	padding: 110px 22px;
+}
+
+#chefs-restaurant {
+	margin-right: 14px;
+	width: 20%;
+	background-color: #f9f4ea;
+	height: 350px;
+}
+.restaurant-Img {
+	width: 100%;
+	object-fit: contain;
+}
+#restaurant-name {
+	font-family: 'Helvetica Neue Light';
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 45px;
+	letter-spacing: 2.6700000762939453px;
+	text-align: center;
+	margin-top: 5px;
+}
+/* #chef-image {
+	width: 100%;
+} */
+.img-chef {
+	width: 400px;
+	padding-left: 22px;
+}
+#titlechef {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 40px;
+	letter-spacing: 1.97px;
+	margin-left: 40%;
+	padding: 5% 0 3% 0;
+}
+#chefs-restaurants {
+	width: 100%;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 24px;
+	line-height: 40px;
+	letter-spacing: 1.97px;
+	padding: 125px 22px 0 22px;
+}
+.chef-name {
+	display: none;
+}
+#chef-information {
+	width: 50%;
+	margin-left: 45%;
+	margin-top: -250px;
+	font-size: 24px;
+	font-weight: 200;
+	line-height: 35px;
+	letter-spacing: 1.25px;
+}

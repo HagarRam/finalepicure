@@ -1,4 +1,5 @@
 import React from 'react';
+import ChefOfTheWeek from '../ChefOfTheWeek/ChefOfTheWeek';
 import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
 import IconMenu from '../IconMenu/IconMenu';
@@ -27,6 +28,7 @@ const Home: React.FC = () => {
 				<SignatureDish />
 
 				<IconMenu />
+				<ChefOfTheWeek />
 			</div>
 			{
 				/* <div id="hero">
