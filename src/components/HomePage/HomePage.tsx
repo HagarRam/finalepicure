@@ -2,6 +2,7 @@ import React from 'react';
 import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
 import NavBar from '../NavBar/NavBar';
+import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
 // import NavBar from '../NavBar/Navbar';
 // import Footer from '../Footer/Footer';
 // import Hero from '../Hero/Hero';
@@ -19,6 +20,9 @@ const Home: React.FC = () => {
 			</div>
 			<div>
 				<Hero />
+			</div>
+			<div>
+				<PopularRestaurants />
 			</div>
 			{
 				/* <div id="hero">
