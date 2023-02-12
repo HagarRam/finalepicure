@@ -1,4 +1,5 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 // import NavBar from '../NavBar/Navbar';
 // import Footer from '../Footer/Footer';
@@ -15,7 +16,8 @@ const Home: React.FC = () => {
 			<div id="`navbar">
 				<NavBar />
 			</div>
-			{/* <div id="hero">
+			{
+				/* <div id="hero">
 				<Hero />
 			</div>
 			<div id="RestaurantCard">
@@ -32,10 +34,11 @@ const Home: React.FC = () => {
 			</div>
 			<div id="AboutUs">
 				<AboutUs />
-			</div>
-			<div id="Footer">
-				<Footer />
-			</div> */}
+			</div>*/
+				<div id="Footer">
+					<Footer />
+				</div>
+			}
 		</div>
 	);
 };
