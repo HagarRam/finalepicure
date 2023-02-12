@@ -1,5 +1,6 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
+import Hero from '../Hero/Hero';
 import NavBar from '../NavBar/NavBar';
 // import NavBar from '../NavBar/Navbar';
 // import Footer from '../Footer/Footer';
@@ -15,6 +16,9 @@ const Home: React.FC = () => {
 		<div id="homePage">
 			<div id="`navbar">
 				<NavBar />
+			</div>
+			<div>
+				<Hero />
 			</div>
 			{
 				/* <div id="hero">
