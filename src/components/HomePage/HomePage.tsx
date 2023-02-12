@@ -1,4 +1,5 @@
 import React from 'react';
+import AboutUs from '../AboutUs/AboutUs';
 import ChefOfTheWeek from '../ChefOfTheWeek/ChefOfTheWeek';
 import Footer from '../Footer/Footer';
 import Hero from '../Hero/Hero';
@@ -29,6 +30,7 @@ const Home: React.FC = () => {
 
 				<IconMenu />
 				<ChefOfTheWeek />
+				<AboutUs />
 			</div>
 			{
 				/* <div id="hero">

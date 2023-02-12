@@ -6,9 +6,7 @@
 	flex-direction: row;
 	position: fixd;
 	bottom: 0;
-	margin-top: 83px;
 	justify-content: center;
 	gap: 50px;
 	font-weight: 200;
-	background: #fafafa;
 }
