@@ -1,0 +1,21 @@
+body {
+	width: 100%;
+	height: 100%;
+}
+
+#allthechefs {
+	gap: 24px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	overflow: auto;
+	height: 100%;
+	padding: 0% 16%;
+}
+.chef-image {
+	width: 100%;
+}
+.Images-chefs {
+	width: 100%;
+	height: 33%;
+}

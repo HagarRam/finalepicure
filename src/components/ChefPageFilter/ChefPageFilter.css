@@ -1,0 +1,9 @@
+#Filterchef {
+	display: flex;
+	margin: 2% 31%;
+	justify-content: space-evenly;
+}
+#filter-button:active {
+	/* color: black; */
+	font-family: 'Helvetica Neue Bold';
+}
