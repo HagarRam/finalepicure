@@ -1,9 +1,8 @@
 import React from 'react';
+import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
+import RestaurantCardsPage from '../RestaurantCardsPage/RestaurantCardsPage';
 import RestaurantFilterBar from '../RestaurantFilterBar/RestaurantFilterBar';
-// import Footer from '../Footer/Footer';
-// import FilterRestaurant from '../filter-restaurant/FilterRestaurant';
-// import RestaurantCards from './RestaurantCards';
 import './RestaurantPage.css';
 
 const RestaurantPage: React.FC = () => {
@@ -11,10 +10,8 @@ const RestaurantPage: React.FC = () => {
 		<div>
 			<NavBar />
 			<RestaurantFilterBar />
-			{/* <FilterRestaurant />
-			<RestaurantCards />
-			<Footer /> 
-			 */}
+			<RestaurantCardsPage />
+			<Footer />
 		</div>
 	);
 };

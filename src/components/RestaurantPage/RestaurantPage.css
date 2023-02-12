@@ -8,11 +8,11 @@ body {
 	background: #f9f4ea;
 }
 #alltherestaurant {
-	gap: 24px;
+	gap: 14px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	padding: 0% 14%;
+	padding: 0% 16%;
 	overflow: auto;
 	height: 942px;
 }
