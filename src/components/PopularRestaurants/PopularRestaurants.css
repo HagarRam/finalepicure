@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 #allthecards {
 	display: flex;
 	justify-content: space-evenly;
@@ -5,6 +6,17 @@
 	padding: 4% 14%;
 	margin-top: 20px;
 	gap: 24px;
+=======
+body {
+	width: 100%;
+	height: 100%;
+}
+#allthecards {
+	gap: 10px;
+	width: 100vw;
+	height: 100%;
+	padding: 0% 8%;
+>>>>>>> Stashed changes
 }
 #titlecard {
 	font-style: normal;
@@ -12,7 +24,11 @@
 	font-size: 30px;
 	line-height: 40px;
 	letter-spacing: 1.97px;
+<<<<<<< Updated upstream
 	margin-left: 34%;
+=======
+	margin-left: 28%;
+>>>>>>> Stashed changes
 	padding-top: 4%;
 }
 
@@ -24,9 +40,14 @@
 	padding: 4% 14%;
 }
 .rest-card-element {
+<<<<<<< Updated upstream
 	margin-right: 2px;
 	width: 300px;
 	height: 345px;
+=======
+	width: 100%;
+	height: 100%;
+>>>>>>> Stashed changes
 	background: #f9f4ea;
 }
 .img-rest {
@@ -35,6 +56,7 @@
 }
 .rest-name {
 	font-style: normal;
+<<<<<<< Updated upstream
 	font-weight: 600;
 	font-size: 40px;
 	line-height: 47px;
@@ -44,6 +66,18 @@
 }
 #chef-name {
 	font-size: 20px;
+=======
+    width: 100%;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 47px;
+    letter-spacing: 2.67px;
+    color: #000000;
+    font-family: 'Helvetica Neue Light';
+}
+#chef-name {
+	font-size: 22px;
+>>>>>>> Stashed changes
 	font-weight: 200;
 	margin: 10px 0 10px 0;
 	line-height: 30px;
@@ -55,7 +89,11 @@
 	padding: 10px 0 10px 0;
 }
 .stars {
+<<<<<<< Updated upstream
 	width: 200px;
+=======
+	width: 50%;
+>>>>>>> Stashed changes
 }
 #restaurant-card {
 	width: 100%;
@@ -63,6 +101,7 @@
 }
 
 #all-the-Restaurants-button {
+<<<<<<< Updated upstream
 	margin-left: 81%;
 	margin-top: 2%;
 	justify-content: flex-end;
@@ -74,4 +113,56 @@
 	line-height: 35px;
 	border: #fafafa;
 	background-color: white;
+=======
+	font-weight: 600;
+    font-size: 24px;
+    padding-left: 80%;
+	all: unset;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 690px) {
+	#titlecard {
+		font-size: 20px;
+		margin-left: 16%;
+	}
+	.rest-card-element{
+		width: 220px;
+	}
+	#allthecard {
+		overflow: scroll;
+		display: flex; 
+		gap: 40px;
+		margin-left: 25px;
+	}
+	.stars{
+		display: none;
+	}
+	#card-information{
+		margin: 0% 6%;
+    text-align: start;
+		padding: 0;
+	}
+	.rest-name{
+	font-size: 14px;
+	letter-spacing: 0.67px;
+	height: 20px;
+	}
+	#chef-name{
+	font-size: 10px;
+	}
+	#all-the-Restaurants-button{
+	font-size: 12px;
+	padding-top: 20px;
+	padding-left: 30px;
+	}
+	#restaurant-card {
+		padding: 4% 14%;
+	}
+	#restaurantCard{
+		padding: 0
+	}
+	
+
+>>>>>>> Stashed changes
 }

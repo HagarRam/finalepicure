@@ -1,9 +1,27 @@
+<<<<<<< Updated upstream
 #Filterchef {
 	display: flex;
 	margin: 2% 31%;
+=======
+body {
+	width: 100%;
+	height: 100;
+}
+#Filterchef {
+	display: flex;
+	margin: 2% 25%;
+>>>>>>> Stashed changes
 	justify-content: space-evenly;
 }
 #filter-button:active {
 	/* color: black; */
 	font-family: 'Helvetica Neue Bold';
 }
+<<<<<<< Updated upstream
+=======
+@media only screen and (max-width: 690px) {
+	#Filterchef {
+		margin: 40px 0 40px 0;
+	}
+}
+>>>>>>> Stashed changes

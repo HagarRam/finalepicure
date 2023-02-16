@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import yossiImag from '../../assets/yossiShitrit.svg';
 import Onza from '../../assets/onza.svg';
@@ -28,6 +29,36 @@ const ChefOfTheWeek: React.FC = () => {
 					name={chef.name}
 					restaurant={chef.restaurant}
 				/>
+=======
+import React, { useEffect, useState } from 'react';
+import './ChefOfTheWeek.css';
+import ChefCard from './ChefCard';
+import { useDispatch, useSelector } from "react-redux";
+
+const ChefOfTheWeek: React.FC = () => {
+	const chefsData = useSelector((state:any) => state.chef.value);
+	const [chefoftheweek, setchefoftheweek] = useState<any> (null);
+
+	useEffect(() =>{
+		const chafs = chefsData.find((chef:any)=> chef.chefOfTheWeek)
+		setchefoftheweek(chafs)
+	},[])
+
+
+return (
+	<div id="chef-of-the-week">
+			<div id="titlechef">CHEF OF THE WEEK:</div>
+			<div id="information">
+				{chefoftheweek &&(
+							<ChefCard
+							description={chefoftheweek.description}
+							img={chefoftheweek.img}
+							name={chefoftheweek.name}
+							restaurant={chefoftheweek.restaurant}
+							/>
+					)
+				}	
+>>>>>>> Stashed changes
 			</div>
 		</div>
 	);

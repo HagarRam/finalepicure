@@ -1,10 +1,18 @@
 import React from 'react';
+<<<<<<< Updated upstream
 import MenuImg from '../../assets/claro.svg';
 import './SignatureDish.css';
 import meal from '../../assets/Lumina.svg';
 import meal2 from '../../assets/tiger-lily.svg';
 import DishCard from './DishCard';
 
+=======
+import './SignatureDish.css';
+import DishCard from './DishCard';
+// import data from '../../EpicureData.json'
+import data from '../../data.json'
+import { useSelector } from 'react-redux';
+>>>>>>> Stashed changes
 interface Dish {
 	img: any;
 	icon: string[];
@@ -13,6 +21,7 @@ interface Dish {
 	price: number;
 }
 
+<<<<<<< Updated upstream
 const SignatureDish: React.FC = () => {
 	const data: Dish[] = [
 		{
@@ -60,3 +69,40 @@ const SignatureDish: React.FC = () => {
 };
 
 export default SignatureDish;
+=======
+
+const SignatureDish: React.FC = () => {
+  const SignatureDishData = useSelector((state:any) => state.dishes.value)
+  let index:number= 0;
+  return (
+    <div id="dish-card">
+      <div id="titlecard-dish">SIGNATURE DISH OF:</div>
+      <div id="allthecard">
+      <div id="dishes-card">
+        {SignatureDishData.map((dish:any) => {
+          if (index< 3 && dish.signatureDish) {    
+              index += 1;
+        return (
+					<DishCard
+					img={dish.img}
+					icon={dish.icons}
+					name={dish.name}
+					description={dish.about}
+					price={dish.price}
+				/>
+                  );
+                } else {
+                  return null;
+                }
+              })
+            };
+           
+        
+      </div>
+      </div>
+    </div>
+  );
+};
+
+export default SignatureDish
+>>>>>>> Stashed changes

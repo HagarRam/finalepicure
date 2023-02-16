@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import MenuIcon from '../../assets/claro.svg';
 import dish1 from '../../assets/Lumina.svg';
@@ -85,6 +86,31 @@ const RestaurantCardsPage: React.FC = () => {
 						title={'page-card-element'}
 					/>
 				))}
+=======
+import React from "react";
+import RestaurantCard from "../PopularRestaurants/RestaurantCard";
+import { useDispatch, useSelector } from "react-redux";
+
+
+const RestaurantCardsPage: React.FC = () => {
+const restaurantsData = useSelector((state:any) => state.restaurants.filteredValue)
+
+	return (
+		<div id="restaurant-page ">
+			<div id="alltherestaurant">{
+				 restaurantsData.map((restaurant:any) => {
+						return (
+							<RestaurantCard
+								imgSource={restaurant.img}
+								name={restaurant.name}
+								chef={restaurant.chef}
+								stars={restaurant.rating}
+								title={"page-card-element"}
+							/>
+						);
+					})
+}
+>>>>>>> Stashed changes
 			</div>
 		</div>
 	);

@@ -9,6 +9,10 @@ const RestaurantPage: React.FC = () => {
 	return (
 		<div>
 			<NavBar />
+<<<<<<< Updated upstream
+=======
+			<div id="mobile-title">RESTAURANTS</div>
+>>>>>>> Stashed changes
 			<RestaurantFilterBar />
 			<RestaurantCardsPage />
 			<Footer />

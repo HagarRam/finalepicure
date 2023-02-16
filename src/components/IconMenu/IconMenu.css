@@ -6,15 +6,32 @@
 }
 #iconsContainer {
 	display: flex;
+<<<<<<< Updated upstream
 	margin: 20px 390px 20px;
+=======
+	margin: 20px 0 20px;
+>>>>>>> Stashed changes
 	flex-direction: column;
 	text-align: center;
 	padding-top: 42px;
 }
+<<<<<<< Updated upstream
 #allTheIcons {
 	display: flex;
 	justify-content: space-evenly;
 	margin-top: 40px;
+=======
+#menuTitle{
+	font-size: 35px;
+	margin: 20px 70px 20px 120px;
+}
+#allTheIcons {
+	display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+    gap: 14px;
+    margin: 20px 400px 20px;
+>>>>>>> Stashed changes
 }
 .Icon {
 	line-height: 35px;
@@ -25,3 +42,21 @@
 	letter-spacing: 2.140000104904175px;
 	font-size: 20px;
 }
+<<<<<<< Updated upstream
+=======
+@media only screen and (max-width: 690px) {
+	#allTheIcons {
+		flex-direction: column;
+		margin: 0;
+	}
+	#menuIcon{
+		height: 100%;
+	}
+	#iconsContainer{
+		margin: 20px 0 20px;
+	}
+	}
+	#menuTitle{
+		font-size: 16px;
+	}
+>>>>>>> Stashed changes
