@@ -10,6 +10,14 @@
 	display: grid;
 	grid-template-rows: repeat(1, 50px);
 }
+
+.IsOpen {
+	display: flex;
+	width: 100%;
+	padding: 1% 43%;
+	justify-content: space-evenly;
+}
+
 @media only screen and (max-width: 690px) {
 	#Restaurant #card-information {
 		display: grid;

@@ -8,6 +8,8 @@ import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import { Rootstate } from '../../store/store';
 
+import clock from './OneRestImages/clock.svg';
+
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
 		(state: Rootstate) => state.restaurants.value
@@ -29,11 +31,24 @@ const OneRest: React.FC = () => {
 					id={restaurantsData[IdNum].id}
 					titleStar={'restautant-page-stars'}
 					titleImg={'rest-image'}
+					key={restaurantsData[IdNum].id}
 				/>
+				<div className="IsOpen">
+					<img
+						src={clock}
+						alt={restaurantsData[IdNum].name}
+					/>
+					{restaurantsData[IdNum].openNow ? (
+						<p id="time">Open Now</p>
+					) : (
+						<p id="time">Close Now</p>
+					)}
+				</div>
 			</div>
+
 			<div id="alltherestaurant">
 				{restaurantsData[IdNum].dishes?.map((dish: number) => {
-					if (dishesData[dish].signatureDish) {
+					if (dishesData[dish] && dishesData[dish].signatureDish) {
 						return (
 							<div id="dishes-card">
 								<DishCard
@@ -45,6 +60,7 @@ const OneRest: React.FC = () => {
 									id={dishesData[dish].id}
 									title={'card-dish-information'}
 									dishtitle={'dish-card-element-one-rest'}
+									key={dishesData[dish].id}
 								/>
 							</div>
 						);
