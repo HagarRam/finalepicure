@@ -6,32 +6,32 @@ import RestaurantCardsPage from '../RestaurantCardsPage/RestaurantCardsPage';
 import RestaurantFilterBar from '../RestaurantFilterBar/RestaurantFilterBar';
 import './RestaurantPage.css';
 
-export interface IRestaurants{
-	id: number,
-	name : string,
-	address?: string [],
-	chef: string,
-	chefid?: number,
-	openHours?: number[],
-	openDays?: number[],
-	openYear?: number,
-	img: string,
-	dishes?: number[],
-	rating: number,
-	popular?: boolean,
-	newRest?: boolean,
-	openNow?: boolean,
-	views?: number,
-	locationLat?:number,
-	locationLng?:number,
-	title?: string,
-	titleImg?: string,
-	titleStar?:string
+export interface IRestaurants {
+	id: number;
+	name: string;
+	address?: string[];
+	chef: string;
+	chefid?: number;
+	openHours?: number[];
+	openDays?: number[];
+	openYear?: number;
+	img: string;
+	dishes?: number[];
+	rating: number;
+	popular?: boolean;
+	newRest?: boolean;
+	openNow?: boolean;
+	views?: number;
+	locationLat?: number;
+	locationLng?: number;
+	title?: string;
+	titleImg?: string;
+	titleStar?: string;
 }
 
-export interface IrestaurantsState{
-	value:IRestaurants[]
-	filteredValue : IRestaurants[];
+export interface IrestaurantsState {
+	value: IRestaurants[];
+	filteredValue: IRestaurants[];
 }
 
 const RestaurantPage: React.FC = () => {
@@ -40,7 +40,7 @@ const RestaurantPage: React.FC = () => {
 			<NavBar />
 			<div id="mobile-title">RESTAURANTS</div>
 			<RestaurantFilterBar />
-			<RangeBar/>
+			<RangeBar />
 			<RestaurantCardsPage />
 			<Footer />
 		</div>

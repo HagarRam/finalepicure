@@ -2,7 +2,7 @@ import React from 'react';
 import './SignatureDish.css';
 import DishCard, { IDishes } from './DishCard';
 import { useSelector } from 'react-redux';
-import { IDishesState, Rootstate } from '../../store/store';
+import { Rootstate } from '../../store/store';
 
 const SignatureDish: React.FC = () => {
 	const SignatureDishData = useSelector(

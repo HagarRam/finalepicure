@@ -1,19 +1,18 @@
-.selects-container{
-    display: flex;
-    width: 100%;
-    padding: 2% 30%;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: #FAFAFA;
-    margin-top: 10px;
+.selects-container {
+	display: flex;
+	width: 100%;
+	padding: 2% 30%;
+	flex-direction: row;
+	justify-content: space-around;
+	background-color: #fafafa;
+	margin-top: 10px;
 }
-#select{
-    /* all: unset; */
-    font-family: 'Helvetica Neue Thin';
-    border-color: #FAFAFA;
-    background-color: #FAFAFA;
-    font-size: 16px;
+#select {
+	font-family: 'Helvetica Neue Thin';
+	border-color: #fafafa;
+	background-color: #fafafa;
+	font-size: 16px;
 }
-#select:active{
-background-color: gray;
+#select:active {
+	background-color: gray;
 }

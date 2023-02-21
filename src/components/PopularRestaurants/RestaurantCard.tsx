@@ -7,7 +7,6 @@ import star1 from '../../assets/stars/star1.svg';
 import { useNavigate } from 'react-router-dom';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 
-
 const RestaurantCard: React.FC<IRestaurants> = (props: IRestaurants) => {
 	const starsEnum: { [key: number]: string } = {
 		1: star1,
@@ -22,8 +21,9 @@ const RestaurantCard: React.FC<IRestaurants> = (props: IRestaurants) => {
 	const starsImg: string = starsEnum[Number(rating)];
 	const navigate = useNavigate();
 	return (
-	
-		<div className={title} onClick={() => navigate(`/Restaurant/${id}`)} >
+		<div
+			className={title}
+			onClick={() => navigate(`/Restaurant/${id}`)}>
 			<img
 				className={titleImg}
 				alt="dish"

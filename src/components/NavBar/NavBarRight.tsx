@@ -26,20 +26,19 @@ const NavBarRight: React.FC = () => {
 							alt="SearchIcon"
 						/>
 					</button>
-					        
 				</div>
 				<img
 					id="icon"
 					alt="PersonLogo"
 					src={personLogo}
-					onClick={() => navigate('/')} //to do it letter when i will do the person page
+					onClick={() => navigate('/')}
 				/>
 
 				<img
 					id="icon"
 					alt="bagLogo"
 					src={bagLogo}
-					onClick={() => navigate('/')} //to do it letter when i will do the bag page
+					onClick={() => navigate('/')}
 				/>
 			</div>
 		</div>

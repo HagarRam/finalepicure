@@ -8,10 +8,9 @@ body {
 	justify-content: space-evenly;
 }
 .filter-button {
-	/* color: black; */
 	font-family: 'Helvetica Neue Bold';
 }
-.without-filter-button{
+.without-filter-button {
 	font-family: 'Helvetica Neue Thin';
 }
 @media only screen and (max-width: 690px) {

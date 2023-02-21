@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import './ChefOfTheWeek.css';
 import ChefCard from './ChefCard';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 import { Rootstate } from '../../store/store';
 import { IChef } from '../ChefPage/ChefPage';
 
 const ChefOfTheWeek: React.FC = () => {
-	const chefsData = useSelector((state:Rootstate) => state.chef.value);
-	const [chefoftheweek, setchefoftheweek] = useState<IChef> ();
+	const chefsData = useSelector((state: Rootstate) => state.chef.value);
+	const [chefoftheweek, setchefoftheweek] = useState<IChef>();
 
-	useEffect(() =>{
-		const chafs = chefsData.find((chef:IChef)=> chef.chefOfTheWeek)
-		setchefoftheweek(chafs)
-	},[])
+	useEffect(() => {
+		const chafs = chefsData.find((chef: IChef) => chef.chefOfTheWeek);
+		setchefoftheweek(chafs);
+	}, []);
 
-
-return (
-	<div id="chef-of-the-week">
+	return (
+		<div id="chef-of-the-week">
 			<div id="titlechef">CHEF OF THE WEEK:</div>
 			<div id="information">
-				{chefoftheweek &&(
-							<ChefCard
-							description={chefoftheweek.description}
-							img={chefoftheweek.img}
-							name={chefoftheweek.name}
-							restaurant={chefoftheweek.restaurant}
-							/>
-					)
-				}	
+				{chefoftheweek && (
+					<ChefCard
+						description={chefoftheweek.description}
+						img={chefoftheweek.img}
+						name={chefoftheweek.name}
+						restaurant={chefoftheweek.restaurant}
+					/>
+				)}
 			</div>
 		</div>
 	);

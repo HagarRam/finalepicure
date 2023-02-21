@@ -75,7 +75,6 @@ body {
 @media only screen and (max-width: 690px) {
 	#titlecard {
 		font-size: 20px;
-		/* margin-left: 16%; */
 	}
 	.rest-card-element {
 		width: 220px;

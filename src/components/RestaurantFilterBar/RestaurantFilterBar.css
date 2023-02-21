@@ -8,6 +8,5 @@ body {
 	justify-content: space-evenly;
 }
 #filter-button:active {
-	/* color: black; */
 	font-family: 'Helvetica Neue Bold';
 }
