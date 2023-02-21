@@ -10,7 +10,7 @@ const NavBar: React.FC = () => {
 	const navigator = useNavigate();
 
 	return (
-		<div>
+
 			<div id="navbar">
 				<NavBarLeft />
 				<NavBarMobileMenu />
@@ -24,7 +24,6 @@ const NavBar: React.FC = () => {
 				/>
 				<NavBarRight />
 			</div>
-		</div>
 	);
 };
 

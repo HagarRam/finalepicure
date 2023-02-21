@@ -7,11 +7,7 @@
 	background-size: cover;
 	height: 600px;
 	background-repeat: no-repeat;
-<<<<<<< Updated upstream
-	position: relative;
-=======
 	display: flex;
->>>>>>> Stashed changes
 }
 #heroBox {
 	display: flex;
@@ -20,10 +16,6 @@
 	align-items: center;
 	padding: 36px, 126px, 36px, 126px;
 	gap: 18px;
-<<<<<<< Updated upstream
-	position: absolute;
-=======
->>>>>>> Stashed changes
 	width: 50%;
 	height: 350px;
 	background: rgba(255, 255, 255, 0.88);
@@ -50,11 +42,6 @@
 	background-color: transparent;
 	height: 48px;
 	padding-left: 54px;
-<<<<<<< Updated upstream
-	font-family: 'Helvetica Neue Thin';
-	background-position: 5px;
-}
-=======
 	font-family: "Helvetica Neue Thin";
 	background-position: 5px;
 }
@@ -69,4 +56,3 @@
 		margin-left: 11%;
 	}
 }
->>>>>>> Stashed changes

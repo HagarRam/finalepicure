@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import RestaurantPage from './components/RestaurantPage/RestaurantPage';
 import ChefsPage from './components/ChefPage/ChefPage';
+import OneRest from './components/OneRest/OneRest';
+import ModalRest from './components/ModalRestaurant/ModalRest';
 
 function App() {
 	return (
@@ -23,6 +25,14 @@ function App() {
 							path="/ChefsPage"
 							element={<ChefsPage />}
 						/>
+						<Route
+							path="/restaurant/:dishID"
+							element={<OneRest />}
+						/>
+						{/* <Route
+							path="/restaurant/:dishID/:DishNum"
+							element={<ModalRest />}
+						/> */}
 					</Routes>
 				</BrowserRouter>
 			}

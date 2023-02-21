@@ -11,26 +11,36 @@ export const restaurantsSlice = createSlice({
       state.filteredValue=  data.restaurant;
     },
     setPopularRestuarants:(state)=>{
-      state.filteredValue=  data.restaurant.filter(restaurant =>   restaurant.popular === true
-      );
+      state.filteredValue= [ ...data.restaurant].sort((a:any, b:any) => b.views - a.views);
+
+      
     },
     setNewRestuarants:(state)=>{
       state.filteredValue=  data.restaurant.filter(restaurant =>   restaurant.newRest === true
       );
     },
     setOpenNow:(state)=>{
-     
-
-      state.filteredValue=  data.restaurant.filter(restaurant =>   restaurant.newRest === true
-      );
+      state.filteredValue=  data.restaurant.filter(restaurant =>   restaurant.openNow === true);
     },
-  
-  },
-});
+    setMap: (state) => {
+      // state.filteredValue = action.payload.map((restaurant: any) => {
+      //   return {
+      //     locationLat: restaurant.locationLat,
+      //     locationLng: restaurant.locationLng
+      //   };
+      //  });
+      state.filteredValue=  data.restaurant;
+    }
+    },
+     
+    },
+
+
+);
 
 
 
-export const { setAllRestuarants, setPopularRestuarants, setNewRestuarants } = restaurantsSlice.actions;
+export const { setAllRestuarants,setOpenNow,setMap, setPopularRestuarants, setNewRestuarants } = restaurantsSlice.actions;
 
 export default restaurantsSlice.reducer;
 

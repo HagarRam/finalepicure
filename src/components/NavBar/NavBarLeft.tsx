@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, NavLink } from "react-router-dom";
+import { setAllchefs } from "../../store/slices/chefSlice";
 import { setAllRestuarants } from "../../store/slices/restaurantsSlice";
 import logo from "./imageNavBar/logo.svg";
 import titleLogo from "./imageNavBar/TitleLogo.svg";
@@ -25,6 +26,7 @@ const NavBarLeft: React.FC = () => {
 					
 				</NavLink>
 				<NavLink
+				onClick={()=>dispatch(setAllchefs())}
 					to="/chefsPage"
 					id="chefButoon"
 					className={({ isActive }) => (isActive ? "on-page" : "not-on-page")}>

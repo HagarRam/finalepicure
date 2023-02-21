@@ -3,7 +3,9 @@ import data from '../../data.json'
 export const dishesSlice = createSlice({
   name: "dishes",
   initialState: {
-    value: data.dishes
+    value: data.dishes,
+    
+
 },
   reducers: {
     // setRestaurants: (state, action) => {

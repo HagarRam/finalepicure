@@ -1,90 +1,84 @@
-<<<<<<< Updated upstream
-import React from 'react';
+import React, { useState } from 'react';
 import './RestaurantFilterBar.css';
-import { useNavigate } from 'react-router-dom';
-const RestaurantFilterBar: React.FC = () => {
-	const navigate = useNavigate();
-=======
-import React from 'react'
-import './RestaurantFilterBar.css';
-import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux';
-import { setAllRestuarants, setPopularRestuarants, setNewRestuarants } from '../../store/slices/restaurantsSlice';
+import {
+  setAllRestuarants,
+  setPopularRestuarants,
+  setNewRestuarants,
+  setOpenNow,
+  setMap,
+} from '../../store/slices/restaurantsSlice';
+import MapContainer from '../MapView/MapContainer';
 
 const RestaurantFilterBar: React.FC = () => {
-	const dispatch = useDispatch();
-	const navigate = useNavigate();
-	const date = new Date();
-	const hour = date.getHours();
-	const Minutes = date.getMinutes();
-	const amount = hour +
-	Minutes * Math.pow(10, -(Math.floor(Math.log10(Minutes)) + 1));
-	// console.log(amount);
-	// const data2 = moment(date.toDateString()).format('LT');
-	// console.log(data2);
-	console.log(
-		date.toLocaleString('en-US', {
-		  hour12: false,
-		}),
-	);
+  const dispatch = useDispatch();
 
->>>>>>> Stashed changes
-	return (
-		<div id="FilterRestaurant">
-			<button
-				id="filter-button"
-<<<<<<< Updated upstream
-				onClick={() => navigate('/restaurant/all')}>
-=======
-				onClick={() => dispatch(setAllRestuarants())}>
->>>>>>> Stashed changes
-				All
-			</button>
-			<button
-				id="filter-button"
-<<<<<<< Updated upstream
-				onClick={() => navigate('/restaurant/new')}>
-=======
-				onClick={() =>dispatch(setNewRestuarants())}>
->>>>>>> Stashed changes
-				New
-			</button>
-			<button
-				id="filter-button"
-<<<<<<< Updated upstream
-				onClick={() => navigate('/restaurant/most-popular')}>
-=======
-				onClick={() => dispatch(setPopularRestuarants())}>
->>>>>>> Stashed changes
-				Most Popular
-			</button>
-			<button
-				id="filter-button"
-				onClick={() => navigate('/restaurant/opan-new')}>
-				Opan Now
-			</button>
-			<button
-				id="filter-button"
-				onClick={() => navigate('/restaurant/map-view')}>
-				Map View
-			</button>
-		</div>
-	);
+  const [isActiveAll, setIsActiveAll] = useState(false);
+  const [isActiveNew, setIsActiveNew] = useState(false);
+  const [isActiveMost, setIsActiveMost] = useState(false);
+  const [isActiveOpen, setIsActiveOpen] = useState(false);
+  const [isActiveMap, setIsActiveMap] = useState(false);
+
+  const handleSetActive = (active: string) => {
+    setIsActiveAll(false);
+    setIsActiveNew(false);
+    setIsActiveMost(false);
+    setIsActiveOpen(false);
+    setIsActiveMap(false);
+
+    if (active === 'All') {
+      dispatch(setAllRestuarants());
+      setIsActiveAll(true);
+    } else if (active === 'New') {
+      dispatch(setNewRestuarants());
+      setIsActiveNew(true);
+    } else if (active === 'Most') {
+      dispatch(setPopularRestuarants());
+      setIsActiveMost(true);
+    } else if (active === 'Open') {
+      dispatch(setOpenNow());
+      setIsActiveOpen(true);
+    } else if (active === 'Map') {
+      dispatch(setMap());
+      setIsActiveMap(true);
+    }
+  };
+
+  return (
+    <div id="FilterRestaurant">
+      <button
+        className={isActiveAll ? 'filter-button' : 'without-filter-button'}
+        onClick={() => handleSetActive('All')}
+      >
+        All
+      </button>
+      <button
+        className={isActiveNew ? 'filter-button' : 'without-filter-button'}
+        onClick={() => handleSetActive('New')}
+      >
+        New
+      </button>
+      <button
+        className={isActiveMost ? 'filter-button' : 'without-filter-button'}
+        onClick={() => handleSetActive('Most')}
+      >
+        Most Popular
+      </button>
+      <button
+        className={isActiveOpen ? 'filter-button' : 'without-filter-button'}
+        onClick={() => handleSetActive('Open')}
+      >
+        Open Now
+      </button>
+      <button
+        className={isActiveMap ? 'filter-button' : 'without-filter-button'}
+        onClick={() => handleSetActive('Map')}
+      >
+        Map View
+      </button>
+      {isActiveMap && <div className='Map-Container'><MapContainer lat={0} lng={0} /></div>}
+    </div>
+  );
 };
 
-{
-	/* <BrowserRouter>
-
-  {heroes.map(hero => (<Link to={'heroes/' + hero.id} />)}
-  <Route path="heroes/:id" component={Hero} />
-</BrowserRouter> */
-}
-
 export default RestaurantFilterBar;
-<<<<<<< Updated upstream
-=======
-function moment() {
-	throw new Error('Function not implemented.');
-}
-
->>>>>>> Stashed changes

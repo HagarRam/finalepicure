@@ -23,9 +23,11 @@
 	height: 10%;
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 3px solid;
+	/* border-bottom: 3px solid; */
 	padding: 20px;
 	position: sticky;
+	top: 0;
+    background: white;
 }
 .navbarleft {
 	display: flex;
@@ -146,5 +148,11 @@ button {
 	}
 	#navbar {
 		border-bottom: 0;
+	}
+	.show{
+		width: 100px;
+	}
+	.search-text{
+		font-size: 13px;
 	}
 }

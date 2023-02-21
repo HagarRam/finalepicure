@@ -1,67 +1,44 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
-<<<<<<< Updated upstream
-import dish1 from '../../assets/yossiShitrit.svg';
-=======
->>>>>>> Stashed changes
 import './ChefPage.css';
 import ChefPageFilter from '../ChefPageFilter/ChefPageFilter';
 import NavBar from '../NavBar/NavBar';
 import ImageChef from '../ImageCard/ImageCard';
-<<<<<<< Updated upstream
-
-const data: object[] = [
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-];
-
-=======
 import { useDispatch, useSelector } from "react-redux";
->>>>>>> Stashed changes
+import { Rootstate } from '../../store/store';
+
+
+export interface IChef{
+	id?: number,
+	name : string,
+	restaurant?: number [],
+	age?: number,
+	icons?: string ,
+	img: string,
+	description?: string,
+	chefOfTheWeek?: boolean,
+	newChef?: boolean,
+	views?: number,
+}
+
+
+export interface IChefState{
+	value:IChef[]
+	filteredValue:IChef[]
+}
+
+
 const ChefsPage: React.FC = () => {
-	const chefData = useSelector((state:any) => state.chef.value)
+	const chefData = useSelector((state:Rootstate) => state.chef.filteredValue)
 	return (
 		<div>
 			<NavBar />
-<<<<<<< Updated upstream
-			<ChefPageFilter />
-			<div id="allthechefs">
-				{data.map((chef: any) => (
-					<ImageChef image={chef.image} />
-				))}
-=======
 			<div id="mobile-title">CHEFS</div>
 			<ChefPageFilter />
 			<div id="allthechefs">
-				{chefData.map((chef:any) => {
-					return <ImageChef chefName={chef.name} chefImage={chef.img} />;
+				{chefData.map((chef:IChef) => {
+					return <ImageChef name={chef.name} img={chef.img} />;
 				})}
->>>>>>> Stashed changes
 			</div>
 			<Footer />
 		</div>

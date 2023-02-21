@@ -8,7 +8,10 @@
         "icons": "",
         "img": "/assets/Chefs/yossiShitrit.svg",
         "description": "Chef Yossi Shitrit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "chefOfTheWeek": true
+        "chefOfTheWeek": true,
+        "newChef": true,
+        "views": 1
+
       },
       {
         "id": 2,
@@ -16,9 +19,11 @@
         "restaurant": [1, 2, 3],
         "age": 38,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/shahafshabtay.png",
         "description": "dd",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": false,
+        "views": 25
       },
       {
         "id": 3,
@@ -26,9 +31,11 @@
         "restaurant": [1],
         "age": 32,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/yuvalBenNeriah.png",
         "description": "dd",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": true,
+        "views": 56
       },
       {
         "id": 4,
@@ -36,9 +43,11 @@
         "restaurant": [1, 2],
         "age": 45,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/asafGranit.svg",
         "description": "Chef Asaf Granit has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": true,
+        "views": 415
       },
       {
         "id": 5,
@@ -46,9 +55,11 @@
         "restaurant": [1, 2, 3],
         "age": 38,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/avivMoshe.svg",
         "description": "Aviv Moshe has been living and breathing his culinary dreams for more than two decades",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": false,
+        "views": 145
   
       },
       {
@@ -57,9 +68,11 @@
         "restaurant": [1],
         "age": 60,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/eyalShani.svg",
         "description": "dd",
-        "chefOfTheWeek": true
+        "chefOfTheWeek": true,
+        "newChef": true,
+        "views": 147
       },
       {
         "id": 7,
@@ -67,9 +80,10 @@
         "restaurant": [1, 2],
         "age": 50,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/meir-adoni.svg",
         "description": "Chef Meir Adoni has been living and breathing his culinary dreams for more than two decades, including running the kitchen in his first restaurant, the fondly-remembered Violet, located in Moshav  Udim. Shitrit's creativity and culinary  acumen born of long experience  are expressed in the every detail of each and every dish.",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": false
       },
       {
         "id": 8,
@@ -77,9 +91,11 @@
         "restaurant": [1, 2, 3],
         "age": 54,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/omerMiller.svg",
         "description": "dd",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": true,
+        "views": 745
       },
       {
         "id": 9,
@@ -87,9 +103,11 @@
         "restaurant": [1],
         "age": 38,
         "icons": "",
-        "img": "/assets/Chefs/yossiShitrit.svg",
+        "img": "/assets/Chefs/nitzanRaz.svg",
         "description": "dd",
-        "chefOfTheWeek": false
+        "chefOfTheWeek": false,
+        "newChef": true,
+        "views": 145
       }
     ],
     "restaurant": [
@@ -103,12 +121,15 @@
         "openDays": [0, 1, 5],
         "openYear": 2021,
         "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+        "dishes": [1,2,3,4],
         "rating": 4,
         "popular": false,
         "newRest": false,
         "openNow": false,
-        "views": 22
+        "views": 22,
+        "map": true,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 2,
@@ -120,12 +141,14 @@
         "openDays": [0, 5],
         "openYear": 2023,
         "img": "/assets/restaurants/Lumina.svg",
-        "dishes": [],
+        "dishes": [1],
         "rating": 3,
         "popular": true,
         "newRest": true,
         "openNow": false,
-        "views": 76
+        "views": 76,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 3,
@@ -137,12 +160,14 @@
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2023,
         "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+        "dishes": [1,5,3],
         "rating": 4,
         "popular": true,
         "newRest": false,
         "openNow": true,
-        "views": 255
+        "views": 255,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 4,
@@ -153,8 +178,8 @@
         "openHours": [14.0, 18],
         "openDays": [0, 1, 5],
         "openYear": 2023,
-        "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+        "img": "/assets/restaurants/kab kem.svg",
+        "dishes": [2,3],
         "rating": 1,
         "popular":false,
         "newRest": true,
@@ -170,8 +195,8 @@
         "openHours": [8.0, 23.3],
         "openDays": [0, 1, 2, 3, 5],
         "openYear": 2023,
-        "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+        "img": "/assets/restaurants/Messa.svg",
+        "dishes": [1,6],
         "rating":1,
         "popular": false,
         "newRest": false,
@@ -187,13 +212,15 @@
         "openHours": [8.0, 23.3],
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2020,
-        "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+        "img": "/assets/restaurants/nithan-thai.svg",
+        "dishes": [2,5,4],
         "rating": 2,
         "popular": false,
         "newRest": true,
         "openNow": false,
-        "views": 1
+        "views": 1,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 7,
@@ -204,17 +231,19 @@
         "openHours": [14.0, 16],
         "openDays": [0, 1, 5],
         "openYear": 2021,
-        "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+        "img": "/assets/restaurants/Yapan.svg",
+        "dishes": [1,2,3],
         "rating": 2,
         "popular": false,
         "newRest": false,
         "openNow": false,
-        "views": 122
+        "views": 122,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 8,
-        "name": "Malca",
+        "name": "Malka",
         "address": [],
         "chef": "Eyal Shani",
         "chefId": 1,
@@ -222,12 +251,15 @@
         "openDays": [0, 5],
         "openYear": 2023,
         "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+        "dishes": [1,5],
         "rating": 4,
         "popular": false,
         "newRest": true,
         "openNow": true,
-        "views": 234
+        "views": 234,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
+
       },
       {
         "id": 9,
@@ -239,12 +271,17 @@
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2021,
         "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+        "dishes": [6,1],
+
         "rating": 4,
         "popular": true,
         "newRest": false,
         "openNow": false,
-        "views": 87
+
+        "views": 87,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
+
       },
       {
         "id": 10,
@@ -256,12 +293,18 @@
         "openDays": [0, 1, 3, 5],
         "openYear": 2021,
         "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+
+        "dishes": [3],
+
         "rating": 1,
         "popular": false,
         "newRest": true,
         "openNow": false,
-        "views": 77
+
+        "views": 77,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
+
       },
       {
         "id": 11,
@@ -272,13 +315,19 @@
         "openHours": [8.0, 23.3],
         "openDays": [0, 5],
         "openYear": 2023,
-        "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+
+        "img": "/assets/restaurants/Lumina.svg",
+        "dishes": [4,5],
+
         "rating": 3,
         "popular": false,
         "newRest": false,
         "openNow": false,
-        "views": 24
+
+        "views": 24,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
+
       },
       {
         "id": 12,
@@ -290,29 +339,36 @@
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2023,
         "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+
+        "dishes": [1,3],
+
         "rating": 3,
         "popular": false,
         "newRest": true,
         "openNow": false,
-        "views": 68
+
+        "views": 68,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 13,
-        "name": "Onza",
+        "name": "Messa",
         "address": [],
         "chef": "Yossi Shitrit",
         "chefId": 1,
         "openHours": [8.0, 23.3, 0, 5],
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2023,
-        "img": "/assets/restaurants/tigerlily.svg",
-        "dishes": [],
+        "img": "/assets/restaurants/Messa.svg",
+        "dishes": [3, 6],
         "rating": 3,
         "popular": false,
         "newRest": false,
         "openNow": false,
-        "views": 34
+        "views": 34,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 14,
@@ -324,12 +380,14 @@
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2023,
         "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+        "dishes": [2],
         "rating": 3,
         "popular": false,
         "newRest": true,
         "openNow": false,
-        "views": 200
+        "views": 200,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       },
       {
         "id": 15,
@@ -341,12 +399,15 @@
         "openDays": [0, 1, 2, 3, 4, 5, 6],
         "openYear": 2023,
         "img": "/assets/restaurants/claro.svg",
-        "dishes": [],
+
+        "dishes": [1,3],
         "rating": 3,
         "popular": false,
         "newRest": false,
         "openNow": false,
-        "views": 1
+        "views": 1,
+        "locationLat":32.06415700744124,
+        "locationLng":34.771923673531965
       }
     ],
     "dishes": [

@@ -2,12 +2,11 @@ import React from "react";
 import "./NavBarMobile.css";
 import { NavLink } from "react-router-dom";
 import { setAllRestuarants } from "../../../store/slices/restaurantsSlice";
+import { setAllchefs } from "../../../store/slices/chefSlice";
+import { useDispatch } from 'react-redux';
 
 const NavBarMobile: React.FC = () => {
-	function dispatch(arg0: { payload: undefined; type: "restaurants/setAllRestuarants"; }): void {
-		throw new Error("Function not implemented.");
-	}
-
+	const dispatch = useDispatch();
 	return (
 		<section className="mobile-nav">
 			<input id="menu-toggle" type="checkbox" />
@@ -25,6 +24,7 @@ const NavBarMobile: React.FC = () => {
 				</li>
 				<li className="chef-mobile-button">
 					<NavLink
+					onClick={()=>dispatch(setAllchefs())}
 						className={({ isActive }) => (isActive ? "on-page" : "not-on-page")}
 						to={"/ChefsPage"}>
 						Chefs
