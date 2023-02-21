@@ -7,7 +7,7 @@
 	background-size: cover;
 	height: 600px;
 	background-repeat: no-repeat;
-	position: relative;
+	display: flex;
 }
 #heroBox {
 	display: flex;
@@ -16,7 +16,6 @@
 	align-items: center;
 	padding: 36px, 126px, 36px, 126px;
 	gap: 18px;
-	position: absolute;
 	width: 50%;
 	height: 350px;
 	background: rgba(255, 255, 255, 0.88);
@@ -43,6 +42,17 @@
 	background-color: transparent;
 	height: 48px;
 	padding-left: 54px;
-	font-family: 'Helvetica Neue Thin';
+	font-family: "Helvetica Neue Thin";
 	background-position: 5px;
+}
+@media only screen and (max-width: 690px) {
+	#heroTitle{
+		font-size: 24px;
+		margin: 2% 10% 1% 10%;
+	}
+	#heroBox{
+		width: 82%;
+		height: 310px;
+		margin-left: 11%;
+	}
 }

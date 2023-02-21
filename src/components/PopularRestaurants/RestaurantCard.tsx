@@ -4,15 +4,11 @@ import star4 from '../../assets/stars/star4.svg';
 import star3 from '../../assets/stars/star3.svg';
 import star2 from '../../assets/stars/star2.svg';
 import star1 from '../../assets/stars/star1.svg';
+import { useNavigate } from 'react-router-dom';
+import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 
-interface IRestaurantCard {
-	imgSource: string;
-	name: string;
-	chef: string;
-	stars: number;
-	title: string;
-}
-const RestaurantCard: React.FC<IRestaurantCard> = (props: IRestaurantCard) => {
+
+const RestaurantCard: React.FC<IRestaurants> = (props: IRestaurants) => {
 	const starsEnum: { [key: number]: string } = {
 		1: star1,
 		2: star2,
@@ -20,24 +16,23 @@ const RestaurantCard: React.FC<IRestaurantCard> = (props: IRestaurantCard) => {
 		4: star4,
 		5: star5,
 	};
-	const dish: string = props.imgSource;
-	const restName: string = props.name;
-	const chefName: string = props.chef;
-	const stars: number = props.stars;
-	const titleCard: string = props.title;
 
-	const starsImg: string = starsEnum[Number(stars)];
+	const { img, rating, name, title, chef, id, titleImg, titleStar } = props;
+
+	const starsImg: string = starsEnum[Number(rating)];
+	const navigate = useNavigate();
 	return (
-		<div className={titleCard}>
+	
+		<div className={title} onClick={() => navigate(`/Restaurant/${id}`)} >
 			<img
-				className="img-rest"
+				className={titleImg}
 				alt="dish"
-				src={dish}></img>
+				src={img}></img>
 			<div id="card-information">
-				<div className="rest-name">{restName}</div>
-				<div id="chef-name">{chefName}</div>
+				<div className="rest-name">{name}</div>
+				<div id="chef-name">{chef}</div>
 				<img
-					className="stars"
+					className={titleStar}
 					src={starsImg}></img>
 			</div>
 		</div>

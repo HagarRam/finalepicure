@@ -1,39 +1,57 @@
 import React from 'react';
-interface IChef {
-	img: any;
-	name: string;
-	description: string;
-	restaurant: Array<{ name: string; img: any }>;
-}
+import { useSelector } from 'react-redux';
+import { Rootstate } from '../../store/store';
+import { IChef } from '../ChefPage/ChefPage';
+import { IRestaurants } from '../RestaurantPage/RestaurantPage';
+
 
 const ChefCard: React.FC<IChef> = (props: IChef) => {
-	const { name, description, restaurant, img } = props;
-	let restaurantName: String = `${name}'s Restaurants`;
+const restaurantData = useSelector((state:Rootstate) => state.restaurants.value)
+	const chef = {
+		img : props.img,
+		name : props.name,
+		description : props.description,
+		restaurant : props.restaurant
+	}
+	let chefRest:IRestaurants[] = [];
+	restaurantData.filter((rest:IRestaurants)=>{
+		const restochef = chef.restaurant?.map((chefrest:number)=>{
+			if(chefrest===rest.id) chefRest.push(rest)
+		});
+		return restochef;
+	});
+	let restaurantName: String = `${chef.name}'s Restaurants`;
 	return (
 		<div>
+
 			<div id="chef-image">
 				<img
-					className="img-chef"
+					id="img-chef"
 					alt="chef"
-					src={img}
+					src={`${chef.img}`}
 				/>
-				<div className="chef-name">{name}</div>
+				<div id="chefName">{chef.name}</div>
+			<div id="chef-information">{chef.description}</div>
+	
 			</div>
-			<div id="chef-information">{description}</div>
 			<div>
 				<div id="chefs-restaurants">{restaurantName}</div>
+					<div id='allthecard'>
+
+
 				<div id="restaurants-card">
-					{restaurant.map((restaurant) => (
-						<div id="chefs-restaurant">
+					{chefRest.map((restaurant:IRestaurants, index:number) => (
+						<div id="chefs-restaurant-card" key={index}>
 							<img
-								className="restaurant-Img"
-								src={restaurant.img}
+								id="restaurant-Img"
+								src={`${restaurant.img}`}
 								alt="restaurant-Img"
 							/>
 							<div id="restaurant-name">{restaurant.name}</div>
 						</div>
 					))}
-				</div>
+			</div>	
+			</div>
 			</div>
 		</div>
 	);

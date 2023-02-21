@@ -1,50 +1,44 @@
 import React from 'react';
 import Footer from '../Footer/Footer';
-import dish1 from '../../assets/yossiShitrit.svg';
 import './ChefPage.css';
 import ChefPageFilter from '../ChefPageFilter/ChefPageFilter';
 import NavBar from '../NavBar/NavBar';
 import ImageChef from '../ImageCard/ImageCard';
+import { useDispatch, useSelector } from "react-redux";
+import { Rootstate } from '../../store/store';
 
-const data: object[] = [
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-	{
-		image: dish1,
-	},
-];
+
+export interface IChef{
+	id?: number,
+	name : string,
+	restaurant?: number [],
+	age?: number,
+	icons?: string ,
+	img: string,
+	description?: string,
+	chefOfTheWeek?: boolean,
+	newChef?: boolean,
+	views?: number,
+}
+
+
+export interface IChefState{
+	value:IChef[]
+	filteredValue:IChef[]
+}
+
 
 const ChefsPage: React.FC = () => {
+	const chefData = useSelector((state:Rootstate) => state.chef.filteredValue)
 	return (
 		<div>
 			<NavBar />
+			<div id="mobile-title">CHEFS</div>
 			<ChefPageFilter />
 			<div id="allthechefs">
-				{data.map((chef: any) => (
-					<ImageChef image={chef.image} />
-				))}
+				{chefData.map((chef:IChef) => {
+					return <ImageChef name={chef.name} img={chef.img} />;
+				})}
 			</div>
 			<Footer />
 		</div>

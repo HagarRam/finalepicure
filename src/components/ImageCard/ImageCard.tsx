@@ -1,22 +1,18 @@
-import React from 'react';
-import star5 from '../../assets/stars/star5.svg';
-import star4 from '../../assets/stars/star4.svg';
-import star3 from '../../assets/stars/star3.svg';
-import star2 from '../../assets/stars/star2.svg';
-import star1 from '../../assets/stars/star1.svg';
+import React from "react";
+import { IChef } from "../ChefPage/ChefPage";
 
-interface IRestaurantCard {
-	image: any;
-}
-const ImageChef: React.FC<IRestaurantCard> = (props: IRestaurantCard) => {
-	const imageChef: string = props.image;
 
+
+
+const ImageChef: React.FC <IChef>=(props:IChef)=>  {
+const {img, name} = props;
 	return (
-		<div className="Images-chefs">
+		<div className="chef-card-element">
 			<img
-				className="chef-image"
-				alt="chef-image"
-				src={imageChef}></img>
+				src={img}
+				alt="chef"
+				className="chef-image"></img>
+			<div className="chef-name">{name}</div>
 		</div>
 	);
 };

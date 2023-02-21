@@ -35,3 +35,29 @@
 #AboutusLogo {
 	margin: 100px 0 100px 100px;
 }
+#application{
+	margin-top: 24px;
+}
+@media only screen and (max-width: 690px) {
+	#AboutUsPage{
+		flex-direction: column-reverse;
+	}
+	#aboutuscontainer{
+		flex-direction: column-reverse;
+	}
+	.app{
+		margin-bottom: 8%;
+		width: 120px;
+	}
+	#AboutusLogo{
+		margin: 50px 0 36px 43px;
+	}
+	#application{
+		display: flex;
+		flex-direction: column;
+	}
+	.about-us-logo{
+		width: 130px;
+	}
+}
+
