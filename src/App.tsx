@@ -6,6 +6,7 @@ import RestaurantPage from './components/RestaurantPage/RestaurantPage';
 import ChefsPage from './components/ChefPage/ChefPage';
 import OneRest from './components/OneRest/OneRest';
 import ModalRest from './components/ModalRestaurant/ModalRest';
+import SignIn from './components/SignIn/SignIn';
 
 function App() {
 	return (
@@ -29,10 +30,10 @@ function App() {
 							path="/restaurant/:dishID"
 							element={<OneRest />}
 						/>
-						{/* <Route
-							path="/restaurant/:dishID/:DishNum"
-							element={<ModalRest />}
-						/> */}
+						<Route
+							path="/SignIn"
+							element={<SignIn />}
+						/>
 					</Routes>
 				</BrowserRouter>
 			}

@@ -22,13 +22,10 @@ export const restaurantsSlice = createSlice({
 			);
 		},
 		setOpenNow: (state) => {
-			// state.filteredValue = data.restaurant.filter(
-			// (restaurant) => restaurant.openNow === true
-			// );
-			// state.filteredValue = data.restaurant.filter((restaurant) => {
-			// 	return restaurant.openHours;
-			// });
-			state.filteredValue = data.restaurant;
+			state.filteredValue = data.restaurant.filter(
+				(restaurant) => restaurant.openNow === true
+			);
+			// state.filteredValue = data.restaurant;
 		},
 		setMap: (state) => {
 			// state.filteredValue = action.payload.map((restaurant: any) => {

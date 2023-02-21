@@ -32,7 +32,7 @@ const NavBarRight: React.FC = () => {
 					id="icon"
 					alt="PersonLogo"
 					src={personLogo}
-					onClick={() => navigate('/')} //to do it letter when i will do the person page
+					onClick={() => navigate('/SignIn')} //to do it letter when i will do the person page
 				/>
 
 				<img
