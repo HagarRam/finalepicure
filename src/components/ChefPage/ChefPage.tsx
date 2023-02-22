@@ -4,7 +4,7 @@ import './ChefPage.css';
 import ChefPageFilter from '../ChefPageFilter/ChefPageFilter';
 import NavBar from '../NavBar/NavBar';
 import ImageChef from '../ImageCard/ImageCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Rootstate } from '../../store/store';
 
 export interface IChef {
@@ -38,7 +38,6 @@ const ChefsPage: React.FC = () => {
 						<ImageChef
 							name={chef.name}
 							img={chef.img}
-							key={chef.id}
 						/>
 					);
 				})}
