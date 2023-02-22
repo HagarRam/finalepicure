@@ -6,6 +6,7 @@ import ChefsPage from './components/ChefPage/ChefPage';
 import OneRest from './components/OneRest/OneRest';
 import SignInPage from './components/SignInPage/SignInPage';
 import SignUpPage from './components/SignUpPage/SignUpPage';
+import OneChef from './components/OneChef/OneChef';
 
 function App() {
 	return (
@@ -24,6 +25,10 @@ function App() {
 						<Route
 							path="/ChefsPage"
 							element={<ChefsPage />}
+						/>
+						<Route
+							path="/ChefsPage/:id"
+							element={<OneChef />}
 						/>
 						<Route
 							path="/restaurant/:dishID"
