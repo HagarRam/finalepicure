@@ -1,6 +1,8 @@
+import './Signin.css';
+
 const SignIn: React.FC = () => {
 	return (
-		<div>
+		<div id="sign-in-container">
 			<div id="sign-in-title">
 				<div>SIGN IN</div>
 				<div>To continue the order, please sign in</div>
