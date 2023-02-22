@@ -1,12 +1,11 @@
-import React from 'react';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomePage from './components/HomePage/HomePage';
 import RestaurantPage from './components/RestaurantPage/RestaurantPage';
 import ChefsPage from './components/ChefPage/ChefPage';
 import OneRest from './components/OneRest/OneRest';
-import ModalRest from './components/ModalRestaurant/ModalRest';
-import SignIn from './components/SignIn/SignIn';
+import SignInPage from './components/SignInPage/SignInPage';
+import SignUpPage from './components/SignUpPage/SignUpPage';
 
 function App() {
 	return (
@@ -32,7 +31,11 @@ function App() {
 						/>
 						<Route
 							path="/SignIn"
-							element={<SignIn />}
+							element={<SignInPage />}
+						/>
+						<Route
+							path="/SignUp"
+							element={<SignUpPage />}
 						/>
 					</Routes>
 				</BrowserRouter>

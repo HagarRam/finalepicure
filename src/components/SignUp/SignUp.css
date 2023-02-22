@@ -1,0 +1,36 @@
+#sign-up-container {
+	margin: 6% 27% 0;
+	font-family: 'Helvetica Neue Thin';
+}
+#sign-up-title {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 200;
+	letter-spacing: 1.97px;
+}
+#sign-up {
+	font-size: 24px;
+	font-weight: 200;
+	margin-bottom: 15px;
+}
+#sign-up-information {
+	display: flex;
+	flex-direction: column;
+	margin: 6% 32%;
+}
+#input-sign-up-information {
+	all: unset;
+	margin-bottom: 60px;
+	border-bottom: black solid 0.1px;
+	font-size: 16px;
+}
+#submit-button {
+	background-color: white;
+	color: black;
+	text-align: cetner;
+	padding: 11px 42px;
+	border: 1px solid #000000;
+	margin-left: 45%;
+	margin-bottom: 20px;
+	letter-spacing: 2.6700000762939453px;
+}
