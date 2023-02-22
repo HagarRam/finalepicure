@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { IRestaurants } from '../../components/RestaurantPage/RestaurantPage';
 import data from '../../data.json';
 export const restaurantsSlice = createSlice({
 	name: 'restaurants',
@@ -28,12 +27,6 @@ export const restaurantsSlice = createSlice({
 			// state.filteredValue = data.restaurant;
 		},
 		setMap: (state) => {
-			// state.filteredValue = action.payload.map((restaurant: any) => {
-			//   return {
-			//     locationLat: restaurant.locationLat,
-			//     locationLng: restaurant.locationLng
-			//   };
-			//  });
 			state.filteredValue = data.restaurant;
 		},
 	},

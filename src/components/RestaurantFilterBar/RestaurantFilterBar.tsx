@@ -45,36 +45,36 @@ const RestaurantFilterBar: React.FC = () => {
 		} else if (active === 'Open') {
 			dispatch(setOpenNow());
 			setIsActiveOpen(true);
-			getOpenNowRestaurants(filteredRestaurants);
+			// getOpenNowRestaurants(filteredRestaurants);
 		}
 	};
-	const getOpenNowRestaurants = (restaurants: IRestaurants[]) => {
-		const date = new Date();
-		const hour = date.getHours();
-		const minutes = date.getMinutes();
-		const currentTime = hour + minutes / 60;
-		const arr: IRestaurants[] = [];
-		restaurants.forEach((restaurant: IRestaurants) => {
-			const openingTime = restaurant.openHours?.[0]
-				? parseFloat(restaurant.openHours?.[0].replace(':', '.'))
-				: undefined;
-			const closingTime = restaurant.openHours?.[1]
-				? parseFloat(restaurant.openHours?.[1].replace(':', '.'))
-				: undefined;
-			if (
-				openingTime &&
-				closingTime &&
-				openingTime <= currentTime &&
-				closingTime >= currentTime
-			) {
-				arr.push(restaurant);
-				console.log(`${restaurant.name} is open`);
-			} else {
-				console.log(`${restaurant.name} is closed`);
-			}
-		});
-		return arr;
-	};
+	// const getOpenNowRestaurants = (restaurants: IRestaurants[]) => {
+	// 	const date = new Date();
+	// 	const hour = date.getHours();
+	// 	const minutes = date.getMinutes();
+	// 	const currentTime = hour + minutes / 60;
+	// 	const arr: IRestaurants[] = [];
+	// 	restaurants.forEach((restaurant: IRestaurants) => {
+	// 		const openingTime = restaurant.openHours?.[0]
+	// 			? parseFloat(restaurant.openHours?.[0].replace(':', '.'))
+	// 			: undefined;
+	// 		const closingTime = restaurant.openHours?.[1]
+	// 			? parseFloat(restaurant.openHours?.[1].replace(':', '.'))
+	// 			: undefined;
+	// 		if (
+	// 			openingTime &&
+	// 			closingTime &&
+	// 			openingTime <= currentTime &&
+	// 			closingTime >= currentTime
+	// 		) {
+	// 			arr.push(restaurant);
+	// 			console.log(`${restaurant.name} is open`);
+	// 		} else {
+	// 			console.log(`${restaurant.name} is closed`);
+	// 		}
+	// 	});
+	// 	return arr;
+	// };
 
 	return (
 		<div id="FilterRestaurant">
