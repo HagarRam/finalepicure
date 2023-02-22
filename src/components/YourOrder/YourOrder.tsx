@@ -65,7 +65,7 @@ const YourOrder: React.FC<IOrder> = (props: IOrder) => {
 						<button
 							id="check-out"
 							type="submit">
-							Checkout 264
+							Checkout
 						</button>
 						<button
 							type="submit"
