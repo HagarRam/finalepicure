@@ -15,7 +15,7 @@ const NavBarRight: React.FC = () => {
 		setIsOrderOpen(true);
 	};
 
-	const closeModal = () => {
+	const closeOrder = () => {
 		setIsOrderOpen(false);
 	};
 
@@ -53,7 +53,7 @@ const NavBarRight: React.FC = () => {
 					onClick={handleDishClick}
 				/>
 			</div>
-			{isOrderOpen && <YourOrder />}
+			{isOrderOpen && <YourOrder closeButton={closeOrder} />}
 		</div>
 	);
 };

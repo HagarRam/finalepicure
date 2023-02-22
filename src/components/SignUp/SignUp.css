@@ -1,6 +1,7 @@
-#sign-up-container {
+#sign-Up-container {
 	margin: 6% 27% 0;
 	font-family: 'Helvetica Neue Thin';
+	box-shadow: 2px 4px 10px 0px #afafaf40;
 }
 #sign-up-title {
 	text-align: center;
