@@ -10,8 +10,8 @@ const ChefOfTheWeek: React.FC = () => {
 	const [chefoftheweek, setchefoftheweek] = useState<IChef>();
 
 	useEffect(() => {
-		const chafs = chefsData.find((chef: IChef) => chef.chefOfTheWeek);
-		setchefoftheweek(chafs);
+		const chefs = chefsData.find((chef: IChef) => chef.chefOfTheWeek);
+		setchefoftheweek(chefs);
 	}, []);
 
 	return (

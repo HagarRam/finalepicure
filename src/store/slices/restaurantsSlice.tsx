@@ -26,12 +26,6 @@ export const restaurantsSlice = createSlice({
 			);
 		},
 		setMap: (state) => {
-			// state.filteredValue = action.payload.map((restaurant: any) => {
-			//   return {
-			//     locationLat: restaurant.locationLat,
-			//     locationLng: restaurant.locationLng
-			//   };
-			//  });
 			state.filteredValue = data.restaurant;
 		},
 	},

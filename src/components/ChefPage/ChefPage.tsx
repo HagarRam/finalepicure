@@ -38,6 +38,7 @@ const ChefsPage: React.FC = () => {
 						<ImageChef
 							name={chef.name}
 							img={chef.img}
+							key={chef.id}
 						/>
 					);
 				})}

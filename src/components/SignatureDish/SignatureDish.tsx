@@ -9,8 +9,6 @@ const SignatureDish: React.FC = () => {
 		(state: Rootstate) => state.dishes.value
 	);
 	let index: number = 0;
-	console.log(SignatureDishData);
-
 	return (
 		<div id="dish-card">
 			<div id="titlecard-dish">SIGNATURE DISH OF:</div>

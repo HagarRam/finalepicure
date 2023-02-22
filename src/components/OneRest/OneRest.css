@@ -11,7 +11,7 @@
 	grid-template-rows: repeat(1, 50px);
 }
 
-.IsOpen {
+.isOpen {
 	display: flex;
 	width: 100%;
 	padding: 1% 43%;

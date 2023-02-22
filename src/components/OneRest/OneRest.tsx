@@ -7,7 +7,6 @@ import './OneRest.css';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import { Rootstate } from '../../store/store';
-
 import clock from './OneRestImages/clock.svg';
 
 const OneRest: React.FC = () => {
@@ -33,7 +32,7 @@ const OneRest: React.FC = () => {
 					titleImg={'rest-image'}
 					key={restaurantsData[IdNum].id}
 				/>
-				<div className="IsOpen">
+				<div className="isOpen">
 					<img
 						src={clock}
 						alt={restaurantsData[IdNum].name}

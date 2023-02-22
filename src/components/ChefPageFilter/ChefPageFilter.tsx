@@ -8,12 +8,12 @@ import './ChefPageFilter.css';
 import { useDispatch } from 'react-redux';
 const ChefPageFilter: React.FC = () => {
 	const dispatch = useDispatch();
-	const [isActiveAll, setIsActiveAll] = useState(false);
-	const [isActiveNew, setIsActiveNew] = useState(false);
-	const [isActiveMost, setIsActiveMost] = useState(false);
+	const [isActiveAll, setIsActiveAll] = useState<boolean>(false);
+	const [isActiveNew, setIsActiveNew] = useState<boolean>(false);
+	const [isActiveMost, setIsActiveMost] = useState<boolean>(false);
 
 	return (
-		<div id="Filterchef">
+		<div id="filterchef">
 			<button
 				className={isActiveAll ? 'filter-button' : 'without-filter-button'}
 				onClick={() => {

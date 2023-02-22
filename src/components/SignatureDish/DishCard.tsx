@@ -32,11 +32,11 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 
 	const { img, icons, name, about, price, id, title, dishtitle } = props;
 
-	const handleDishClick = () => {
+	const handleDishClick = (): void => {
 		setIsModalOpen(true);
 	};
 
-	const closeModal = () => {
+	const closeModal = (): void => {
 		setIsModalOpen(false);
 	};
 
