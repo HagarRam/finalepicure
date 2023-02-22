@@ -4,6 +4,8 @@ import HomePage from './components/HomePage/HomePage';
 import RestaurantPage from './components/RestaurantPage/RestaurantPage';
 import ChefsPage from './components/ChefPage/ChefPage';
 import OneRest from './components/OneRest/OneRest';
+import SignInPage from './components/SignInPage/SignInPage';
+import SignUpPage from './components/SignUpPage/SignUpPage';
 
 function App() {
 	return (
@@ -26,6 +28,14 @@ function App() {
 						<Route
 							path="/restaurant/:dishID"
 							element={<OneRest />}
+						/>
+						<Route
+							path="/SignIn"
+							element={<SignInPage />}
+						/>
+						<Route
+							path="/SignUp"
+							element={<SignUpPage />}
 						/>
 					</Routes>
 				</BrowserRouter>

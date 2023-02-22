@@ -269,12 +269,10 @@
 			"openYear": 2021,
 			"img": "/assets/restaurants/tigerlily.svg",
 			"dishes": [6, 1],
-
 			"rating": 4,
 			"popular": true,
 			"newRest": false,
 			"openNow": false,
-
 			"views": 87,
 			"locationLat": 32.06415700744124,
 			"locationLng": 34.771923673531965
@@ -289,14 +287,11 @@
 			"openDays": [0, 1, 3, 5],
 			"openYear": 2021,
 			"img": "/assets/restaurants/claro.svg",
-
 			"dishes": [3],
-
 			"rating": 1,
 			"popular": false,
 			"newRest": true,
 			"openNow": false,
-
 			"views": 77,
 			"locationLat": 32.06415700744124,
 			"locationLng": 34.771923673531965
@@ -310,15 +305,12 @@
 			"openHours": [8.0, 23.3],
 			"openDays": [0, 5],
 			"openYear": 2023,
-
 			"img": "/assets/restaurants/Lumina.svg",
 			"dishes": [4, 5],
-
 			"rating": 3,
 			"popular": false,
 			"newRest": false,
 			"openNow": false,
-
 			"views": 24,
 			"locationLat": 32.06415700744124,
 			"locationLng": 34.771923673531965
@@ -333,14 +325,11 @@
 			"openDays": [0, 1, 2, 3, 4, 5, 6],
 			"openYear": 2023,
 			"img": "/assets/restaurants/tigerlily.svg",
-
 			"dishes": [1, 3],
-
 			"rating": 3,
 			"popular": false,
 			"newRest": true,
 			"openNow": false,
-
 			"views": 68,
 			"locationLat": 32.06415700744124,
 			"locationLng": 34.771923673531965
@@ -393,7 +382,6 @@
 			"openDays": [0, 1, 2, 3, 4, 5, 6],
 			"openYear": 2023,
 			"img": "/assets/restaurants/claro.svg",
-
 			"dishes": [1, 3],
 			"rating": 3,
 			"popular": false,
