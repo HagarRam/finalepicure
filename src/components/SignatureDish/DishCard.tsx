@@ -28,15 +28,14 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 		vegan: vegan,
 	};
 
-	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
 	const { img, icons, name, about, price, id, title, dishtitle } = props;
 
-	const handleDishClick = (): void => {
+	const handleDishClick = () => {
 		setIsModalOpen(true);
 	};
-
-	const closeModal = (): void => {
+	const closeModal = () => {
 		setIsModalOpen(false);
 	};
 

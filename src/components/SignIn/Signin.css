@@ -1,5 +1,6 @@
 #sign-in-container {
-	margin: 0 33%;
+	margin: 3% 33%;
+	box-shadow: 2px 4px 10px 0px #afafaf40;
 	font-family: 'Helvetica Neue Thin';
 }
 #sign-in-title {

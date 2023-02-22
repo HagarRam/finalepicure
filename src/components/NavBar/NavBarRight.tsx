@@ -4,10 +4,21 @@ import personLogo from './imageNavBar/personLogo.svg';
 import bagLogo from './imageNavBar/bagLogo.svg';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import YourOrder from '../YourOrder/YourOrder';
 
 const NavBarRight: React.FC = () => {
 	const navigate = useNavigate();
 	const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
+	const [isOrderOpen, setIsOrderOpen] = useState<boolean>(false);
+
+	const handleDishClick = () => {
+		setIsOrderOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsOrderOpen(false);
+	};
+
 	return (
 		<div className="navbarright">
 			<div id="icons-NavBar">
@@ -16,7 +27,8 @@ const NavBarRight: React.FC = () => {
 						id="searchText"
 						className={showSearchInput ? 'search-text show' : 'search-text'}
 						type="text"
-						placeholder="Search for restaurant cuisine, chef"></input>
+						placeholder="Search for restaurant cuisine, chef"
+					/>
 					<button
 						id="searchBtn"
 						className="search-btn"
@@ -31,16 +43,17 @@ const NavBarRight: React.FC = () => {
 					id="icon"
 					alt="PersonLogo"
 					src={personLogo}
-					onClick={() => navigate('/SignIn')} //to do it letter when i will do the person page
+					onClick={() => navigate('/SignIn')}
 				/>
 
 				<img
 					id="icon"
 					alt="bagLogo"
 					src={bagLogo}
-					onClick={() => navigate('/')}
+					onClick={handleDishClick}
 				/>
 			</div>
+			{isOrderOpen && <YourOrder />}
 		</div>
 	);
 };

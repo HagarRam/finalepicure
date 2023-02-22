@@ -19,7 +19,7 @@ const SignIn: React.FC = () => {
 					<input
 						id="input-information"
 						placeholder="Password"
-						type={'text'}
+						type={'password'}
 					/>
 				</div>
 				<div id="login-button">

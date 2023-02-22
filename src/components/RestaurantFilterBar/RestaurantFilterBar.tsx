@@ -11,6 +11,8 @@ import {
 import MapContainer from '../MapView/MapContainer';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { Rootstate } from '../../store/store';
+import { isRestElement } from '@babel/types';
+import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 
 const RestaurantFilterBar: React.FC = () => {
 	const dispatch = useDispatch();
@@ -43,38 +45,23 @@ const RestaurantFilterBar: React.FC = () => {
 			dispatch(setMap());
 			setIsActiveMap(true);
 		} else if (active === 'Open') {
-			dispatch(setOpenNow());
+			getOpenNowRestaurants(filteredRestaurants);
 			setIsActiveOpen(true);
-			// getOpenNowRestaurants(filteredRestaurants);
 		}
 	};
-	// const getOpenNowRestaurants = (restaurants: IRestaurants[]) => {
-	// 	const date = new Date();
-	// 	const hour = date.getHours();
-	// 	const minutes = date.getMinutes();
-	// 	const currentTime = hour + minutes / 60;
-	// 	const arr: IRestaurants[] = [];
-	// 	restaurants.forEach((restaurant: IRestaurants) => {
-	// 		const openingTime = restaurant.openHours?.[0]
-	// 			? parseFloat(restaurant.openHours?.[0].replace(':', '.'))
-	// 			: undefined;
-	// 		const closingTime = restaurant.openHours?.[1]
-	// 			? parseFloat(restaurant.openHours?.[1].replace(':', '.'))
-	// 			: undefined;
-	// 		if (
-	// 			openingTime &&
-	// 			closingTime &&
-	// 			openingTime <= currentTime &&
-	// 			closingTime >= currentTime
-	// 		) {
-	// 			arr.push(restaurant);
-	// 			console.log(`${restaurant.name} is open`);
-	// 		} else {
-	// 			console.log(`${restaurant.name} is closed`);
-	// 		}
-	// 	});
-	// 	return arr;
-	// };
+
+	const getOpenNowRestaurants = (restaurants: IRestaurants[]) => {
+		let arr: IRestaurants[] = [];
+		restaurants.forEach((restaurant: IRestaurants) => {
+			if (checkIfRestaurantIsOpen(restaurant)) {
+				arr.push(restaurant);
+				console.log(`${restaurant.name} is open`);
+			} else {
+				console.log(`${restaurant.name} is closed`);
+			}
+		});
+		dispatch(setOpenNow(arr));
+	};
 
 	return (
 		<div id="FilterRestaurant">
