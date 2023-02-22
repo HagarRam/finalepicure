@@ -27,7 +27,7 @@ const SignUp: React.FC = () => {
 				<input
 					id="input-sign-up-information"
 					placeholder="Password"
-					type={'text'}
+					type={'password'}
 				/>
 			</div>
 			{/*

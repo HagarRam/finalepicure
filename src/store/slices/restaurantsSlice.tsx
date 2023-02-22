@@ -21,11 +21,11 @@ export const restaurantsSlice = createSlice({
 				(restaurant) => restaurant.newRest === true
 			);
 		},
-		setOpenNow: (state) => {
-			state.filteredValue = data.restaurant.filter(
-				(restaurant) => restaurant.openNow === true
-			);
-			// state.filteredValue = data.restaurant;
+		setOpenNow: (state, action) => {
+			// state.filteredValue = data.restaurant.filter(
+			// 	(restaurant) => restaurant.openNow === true
+			// );
+			state.filteredValue = action.payload;
 		},
 		setMap: (state) => {
 			// state.filteredValue = action.payload.map((restaurant: any) => {

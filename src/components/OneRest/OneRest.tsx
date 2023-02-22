@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import { Rootstate } from '../../store/store';
 import clock from './OneRestImages/clock.svg';
+import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
@@ -37,7 +38,7 @@ const OneRest: React.FC = () => {
 						src={clock}
 						alt={restaurantsData[IdNum].name}
 					/>
-					{restaurantsData[IdNum].openNow ? (
+					{checkIfRestaurantIsOpen(restaurantsData[IdNum]) ? (
 						<p id="time">Open Now</p>
 					) : (
 						<p id="time">Close Now</p>
