@@ -1,7 +1,12 @@
+#sign-in-page {
+	width: 100%;
+}
+
 #sign-in-container {
 	margin: 3% 33%;
 	box-shadow: 2px 4px 10px 0px #afafaf40;
 	font-family: 'Helvetica Neue Thin';
+	padding-top: 20px;
 }
 #sign-in-title {
 	text-align: center;
@@ -17,7 +22,7 @@
 #user-information {
 	display: flex;
 	flex-direction: column;
-	margin: 20px;
+	margin: 6% 22%;
 }
 #input-information {
 	all: unset;
@@ -55,14 +60,14 @@
 }
 .hr-left {
 	position: absolute;
-	width: 12%;
-	margin-left: 20%;
+	width: 9%;
+	margin-left: 13%;
 	border: 0.5px solid #979797;
 }
 .hr-right {
 	position: absolute;
-	width: 12%;
-	margin-right: 20%;
+	width: 9%;
+	margin-right: 13%;
 	border: 0.5px solid #979797;
 }
 #or-letter {
@@ -72,7 +77,7 @@
 	background-color: white;
 	color: black;
 	text-align: cetner;
-	margin: 10% 31%;
+	margin: 10% 33%;
 	padding: 3% 7% 3% 7%;
 	border: 1px solid #000000;
 	letter-spacing: 2.6700000762939453px;
