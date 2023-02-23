@@ -21,12 +21,6 @@ const YourOrderSubmit: React.FC = () => {
 		setIsModalOpen(false);
 	};
 
-	useEffect(() => {
-		if (isModalOpen) {
-			// navigate('/');
-		}
-	}, [isModalOpen, navigate]);
-
 	return (
 		<div id="your-check-out">
 			<div id="order-card">
@@ -78,7 +72,12 @@ const YourOrderSubmit: React.FC = () => {
 					</div>
 				</div>
 			</div>{' '}
-			{isModalOpen && <ModalOrder closeButton={closeModal} />}
+			{isModalOpen && (
+				<ModalOrder
+					closeButton={closeModal}
+					time={90}
+				/>
+			)}
 		</div>
 	);
 };

@@ -55,9 +55,7 @@ const RestaurantFilterBar: React.FC = () => {
 		restaurants.forEach((restaurant: IRestaurants) => {
 			if (checkIfRestaurantIsOpen(restaurant)) {
 				arr.push(restaurant);
-				console.log(`${restaurant.name} is open`);
 			} else {
-				console.log(`${restaurant.name} is closed`);
 			}
 		});
 		dispatch(setOpenNow(arr));

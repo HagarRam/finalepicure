@@ -1,10 +1,13 @@
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
+import vector from './images/Vector.svg';
 import './ModalOrder.css';
 import { Rootstate } from '../../store/store';
+import DishModalOrder from '../DishModalOrder/DishModalOrder';
 
 interface IModal {
 	// id: number;
+	time: number;
 	closeButton: Function;
 }
 
@@ -31,6 +34,37 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 						className="close">
 						&times;
 					</span>
+					<img
+						alt="vector"
+						src={vector}
+					/>
+					<div>order recived</div>
+					<div>Your food is in process</div>
+					<div id="time">
+						<div>Arrive in</div>
+						<div>{props.time}</div>
+						<div>mins</div>
+					</div>
+					<div id="alltheorder">
+						<DishModalOrder
+							id={0}
+							name={dishesData[1].name}
+							price={dishesData[1].price}
+							quantity={4}
+						/>
+						<DishModalOrder
+							id={0}
+							name={dishesData[1].name}
+							price={dishesData[1].price}
+							quantity={4}
+						/>
+						<DishModalOrder
+							id={0}
+							name={dishesData[1].name}
+							price={dishesData[1].price}
+							quantity={4}
+						/>
+					</div>
 				</div>
 			</div>
 		</div>

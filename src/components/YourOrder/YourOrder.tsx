@@ -3,11 +3,9 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import DishOrder from '../DishOrder/DishOrder';
-import DishCard from '../SignatureDish/DishCard';
 import './YourOrder.css';
 
 interface IOrder {
-	// id: number;
 	closeButton: Function;
 }
 
