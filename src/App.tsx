@@ -7,6 +7,7 @@ import OneRest from './components/OneRest/OneRest';
 import SignInPage from './components/SignInPage/SignInPage';
 import SignUpPage from './components/SignUpPage/SignUpPage';
 import OneChef from './components/OneChef/OneChef';
+import CheckOut from './components/CheckOut/CheckOut';
 
 function App() {
 	return (
@@ -41,6 +42,10 @@ function App() {
 						<Route
 							path="/SignUp"
 							element={<SignUpPage />}
+						/>
+						<Route
+							path="/CheckOut"
+							element={<CheckOut />}
 						/>
 					</Routes>
 				</BrowserRouter>

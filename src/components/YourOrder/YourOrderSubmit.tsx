@@ -3,27 +3,15 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import DishOrder from '../DishOrder/DishOrder';
-import DishCard from '../SignatureDish/DishCard';
-import './YourOrder.css';
+import './YourOrderSubmit.css';
 
-interface IOrder {
-	// id: number;
-	closeButton: Function;
-}
-
-const YourOrder: React.FC<IOrder> = (props: IOrder) => {
+const YourOrderSubmit: React.FC = () => {
 	const navigate = useNavigate();
 	const SignatureDishData = useSelector(
 		(state: Rootstate) => state.dishes.value
 	);
 	return (
-		<div id="your-order">
-			<span
-				id="closeOrder"
-				onClick={() => props.closeButton()}
-				className="close-order">
-				x
-			</span>
+		<div id="your-check-out">
 			<div id="order-card">
 				<div id="title-order">YOUR ORDER</div>
 				<div id="rest-order-name">Mashya</div>
@@ -66,14 +54,8 @@ const YourOrder: React.FC<IOrder> = (props: IOrder) => {
 						/>
 						<button
 							id="check-out"
-							type="submit"
-							onClick={() => navigate(`/CheckOut`)}>
-							Checkout
-						</button>
-						<button
-							type="submit"
-							id="history-order">
-							Order history
+							type="submit">
+							PAY
 						</button>
 					</div>
 				</div>
@@ -82,4 +64,4 @@ const YourOrder: React.FC<IOrder> = (props: IOrder) => {
 	);
 };
 
-export default YourOrder;
+export default YourOrderSubmit;
