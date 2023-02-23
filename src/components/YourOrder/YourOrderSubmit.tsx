@@ -1,15 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import DishOrder from '../DishOrder/DishOrder';
+import ModalOrder from '../ModalOrder/ModalOrder';
 import './YourOrderSubmit.css';
 
 const YourOrderSubmit: React.FC = () => {
 	const navigate = useNavigate();
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const SignatureDishData = useSelector(
 		(state: Rootstate) => state.dishes.value
 	);
+
+	const handleDishClick = () => {
+		setIsModalOpen(true);
+	};
+
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
+
+	useEffect(() => {
+		if (isModalOpen) {
+			// navigate('/');
+		}
+	}, [isModalOpen, navigate]);
+
 	return (
 		<div id="your-check-out">
 			<div id="order-card">
@@ -54,12 +71,14 @@ const YourOrderSubmit: React.FC = () => {
 						/>
 						<button
 							id="check-out"
-							type="submit">
+							type="submit"
+							onClick={handleDishClick}>
 							PAY
 						</button>
 					</div>
 				</div>
-			</div>
+			</div>{' '}
+			{isModalOpen && <ModalOrder closeButton={closeModal} />}
 		</div>
 	);
 };
