@@ -20,13 +20,13 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 			document.body.style.overflow = 'auto';
 		};
 	}, []);
-	const [number, setNumber] = useState<number>(0);
+	const [number, setNumber] = useState(0);
 
-	const handlePlus = (): void => {
+	const handlePlus = () => {
 		setNumber(number + 1);
 	};
 
-	const handleMinus = (): void => {
+	const handleMinus = () => {
 		setNumber(number - 1);
 	};
 

@@ -20,10 +20,11 @@ export const restaurantsSlice = createSlice({
 				(restaurant) => restaurant.newRest === true
 			);
 		},
-		setOpenNow: (state) => {
-			state.filteredValue = data.restaurant.filter(
-				(restaurant) => restaurant.openNow === true
-			);
+		setOpenNow: (state, action) => {
+			// state.filteredValue = data.restaurant.filter(
+			// 	(restaurant) => restaurant.openNow === true
+			// );
+			state.filteredValue = action.payload;
 		},
 		setMap: (state) => {
 			state.filteredValue = data.restaurant;

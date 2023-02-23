@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './RestaurantFilterBar.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
 	setAllRestuarants,
 	setPopularRestuarants,
@@ -9,10 +9,16 @@ import {
 	setMap,
 } from '../../store/slices/restaurantsSlice';
 import MapContainer from '../MapView/MapContainer';
+import { IRestaurants } from '../RestaurantPage/RestaurantPage';
+import { Rootstate } from '../../store/store';
+import { isRestElement } from '@babel/types';
+import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 
 const RestaurantFilterBar: React.FC = () => {
 	const dispatch = useDispatch();
-
+	const filteredRestaurants = useSelector(
+		(state: Rootstate) => state.restaurants.filteredValue
+	);
 	const [isActiveAll, setIsActiveAll] = useState(false);
 	const [isActiveNew, setIsActiveNew] = useState(false);
 	const [isActiveMost, setIsActiveMost] = useState(false);
@@ -35,13 +41,26 @@ const RestaurantFilterBar: React.FC = () => {
 		} else if (active === 'Most') {
 			dispatch(setPopularRestuarants());
 			setIsActiveMost(true);
-		} else if (active === 'Open') {
-			dispatch(setOpenNow());
-			setIsActiveOpen(true);
 		} else if (active === 'Map') {
 			dispatch(setMap());
 			setIsActiveMap(true);
+		} else if (active === 'Open') {
+			getOpenNowRestaurants(filteredRestaurants);
+			setIsActiveOpen(true);
 		}
+	};
+
+	const getOpenNowRestaurants = (restaurants: IRestaurants[]) => {
+		let arr: IRestaurants[] = [];
+		restaurants.forEach((restaurant: IRestaurants) => {
+			if (checkIfRestaurantIsOpen(restaurant)) {
+				arr.push(restaurant);
+				console.log(`${restaurant.name} is open`);
+			} else {
+				console.log(`${restaurant.name} is closed`);
+			}
+		});
+		dispatch(setOpenNow(arr));
 	};
 
 	return (

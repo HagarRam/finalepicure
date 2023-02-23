@@ -12,7 +12,7 @@ export interface IRestaurants {
 	address?: string[];
 	chef: string;
 	chefid?: number;
-	openHours?: number[];
+	openHours?: string[];
 	openDays?: number[];
 	openYear?: number;
 	img: string;
