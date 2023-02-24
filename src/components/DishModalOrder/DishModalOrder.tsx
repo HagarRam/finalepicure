@@ -15,13 +15,12 @@ const DishModalOrder: React.FC<IModalDishes> = (props: IModalDishes) => {
 			<div id="name-price">
 				<div>{quantity} X</div>
 				<div className="order-name">{name}</div>
-			</div>
-
-			<div>
-				<img
-					src={icon}
-					id="icon-price"></img>
-				<div>{price}</div>
+				<div id="price-conatiner">
+					<img
+						src={icon}
+						id="icon-price"></img>
+					<div>{price}</div>
+				</div>
 			</div>
 		</>
 	);

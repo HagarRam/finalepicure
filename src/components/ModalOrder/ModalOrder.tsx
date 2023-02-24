@@ -4,6 +4,7 @@ import vector from './images/Vector.svg';
 import './ModalOrder.css';
 import { Rootstate } from '../../store/store';
 import DishModalOrder from '../DishModalOrder/DishModalOrder';
+import icon from '../DishOrder/image/bold-price.svg';
 
 interface IModal {
 	// id: number;
@@ -36,14 +37,15 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 					</span>
 					<img
 						alt="vector"
+						id="vector"
 						src={vector}
 					/>
-					<div>order recived</div>
-					<div>Your food is in process</div>
+					<div id="order-recived">ORDER RECIVED</div>
+					<div id="your-food">Your food is in process</div>
 					<div id="time">
-						<div>Arrive in</div>
-						<div>{props.time}</div>
-						<div>mins</div>
+						<div id="hour-time">Arrive in</div>
+						<div id="hour">{props.time}:00</div>
+						<div id="hour-time">mins</div>
 					</div>
 					<div id="alltheorder">
 						<DishModalOrder
@@ -64,6 +66,14 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 							price={dishesData[1].price}
 							quantity={4}
 						/>
+					</div>
+					<div id="total-price">
+						TOTAL -{' '}
+						<img
+							src={icon}
+							alt="icon-price"
+						/>{' '}
+						98{' '}
 					</div>
 				</div>
 			</div>
