@@ -12,7 +12,7 @@ const DishModalOrder: React.FC<IModalDishes> = (props: IModalDishes) => {
 
 	return (
 		<>
-			<div id="name-price">
+			<div id="price-in-modal">
 				<div>{quantity} X</div>
 				<div className="order-name">{name}</div>
 				<div id="price-conatiner">

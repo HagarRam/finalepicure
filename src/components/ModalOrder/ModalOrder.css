@@ -4,8 +4,11 @@
 	width: 22%;
 	margin-top: 20%;
 }
-.content {
+.content-modal {
 	height: 600px;
+	margin: auto;
+	width: 400px;
+	background: #f9f4ea;
 }
 #order-recived {
 	font-size: 24px;
@@ -43,7 +46,7 @@
 #hour-time {
 	padding-top: 20px;
 }
-#name-price {
+#price-in-modal {
 	display: flex;
 	justify-content: space-evenly;
 	margin-bottom: 20px;
@@ -55,7 +58,7 @@
 	display: flex;
 	font-weight: 600;
 }
-#name-price .order-name {
+#price-in-modal .order-name {
 	padding: 0 0 10px 0;
 	font-weight: 200;
 }

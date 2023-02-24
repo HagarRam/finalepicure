@@ -28,7 +28,7 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 			<div
 				id="restaurants-card-Modal"
 				className="modal">
-				<div className="content">
+				<div className="content-modal">
 					<span
 						id="closeButton"
 						onClick={() => props.closeButton()}
