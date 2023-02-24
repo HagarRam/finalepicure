@@ -43,8 +43,8 @@ body {
 		display: flex;
 		flex-direction: column;
 		padding-bottom: 80px;
-		 overflow: scroll; 
-	 }
+		overflow: scroll;
+	}
 
 	.chef-card-element {
 		position: initial;
@@ -52,7 +52,10 @@ body {
 	#Filterchef {
 		margin: 40px 0 0 0;
 	}
-	.chef-name{
+	.chef-name {
 		width: 92%;
+		font-size: 18px;
+		height: 50px;
+		margin-top: -52px;
 	}
-} 
+}

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import { IChef } from '../ChefPage/ChefPage';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 
 const ChefCard: React.FC<IChef> = (props: IChef) => {
+	const navigate = useNavigate();
 	const restaurantData = useSelector(
 		(state: Rootstate) => state.restaurants.value
 	);
@@ -39,6 +41,7 @@ const ChefCard: React.FC<IChef> = (props: IChef) => {
 					<div id="restaurants-card">
 						{chefRest.map((restaurant: IRestaurants, index: number) => (
 							<div
+								onClick={() => navigate(`/Restaurant/${restaurant.id}`)}
 								id="chefs-restaurant-card"
 								key={index}>
 								<img
