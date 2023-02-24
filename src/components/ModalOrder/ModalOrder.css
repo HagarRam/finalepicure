@@ -46,6 +46,7 @@
 #name-price {
 	display: flex;
 	justify-content: space-evenly;
+	margin-bottom: 20px;
 }
 #alltheorder {
 	margin-top: 30px;
