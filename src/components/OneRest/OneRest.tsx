@@ -36,6 +36,7 @@ const OneRest: React.FC = () => {
 				<div className="isOpen">
 					<img
 						src={clock}
+						id="clock"
 						alt={restaurantsData[IdNum].name}
 					/>
 					{checkIfRestaurantIsOpen(restaurantsData[IdNum]) ? (

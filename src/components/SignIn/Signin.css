@@ -76,9 +76,15 @@
 #sign-up-button {
 	background-color: white;
 	color: black;
-	text-align: cetner;
-	margin: 10% 33%;
+	width: 100px;
+	margin: 20px 0;
+	margin-left: 16%;
 	padding: 3% 7% 3% 7%;
 	border: 1px solid #000000;
 	letter-spacing: 2.6700000762939453px;
+}
+@media only screen and (max-width: 690px) {
+	#sign-in-container {
+		margin: 3% 12%;
+	}
 }
