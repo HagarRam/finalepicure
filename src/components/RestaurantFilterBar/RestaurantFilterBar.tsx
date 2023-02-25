@@ -11,7 +11,6 @@ import {
 import MapContainer from '../MapView/MapContainer';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { Rootstate } from '../../store/store';
-import { isRestElement } from '@babel/types';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 
 const RestaurantFilterBar: React.FC = () => {

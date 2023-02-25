@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { GoogleApiWrapper, Map, IMapProps } from 'google-maps-react';
-// import { updateImportEqualsDeclaration } from 'typescript';
 
 interface IMapContainerProps {
 	google: any;
@@ -27,8 +26,6 @@ const MapContainer: React.FC<IMapContainerProps> = (props) => {
 		const lat = restaurant.loctionLat;
 		const lng = restaurant.loctionLng;
 		const location: ILocation = { lng, lat };
-		console.log(location);
-		// Do something with the location object
 	});
 
 	const initialCenter = {

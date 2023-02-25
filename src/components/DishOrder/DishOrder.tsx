@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import iconPrice from './image/price.svg';
 import icon from './image/bold-price.svg';
 import './DishOrder.css';

@@ -1,7 +1,7 @@
 import React from 'react';
 import './PopularRestaurants.css';
 import RestaurantCard from './RestaurantCard';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { setAllRestuarants } from '../../store/slices/restaurantsSlice';
 import { Rootstate } from '../../store/store';
