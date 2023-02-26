@@ -13,7 +13,6 @@ const CheckOut: React.FC = () => {
 				<CheckOutDetails />
 				<YourOrderSubmit />
 			</div>
-
 			<Footer />
 		</div>
 	);

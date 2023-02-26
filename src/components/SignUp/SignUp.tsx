@@ -28,13 +28,13 @@ const SignUp: React.FC = () => {
 					id="input-sign-up-information"
 					placeholder="Password"
 					type={'password'}
-				/>
+				/>{' '}
+				<button
+					id="submit-button"
+					onClick={() => navigate('/')}>
+					SUBMIT
+				</button>
 			</div>
-			<button
-				id="submit-button"
-				onClick={() => navigate('/')}>
-				SUBMIT
-			</button>
 		</div>
 	);
 };

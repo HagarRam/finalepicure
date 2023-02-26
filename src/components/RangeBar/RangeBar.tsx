@@ -4,7 +4,9 @@ import './RangeBar.css';
 const RangeBar: React.FC = () => {
 	return (
 		<div className="selects-container">
-			<select id="select">
+			<select
+				id="select"
+				value="Price Range">
 				<option value="0">Price Range</option>
 			</select>
 			<select id="select">

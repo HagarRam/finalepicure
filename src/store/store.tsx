@@ -7,7 +7,6 @@ import { IDishes } from '../components/SignatureDish/DishCard';
 import { IrestaurantsState } from '../components/RestaurantPage/RestaurantPage';
 
 export interface Rootstate {
-	[x: string]: any;
 	chef: IChefState;
 	restaurants: IrestaurantsState;
 	dishes: IDishesState;

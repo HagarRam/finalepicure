@@ -22,20 +22,21 @@ const SignIn: React.FC = () => {
 						type={'password'}
 					/>
 				</div>
+
 				<div id="login-button">
 					<button id="button-login">LOGIN</button>
-					<button id="forget-password-button">Forget password?</button>
+					<button id="forget-password-button">Forget password?</button>{' '}
+					<div id="or-container">
+						<hr className="hr-left" />
+						<div id="or-letter">or</div>
+						<hr className="hr-right" />
+					</div>
+					<button
+						id="sign-up-button"
+						onClick={() => navigate('/SignUp')}>
+						SIGN UP
+					</button>
 				</div>
-				<div id="or-container">
-					<hr className="hr-left" />
-					<div id="or-letter">or</div>
-					<hr className="hr-right" />
-				</div>
-				<button
-					id="sign-up-button"
-					onClick={() => navigate('/SignUp')}>
-					SIGN UP
-				</button>
 			</div>
 		</div>
 	);

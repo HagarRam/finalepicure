@@ -1,7 +1,7 @@
 import React from 'react';
 import RestaurantCard from '../PopularRestaurants/RestaurantCard';
 import { useSelector } from 'react-redux';
-import DishCard, { IDishes } from '../SignatureDish/DishCard';
+import DishCard from '../SignatureDish/DishCard';
 import { useParams } from 'react-router-dom';
 import './OneRest.css';
 import Footer from '../Footer/Footer';
@@ -36,6 +36,7 @@ const OneRest: React.FC = () => {
 				<div className="isOpen">
 					<img
 						src={clock}
+						id="clock"
 						alt={restaurantsData[IdNum].name}
 					/>
 					{checkIfRestaurantIsOpen(restaurantsData[IdNum]) ? (

@@ -28,6 +28,13 @@
 #input-sign-up-information {
 	width: 100%;
 }
+#input-full-Name {
+	all: unset;
+	margin-bottom: 60px;
+	border-bottom: black solid 0.1px;
+	font-size: 16px;
+	width: 100%;
+}
 #payment-details-information {
 	margin-top: 20px;
 }

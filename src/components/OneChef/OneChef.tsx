@@ -19,32 +19,35 @@ const OneChef: React.FC = () => {
 	return (
 		<div id="restaurant-page ">
 			<NavBar />
-			<div id="chef-of-the-page">
-				<ImageChef
-					name={chefData[IdNum].name}
-					img={chefData[IdNum].img}
-					id={chefData[IdNum].id}
-					key={chefData[IdNum].id}
-				/>
+			<div id="information-page">
+				<div id="chef-of-the-page">
+					<ImageChef
+						name={chefData[IdNum].name}
+						img={chefData[IdNum].img}
+						id={chefData[IdNum].id}
+						key={chefData[IdNum].id}
+					/>
+				</div>
+				<div id="chef-restaurants">
+					{chefData[IdNum].restaurant?.map((rest: number) => {
+						let newRest = rest - 1;
+						return (
+							<RestaurantCard
+								img={restaurantsData[newRest].img}
+								name={restaurantsData[newRest].name}
+								chef={restaurantsData[newRest].chef}
+								rating={restaurantsData[newRest].rating}
+								title={'chef-rest-page'}
+								id={restaurantsData[newRest].id}
+								titleStar={'restautant-page-stars'}
+								titleImg={'chef-rest-image'}
+								key={restaurantsData[newRest].id}
+							/>
+						);
+					})}
+				</div>
 			</div>
-			<div id="chef-restaurants">
-				{chefData[IdNum].restaurant?.map((rest: number) => {
-					let newRest = rest - 1;
-					return (
-						<RestaurantCard
-							img={restaurantsData[newRest].img}
-							name={restaurantsData[newRest].name}
-							chef={restaurantsData[newRest].chef}
-							rating={restaurantsData[newRest].rating}
-							title={'chef-rest-page'}
-							id={restaurantsData[newRest].id}
-							titleStar={'restautant-page-stars'}
-							titleImg={'chef-rest-image'}
-							key={restaurantsData[newRest].id}
-						/>
-					);
-				})}
-			</div>
+
 			<Footer />
 		</div>
 	);

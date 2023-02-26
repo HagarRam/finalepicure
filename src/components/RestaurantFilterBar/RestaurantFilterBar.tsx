@@ -8,10 +8,9 @@ import {
 	setOpenNow,
 	setMap,
 } from '../../store/slices/restaurantsSlice';
-import MapContainer from '../MapView/MapContainer';
+// import MapContainer from '../MapView/MapContainer';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { Rootstate } from '../../store/store';
-import { isRestElement } from '@babel/types';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 
 const RestaurantFilterBar: React.FC = () => {
@@ -55,9 +54,7 @@ const RestaurantFilterBar: React.FC = () => {
 		restaurants.forEach((restaurant: IRestaurants) => {
 			if (checkIfRestaurantIsOpen(restaurant)) {
 				arr.push(restaurant);
-				console.log(`${restaurant.name} is open`);
 			} else {
-				console.log(`${restaurant.name} is closed`);
 			}
 		});
 		dispatch(setOpenNow(arr));
@@ -92,10 +89,10 @@ const RestaurantFilterBar: React.FC = () => {
 			</button>
 			{isActiveMap && (
 				<div className="Map-Container">
-					<MapContainer
+					{/* <MapContainer
 						lat={0}
 						lng={0}
-					/>
+					/> */}
 				</div>
 			)}
 		</div>

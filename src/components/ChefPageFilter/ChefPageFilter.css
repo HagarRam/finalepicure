@@ -6,6 +6,7 @@ body {
 	display: flex;
 	margin: 2% 25%;
 	justify-content: space-evenly;
+	gap: 26px;
 }
 .filter-button {
 	font-family: 'Helvetica Neue Bold';
