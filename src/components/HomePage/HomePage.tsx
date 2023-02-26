@@ -1,4 +1,5 @@
 import React from 'react';
+import { useParams } from 'react-router-dom';
 import AboutUs from '../AboutUs/AboutUs';
 import ChefOfTheWeek from '../ChefOfTheWeek/ChefOfTheWeek';
 import Footer from '../Footer/Footer';
@@ -9,17 +10,18 @@ import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
 import SignatureDish from '../SignatureDish/SignatureDish';
 
 const Home: React.FC = () => {
+	const p = useParams();
+	console.log(p);
 	return (
 		<div id="homePage">
-				<NavBar />
-				<Hero />
-				<PopularRestaurants />
-				<SignatureDish />
-				<IconMenu />
-				<ChefOfTheWeek />
-				<AboutUs />
-				<Footer />
-			
+			<NavBar />
+			<Hero />
+			<PopularRestaurants />
+			<SignatureDish />
+			<IconMenu />
+			<ChefOfTheWeek />
+			<AboutUs />
+			<Footer />
 		</div>
 	);
 };

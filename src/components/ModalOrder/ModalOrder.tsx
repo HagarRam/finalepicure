@@ -7,7 +7,6 @@ import DishModalOrder from '../DishModalOrder/DishModalOrder';
 import icon from '../DishOrder/image/bold-price.svg';
 
 interface IModal {
-	// id: number;
 	time: number;
 	closeButton: Function;
 }
