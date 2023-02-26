@@ -14,8 +14,8 @@ const YourOrderSubmit: React.FC = () => {
 	);
 
 	const handleDishClick = () => {
-		setIsModalOpen(true);
-		// navigate('/', { state: isModalOpen, replace: true });
+		// setIsModalOpen(true);
+		navigate('/', { state: isModalOpen, replace: true });
 	};
 
 	const closeModal = () => {
