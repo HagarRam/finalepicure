@@ -122,6 +122,9 @@ button {
 	all: unset;
 	cursor: pointer;
 }
+.not-on-page:hover {
+	border-bottom: 1.8px solid rgba(222, 146, 0, 0.9);
+}
 .mobile-nav,
 .mobile-logo,
 .mobile-nav .menu {
