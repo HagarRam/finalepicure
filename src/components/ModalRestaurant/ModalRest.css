@@ -22,7 +22,7 @@
 	margin: 0% 30%;
 	text-align: center;
 	display: grid;
-	grid-template-rows: repeat(5, 35px);
+	grid-template-rows: repeat(5, 30px);
 }
 #card-dish-information-modal .dish-name {
 	font-size: 14px;
