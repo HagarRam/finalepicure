@@ -27,4 +27,4 @@ export const chefsSchema = new Schema<IChef>({
 	views: { type: Number, required: false },
 });
 
-export const chefsModal = mongoose.model<IChef>('Chefs', chefsSchema);
+export const chefsModal = mongoose.model<IChef>('chefs', chefsSchema);

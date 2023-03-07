@@ -47,7 +47,7 @@ export const restaurantsSchema = new Schema<IRestaurants>({
 	titleStar: { type: String, required: false },
 });
 
-export const restaurantsModal = mongoose.model<IRestaurants>(
-	'Restaurant',
+export const RestaurantsModal = mongoose.model<IRestaurants>(
+	'restaurants',
 	restaurantsSchema
 );

@@ -1,9 +1,23 @@
 import { createSlice } from '@reduxjs/toolkit';
 import data from '../../data.json';
+
+const data1 = () => {
+	fetch('http://localhost:8000/restaurant/', {
+		method: 'GET',
+	})
+		.then((response) => response.json())
+		.then((data) => {
+			return data;
+		})
+		.catch((err) => {
+			console.log(err.message);
+		});
+};
+
 export const restaurantsSlice = createSlice({
 	name: 'restaurants',
 	initialState: {
-		value: data.restaurant,
+		value: data1(),
 		filteredValue: data.restaurant,
 	},
 	reducers: {

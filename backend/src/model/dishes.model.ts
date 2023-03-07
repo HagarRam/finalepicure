@@ -33,4 +33,4 @@ export const dishesSchema = new Schema<IDishes>({
 	dishtitle: { type: String, required: true },
 });
 
-export const DishesModal = mongoose.model<IDishes>('Dishes', dishesSchema);
+export const DishesModal = mongoose.model<IDishes>('dishes', dishesSchema);

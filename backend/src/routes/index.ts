@@ -1,8 +1,13 @@
 import express from 'express';
-// import studant from "../routes/studant.routes/studant.route";
+import restaurant from '../routes/restaurantsRoutes/restaurants.routes';
+import chefs from '../routes/chefRoutes/chefs.routes';
+import dishes from '../routes/dishesRoutes/dishes.routes';
 
 const router = express.Router();
 
-// router.use("/api/studant", studant)
+router.use('/restaurant', restaurant);
+router.use('/chef', chefs);
+router.use('/dishes', dishes);
+console.log('a');
 
 export default router;
