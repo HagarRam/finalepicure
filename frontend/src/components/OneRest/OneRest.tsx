@@ -1,7 +1,7 @@
 import React from 'react';
 import RestaurantCard from '../PopularRestaurants/RestaurantCard';
 import { useSelector } from 'react-redux';
-import DishCard from '../SignatureDish/DishCard';
+import DishCard, { IDishes } from '../SignatureDish/DishCard';
 import { useParams } from 'react-router-dom';
 import './OneRest.css';
 import Footer from '../Footer/Footer';
@@ -49,25 +49,28 @@ const OneRest: React.FC = () => {
 
 			<div id="alltherestaurant">
 				{restaurantsData[IdNum].dishes?.map((dish: number) => {
-					if (dishesData[dish] && dishesData[dish].signatureDish) {
-						return (
-							<div id="dishes-card">
-								<DishCard
-									img={dishesData[dish].img}
-									icons={dishesData[dish].icons}
-									name={dishesData[dish].name}
-									about={dishesData[dish].about}
-									price={dishesData[dish].price}
-									id={dishesData[dish].id}
-									title={'card-dish-information'}
-									dishtitle={'dish-card-element-one-rest'}
-									key={dishesData[dish].id}
-								/>
-							</div>
-						);
-					} else {
-						return null;
-					}
+					const abc = dishesData.filter((dishes: IDishes) => {
+						return dishes.id === dish;
+					});
+					return (
+						<div id="dishes-card">
+							{abc?.map((dishesData: IDishes) => {
+								return (
+									<DishCard
+										img={dishesData.img}
+										icons={dishesData.icons}
+										name={dishesData.name}
+										about={dishesData.about}
+										price={dishesData.price}
+										id={dishesData.id}
+										title={'card-dish-information'}
+										dishtitle={'dish-card-element-one-rest'}
+										key={dishesData.id}
+									/>
+								);
+							})}
+						</div>
+					);
 				})}
 			</div>
 			<Footer />

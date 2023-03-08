@@ -34,7 +34,7 @@ export const restaurantsSchema = new Schema<IRestaurants>({
 	openDays: { type: [Number], required: false },
 	openYear: { type: [Number], required: false },
 	img: { type: String, required: true },
-	dishes: { type: Number, required: false },
+	dishes: { type: [Number], required: false },
 	rating: { type: Number, required: true },
 	popular: { type: Boolean, required: false },
 	newRest: { type: Boolean, required: false },

@@ -21,8 +21,6 @@ export const restaurantsSlice = createSlice({
 	initialState: {
 		value: rest,
 		filteredValue: rest,
-		// value: [] as IRestaurants[],
-		// filteredValue: [] as IRestaurants[],
 	},
 	reducers: {
 		setAllRestuarants: (state) => {
@@ -46,15 +44,6 @@ export const restaurantsSlice = createSlice({
 		},
 	},
 });
-// export const newdata = () => async (dispatch: any) => {
-// 	try {
-// 		const data = await data1();
-// 		console.log('data1', data);
-// 		dispatch(setAllRestuarants(data));
-// 	} catch (error) {
-// 		console.log();
-// 	}
-// };
 
 export const {
 	setAllRestuarants,

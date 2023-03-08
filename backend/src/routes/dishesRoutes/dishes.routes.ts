@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
-import { getAllDishes } from '../../controllers/dishes.controllers';
+import { getAllDishes, postDish } from '../../controllers/dishes.controllers';
 // let bcrypt = require('bcrypt');
 
-const chefRouter = express.Router();
+const dishesRouter = express.Router();
 
-chefRouter.get('/', getAllDishes);
-export default chefRouter;
+dishesRouter.get('/', getAllDishes);
+dishesRouter.post('/orderdish', postDish);
+export default dishesRouter;

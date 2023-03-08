@@ -4,6 +4,5 @@ import { getAllRestaurants } from '../../controllers/restaurants.controllers';
 
 const RestaurantsRouter = express.Router();
 RestaurantsRouter.get('/', getAllRestaurants);
-console.log('acb');
 
 export default RestaurantsRouter;
