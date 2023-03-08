@@ -10,8 +10,6 @@ import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
 import SignatureDish from '../SignatureDish/SignatureDish';
 
 const Home: React.FC = () => {
-	const p = useParams();
-	console.log(p);
 	return (
 		<div id="homePage">
 			<NavBar />

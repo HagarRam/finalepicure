@@ -1,23 +1,25 @@
 import { createSlice } from '@reduxjs/toolkit';
-import data from '../../data.json';
+import { IDishes } from '../../components/SignatureDish/DishCard';
 
-const data2 = () => {
-	fetch('http://localhost:8000/dishes/', {
-		method: 'GET',
-	})
-		.then((response) => response.json())
-		.then((data) => {
-			return data;
-		})
-		.catch((err) => {
-			console.log(err.message);
+const data = async () => {
+	try {
+		const response = await fetch('http://localhost:8000/dishes/', {
+			method: 'GET',
 		});
+		const data = await response.json();
+		console.log(data);
+		return data;
+	} catch (err) {
+		console.log();
+	}
 };
+const dishes: IDishes[] = await data();
 
 export const dishesSlice = createSlice({
 	name: 'dishes',
 	initialState: {
-		value: data2(),
+		value: dishes,
+		filteredValue: dishes,
 	},
 	reducers: {},
 });

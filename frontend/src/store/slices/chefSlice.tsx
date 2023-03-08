@@ -1,41 +1,40 @@
 import { createSlice } from '@reduxjs/toolkit';
-import data from '../../data.json';
+import { IChef } from '../../components/ChefPage/ChefPage';
 
-const data3 = () => {
-	fetch('http://localhost:8000/chef/', {
-		method: 'GET',
-	})
-		.then((response) => response.json())
-		.then((data) => {
-			return data;
-		})
-		.catch((err) => {
-			console.log(err.message);
+const data = async () => {
+	try {
+		const response = await fetch('http://localhost:8000/chef/', {
+			method: 'GET',
 		});
+		const data = await response.json();
+		console.log(data);
+		return data;
+	} catch (err) {
+		console.log();
+	}
 };
-
+const chefs: IChef[] = await data();
 export const chefSlice = createSlice({
 	name: 'chef',
 	initialState: {
-		value: data3(),
-		filteredValue: data.chefs,
+		value: chefs,
+		filteredValue: chefs,
 	},
 	reducers: {
 		setAllchefs: (state) => {
-			state.filteredValue = data.chefs;
+			state.filteredValue = state.value;
 		},
 		setNewChef: (state) => {
-			state.filteredValue = data.chefs.filter((chef) => chef.newChef === true);
+			state.filteredValue = state.value.filter((chef) => chef.newChef === true);
 		},
 		setMostView: (state) => {
-			state.filteredValue = [...data.chefs].sort(
+			state.filteredValue = [...state.value].sort(
 				(a: any, b: any) => b?.views - a?.views
 			);
 		},
 	},
 });
 
-// Action creators are generated for each case reducer function
 export const { setAllchefs, setNewChef, setMostView } = chefSlice.actions;
 
 export default chefSlice.reducer;
