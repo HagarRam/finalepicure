@@ -9,3 +9,13 @@ export const getDishes = async () => {
 		throw err;
 	}
 };
+export const dishOrder = async (dish: IDishes) => {
+	const dishOrder = new DishesModal(dish);
+	try {
+		await dishOrder.save();
+		return dishOrder;
+	} catch (err) {
+		console.log(err);
+		throw err;
+	}
+};
