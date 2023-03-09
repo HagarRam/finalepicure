@@ -1,5 +1,5 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import AboutUs from '../AboutUs/AboutUs';
 import ChefOfTheWeek from '../ChefOfTheWeek/ChefOfTheWeek';
 import Footer from '../Footer/Footer';
@@ -10,6 +10,13 @@ import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
 import SignatureDish from '../SignatureDish/SignatureDish';
 
 const Home: React.FC = () => {
+	const location = useLocation();
+
+	useEffect(() => {
+		if (location.pathname === 'http://localhost:3000/SignUp') {
+			alert('Welcome to Epicure!');
+		}
+	}, [location.pathname]);
 	return (
 		<div id="homePage">
 			<NavBar />
