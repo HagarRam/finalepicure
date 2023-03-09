@@ -53,7 +53,9 @@ const SignUp: React.FC = () => {
 	useEffect(() => {
 		if (connect) {
 			// when connect is true (after successful sign up)
-			navigate('/', { state: { message: `${firstName}Welcome to Epicure!` } }); // navigate to home page with welcome message
+			navigate('/', {
+				state: { message: `${firstName}    Welcome to Epicure!` },
+			}); // navigate to home page with welcome message
 		}
 	}, [connect, navigate]);
 	return (
