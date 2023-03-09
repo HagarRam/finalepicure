@@ -13,14 +13,12 @@ const SignUp: React.FC = () => {
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [connect, setconnect] = useState<boolean>(false);
-	console.log(usersData[1]);
 	const registerUser = async (
 		firstName: string,
 		lastName: string,
 		email: string,
 		password: string
 	) => {
-		console.log(firstName, lastName, email, password);
 		await fetch('http://localhost:8000/users/create', {
 			method: 'POST',
 			body: JSON.stringify({

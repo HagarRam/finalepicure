@@ -7,6 +7,7 @@ export interface IUser {
 	email: string;
 	password: string;
 	token?: string;
+	connect?: boolean;
 }
 
 export const userSchema = new Schema<IUser>({
@@ -15,6 +16,7 @@ export const userSchema = new Schema<IUser>({
 	email: { type: String, required: true },
 	password: { type: String, required: true },
 	token: { type: String, required: false },
+	connect: { type: Boolean, required: false },
 });
 
 export const UsersModal = mongoose.model<IUser>('users', userSchema);

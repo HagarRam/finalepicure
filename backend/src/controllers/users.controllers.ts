@@ -19,7 +19,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 
 export const newUser = async (req: Request, res: Response) => {
 	try {
-		const { firstName, lastName, email, password } = req.body;
+		const { firstName, lastName, email, password, connect } = req.body;
 		if (!(firstName && lastName && email && password)) {
 			res.status(400).send('All input is required');
 		}
@@ -33,6 +33,7 @@ export const newUser = async (req: Request, res: Response) => {
 			lastName,
 			email: email.toLowerCase(), // sanitize: convert email to lowercase
 			password: encryptedPassword,
+			connect: connect,
 		});
 		const token = jwt.sign({ user_id: user._id, email }, tokenKey, {
 			expiresIn: '2h',
