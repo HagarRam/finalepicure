@@ -19,29 +19,31 @@ const SignUp: React.FC = () => {
 		email: string,
 		password: string
 	) => {
-		await fetch('http://localhost:8000/users/create', {
-			method: 'POST',
-			body: JSON.stringify({
-				firstName: firstName,
-				lastName: lastName,
-				email: email,
-				password: password,
-			}),
-			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setUsers((newUsers: IUser[]) => [...newUsers, data]);
-				setFirstName('');
-				setLastName('');
-				setEmail('');
-				setPassword('');
+		try {
+			await fetch('http://localhost:8000/users/create', {
+				method: 'POST',
+				body: JSON.stringify({
+					firstName: firstName,
+					lastName: lastName,
+					email: email,
+					password: password,
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
 			})
-			.catch((err) => {
-				console.log(err.message);
-			});
+				.then((response) => response.json())
+				.then((data) => {
+					setUsers((newUsers: IUser[]) => [...newUsers, data]);
+					setFirstName('');
+					setLastName('');
+					setEmail('');
+					setPassword('');
+				});
+		} catch (err) {
+			alert('please try again');
+			console.log(err);
+		}
 	};
 
 	const handleRegister = (e: any) => {

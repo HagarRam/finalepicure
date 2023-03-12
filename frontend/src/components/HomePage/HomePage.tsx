@@ -7,13 +7,30 @@ import IconMenu from '../IconMenu/IconMenu';
 import NavBar from '../NavBar/NavBar';
 import PopularRestaurants from '../PopularRestaurants/PopularRestaurants';
 import SignatureDish from '../SignatureDish/SignatureDish';
-
+import './HomePage.css';
 const Home: React.FC = () => {
 	const location = useLocation();
 	const message = location.state?.message;
+	function closeButton(): void {
+		const messageDiv = document.getElementById('welcomeMessage');
+		if (messageDiv) {
+			messageDiv.style.display = 'none'; // Change the display to 'none'
+		}
+	}
+
 	return (
 		<div id="homePage">
-			{message && <div>{message}</div>}
+			{message && (
+				<div id="welcomeMessage">
+					<span
+						id="closeButton"
+						onClick={() => closeButton()}
+						className="close">
+						&times;
+					</span>
+					{message}
+				</div>
+			)}
 			<NavBar />
 			<Hero />
 			<PopularRestaurants />

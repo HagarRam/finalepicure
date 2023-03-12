@@ -21,7 +21,7 @@ export const newUser = async (req: Request, res: Response) => {
 	try {
 		const { firstName, lastName, email, password, connect } = req.body;
 		if (!(firstName && lastName && email && password)) {
-			res.status(400).send('All input is required');
+			return res.status(400).send('All input is required');
 		}
 		const oldUser = await UsersModal.findOne({ email });
 		if (oldUser) {

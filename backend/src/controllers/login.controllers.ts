@@ -24,9 +24,6 @@ export const activeUsers = async (req: Request, res: Response) => {
 			return res.status(400).send('All input is required');
 		}
 		const user = await UsersModal.findOne({ email });
-		console.log(user);
-		console.log(password);
-		console.log(user?.password);
 
 		if (user && (await bcrypt.compare(password, user.password))) {
 			const token = jwt.sign({ user_id: user._id, email }, tokenKey, {

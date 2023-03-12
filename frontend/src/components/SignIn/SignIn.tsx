@@ -14,32 +14,33 @@ const SignIn: React.FC = () => {
 	const [connect, setconnect] = useState<boolean>(false);
 
 	const logInUser = async (email: string, password: string) => {
-		await fetch('http://localhost:8000/login/new', {
-			method: 'POST',
-			body: JSON.stringify({
-				email: email,
-				password: password,
-				connect: true, // or whatever value is appropriate for your use case
-			}),
+		try {
+			await fetch('http://localhost:8000/login/new', {
+				method: 'POST',
+				body: JSON.stringify({
+					email: email,
+					password: password,
+					connect: true, // or whatever value is appropriate for your use case
+				}),
 
-			headers: {
-				'Content-type': 'application/json; charset=UTF-8',
-			},
-		})
-			.then((response) => response.json())
-			.then((data) => {
-				setUsers((newUsers: IActive[]) => [...newUsers, data]);
-				setEmail('');
-				setPassword('');
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
 			})
-			.catch((err) => {
-				console.log(err.message);
-			});
+				.then((response) => response.json())
+				.then((data) => {
+					setUsers((newUsers: IActive[]) => [...newUsers, data]);
+					setEmail('');
+					setPassword('');
+				});
+		} catch (err) {
+			alert('please try again');
+			console.log(err);
+		}
 	};
 
 	const handleRegister = (e: any) => {
 		e.preventDefault();
-		console.log(email);
 		logInUser(email, password);
 		setconnect(true);
 	};
