@@ -1,17 +1,25 @@
-import { BlobOptions } from 'buffer';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { IActive } from '../../store/slices/activeUsers';
+import { IActive, setActiveUsers } from '../../store/slices/activeUsers';
 import { Rootstate } from '../../store/store';
+import { getName } from '../../store/slices/usersSlice';
 import './Signin.css';
 
 const SignIn: React.FC = () => {
 	const usersData = useSelector((state: Rootstate) => state.activeUsers.value);
+	const logInName = useSelector((state: Rootstate) => state.users.value);
 	const [users, setUsers] = useState<any>(usersData);
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [connect, setconnect] = useState<boolean>(false);
+	const dispatch = useDispatch();
+	// useEffect(() => {
+	// 	dispatch(getName({ email: email }));
+	// }, [email]);
+	// useEffect(() => {
+	// 	dispatch(setActiveUsers({ email: email }));
+	// }, [email]);
 
 	const logInUser = async (email: string, password: string) => {
 		try {
@@ -29,6 +37,8 @@ const SignIn: React.FC = () => {
 			})
 				.then((response) => response.json())
 				.then((data) => {
+					getName(dispatch(getName(data.email)));
+					setUsers(dispatch(setActiveUsers(data.email)));
 					setUsers((newUsers: IActive[]) => [...newUsers, data]);
 					setEmail('');
 					setPassword('');
@@ -45,18 +55,18 @@ const SignIn: React.FC = () => {
 		setconnect(true);
 	};
 	const navigate = useNavigate();
-
-	useEffect(() => {
+	const name = useEffect(() => {
 		if (connect) {
 			// when connect is true (after successful sign up)
 			navigate('/', {
-				state: { message: ` Welcome to Epicure!` },
+				state: { message: `${logInName} Welcome to Epicure!` },
 			}); // navigate to home page with welcome message
 		}
 	}, [connect, navigate]);
 
 	return (
 		<div id="sign-in-page">
+			{' '}
 			<form onSubmit={handleRegister}>
 				<div id="sign-in-container">
 					<div id="sign-in-title">
@@ -104,4 +114,5 @@ const SignIn: React.FC = () => {
 		</div>
 	);
 };
+
 export default SignIn;

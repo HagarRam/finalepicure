@@ -26,6 +26,8 @@ export interface IuserState {
 	value: IUser[];
 }
 export interface IActiveuserState {
+	[x: string]: any;
+	map(arg0: (user: any) => JSX.Element): import('react').ReactNode;
 	value: IActive[];
 }
 
