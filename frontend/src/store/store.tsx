@@ -2,17 +2,20 @@ import { configureStore } from '@reduxjs/toolkit';
 import chefReducer from './slices/chefSlice';
 import restaurantsReducer from './slices/restaurantsSlice';
 import userReducer from './slices/usersSlice';
+import activeUsersReducer from './slices/activeUsers';
 import dishesReducer from './slices/dishesSlice';
 import { IChefState } from '../components/ChefPage/ChefPage';
 import { IDishes } from '../components/SignatureDish/DishCard';
 import { IrestaurantsState } from '../components/RestaurantPage/RestaurantPage';
 import { IUser } from './slices/usersSlice';
+import { IActive } from './slices/activeUsers';
 
 export interface Rootstate {
 	users: IuserState;
 	chef: IChefState;
 	restaurants: IrestaurantsState;
 	dishes: IDishesState;
+	activeUsers: IActiveuserState;
 }
 
 export interface IDishesState {
@@ -22,6 +25,9 @@ export interface IDishesState {
 export interface IuserState {
 	value: IUser[];
 }
+export interface IActiveuserState {
+	value: IActive[];
+}
 
 export default configureStore({
 	reducer: {
@@ -29,5 +35,6 @@ export default configureStore({
 		restaurants: restaurantsReducer,
 		dishes: dishesReducer,
 		users: userReducer,
+		activeUsers: activeUsersReducer,
 	},
 });

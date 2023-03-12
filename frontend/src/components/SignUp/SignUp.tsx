@@ -50,14 +50,15 @@ const SignUp: React.FC = () => {
 		setconnect(true);
 	};
 	const navigate = useNavigate();
-	useEffect(() => {
-		if (connect) {
-			// when connect is true (after successful sign up)
-			navigate('/', {
-				state: { message: `${firstName}    Welcome to Epicure!` },
-			}); // navigate to home page with welcome message
-		}
-	}, [connect, navigate]);
+	// useEffect(() => {
+	// 	if (connect) {
+	// 		// when connect is true (after successful sign up)
+	// 		navigate('/SignIn', {
+	// 			state: { message: `${firstName}    Welcome to Epicure!` },
+	// 		}); // navigate to home page with welcome message
+	// 	}
+	// }, [connect, navigate]);
+
 	return (
 		<div id="sign-Up-container">
 			<div id="sign-up-title">
@@ -94,7 +95,7 @@ const SignUp: React.FC = () => {
 						type={'password'}
 					/>{' '}
 					<button
-						// onClick={() => navigate('/')}
+						onClick={() => navigate('/SignIn')}
 						id="submit-button">
 						SUBMIT
 					</button>

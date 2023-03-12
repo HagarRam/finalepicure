@@ -39,6 +39,7 @@ export const newUser = async (req: Request, res: Response) => {
 			expiresIn: '2h',
 		});
 		user.token = token;
+		user.save();
 		const newuser = await createUser(user);
 		res.status(201).json(newuser);
 	} catch (err) {
