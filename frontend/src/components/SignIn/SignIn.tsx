@@ -8,8 +8,6 @@ import './Signin.css';
 const SignIn: React.FC = () => {
 	const data = useSelector((state: Rootstate) => state.users.value);
 	const filter = useSelector((state: Rootstate) => state.users.filteredValue);
-	console.log(data);
-
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [connect, setconnect] = useState<boolean>(false);
@@ -17,10 +15,12 @@ const SignIn: React.FC = () => {
 	useEffect(() => {
 		dispatch(setActiveUsers({ email: email }));
 	}, [email]);
+	sessionStorage.setItem('data', JSON.stringify(filter));
+	const storedData = JSON.parse(sessionStorage.getItem('data') || '{}');
+	console.log(storedData);
 
 	const logInUser = async (email: string, password: string) => {
 		dispatch(setActiveUsers(email));
-		console.log(filter);
 		message();
 		setEmail('');
 		setPassword('');
@@ -28,7 +28,6 @@ const SignIn: React.FC = () => {
 	const handleRegister = (e: any) => {
 		e.preventDefault();
 		logInUser(email, password);
-		console.log(email, password);
 		setconnect(true);
 	};
 
@@ -36,7 +35,7 @@ const SignIn: React.FC = () => {
 	const message = () => {
 		navigate('/', {
 			state: {
-				message: `Welcome to Epicure, ${filter.firstName} ${filter.lastName}!`,
+				message: `Welcome to Epicure, ${storedData.firstName} ${storedData.lastName}!`,
 			},
 		});
 	};
