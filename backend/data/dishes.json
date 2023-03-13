@@ -1,0 +1,80 @@
+[
+	{
+		"id": 1,
+		"name": "Pad Ki Mao",
+		"time": ["lunch", "dinner"],
+		"about": "Shrimps, Glass Noodles, Kemiri Nuts, Shallots, Lemon Grass, Magic Chili Brown Coconut",
+		"price": 88,
+		"allergan": [],
+		"icons": ["spicy"],
+		"sides": [],
+		"changes": [],
+		"img": "/assets/restaurants/tigerlily.svg",
+		"signatureDish": "true"
+	},
+	{
+		"id": 2,
+		"name": "Garbanzo Frito",
+		"time": ["Breakfast", "lunch", "dinner", "all"],
+		"about": "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa",
+		"price": 98,
+		"allergan": [],
+		"icons": ["spicy"],
+		"sides": [],
+		"changes": [],
+		"img": "/assets/restaurants/claro.svg",
+		"signatureDish": "false"
+	},
+	{
+		"id": 3,
+		"name": "Smoked Pizza",
+		"time": ["lunch", "dinner"],
+		"about": "Basil dough, cashew 'butter', demi-glace, bison & radish",
+		"price": 65,
+		"allergan": [],
+		"icons": ["spicy"],
+		"sides": [],
+		"changes": [],
+		"img": "/assets/restaurants/Lumina.svg",
+		"signatureDish": "true"
+	},
+	{
+		"id": 4,
+		"name": "Pad Ki Mao",
+		"time": ["lunch", "dinner"],
+		"about": "Shrimps, Glass Noodles, Kemiri Nuts, Shallots, Lemon Grass, Magic Chili Brown Coconut",
+		"price": 81,
+		"allergan": [],
+		"icons": ["spicy", "vegan"],
+		"sides": [],
+		"changes": [],
+		"img": "/assets/restaurants/Lumina.svg",
+		"signatureDish": "true"
+	},
+	{
+		"id": 5,
+		"name": "Garbanzo Frito",
+		"time": ["Breakfast", "lunch", "dinner", "all"],
+		"about": "Polenta fingers, veal cheek, magic chili cured lemon cream, yellow laksa",
+		"price": 98,
+		"allergan": [],
+		"icons": ["vegan"],
+		"sides": [],
+		"changes": [],
+		"img": "/assets/restaurants/tigerlily.svg",
+		"signatureDish": "false"
+	},
+	{
+		"id": 6,
+		"name": "Smoked Pizza",
+		"time": ["lunch", "dinner"],
+		"about": "Basil dough, cashew 'butter', demi-glace, bison & radish",
+		"price": 62,
+		"allergan": [],
+		"icons": [],
+		"sides": [],
+		"changes": [],
+		"img": "/assets/restaurants/Lumina.svg",
+		"signatureDish": "true"
+	}
+]
