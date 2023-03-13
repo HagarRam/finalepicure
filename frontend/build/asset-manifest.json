@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e617f9bc.css",
+    "main.js": "/static/js/main.8a8656c9.js",
+    "static/js/787.316d544e.chunk.js": "/static/js/787.316d544e.chunk.js",
+    "static/media/hero-background.svg": "/static/media/hero-background.0da6ceca32ef346152c9.svg",
+    "static/media/logo.svg": "/static/media/logo.0a1ae1fe1cd306c28ffad15831839061.svg",
+    "static/media/NavBarLogo.svg": "/static/media/NavBarLogo.428a76207684bcb25059495f8e62471c.svg",
+    "static/media/aboutusLogo.svg": "/static/media/aboutusLogo.ae5886d30078a3184b1b5674e78bc65d.svg",
+    "static/media/HelveticaNeue-Thin.ttf": "/static/media/HelveticaNeue-Thin.c4606aee9e3d876bc645.ttf",
+    "static/media/HelveticaNeue-Light.ttf": "/static/media/HelveticaNeue-Light.2d7491fe233df3ce53e2.ttf",
+    "static/media/HelveticaNeue-Medium.ttf": "/static/media/HelveticaNeue-Medium.64ab5024acf8e1619abc.ttf",
+    "static/media/Helvetica-Neu-Bold.ttf": "/static/media/Helvetica-Neu-Bold.61acdee6f288cddccf23.ttf",
+    "static/media/applestoreLogo.svg": "/static/media/applestoreLogo.d15417e3e80515cae04130de070d1816.svg",
+    "static/media/googleplayLogo.svg": "/static/media/googleplayLogo.61ad95fcb065515573a4be3439b776f8.svg",
+    "static/media/spicy.svg": "/static/media/spicy.da7a9760bd1ecc375a5175da3bc6664f.svg",
+    "static/media/TitleLogo.svg": "/static/media/TitleLogo.5cbb897c15d1588f24e43ecb08e457ff.svg",
+    "static/media/Vegitarian.svg": "/static/media/Vegitarian.924f82121b6c3ef9371b474f41606b2e.svg",
+    "static/media/personLogo.svg": "/static/media/personLogo.70d342d6fef01fe874c9bca5a634a1e9.svg",
+    "static/media/vegan.svg": "/static/media/vegan.a9c9355b4480ebb0cdc9e2aa86c02734.svg",
+    "static/media/clock.svg": "/static/media/clock.09601f1fb3ec15253a41a5ac252c7519.svg",
+    "static/media/star1.svg": "/static/media/star1.c8abd6e3c850ab30ac746d6fef743f16.svg",
+    "static/media/star2.svg": "/static/media/star2.fcd4df656245bb2c9176d4b86f0f8a29.svg",
+    "static/media/searchLogo.svg": "/static/media/searchLogo.de66ed7dd98e49e8b68b6fe5b0146daf.svg",
+    "static/media/star3.svg": "/static/media/star3.a13024f529c3b6cb9d4ededb6ed8835d.svg",
+    "static/media/star4.svg": "/static/media/star4.51ee1754ae6af4b87062f956146f7760.svg",
+    "static/media/star5.svg": "/static/media/star5.8b5b18ee3ed6679b564cb22c24ab0721.svg",
+    "static/media/Vector.svg": "/static/media/Vector.04c378e38739ac2d302b88b29fa4bdb0.svg",
+    "index.html": "/index.html",
+    "static/media/bold-price.svg": "/static/media/bold-price.64cbe24984959108d945d437fbd071bb.svg",
+    "static/media/bagLogo.svg": "/static/media/bagLogo.44c82e3cb9e0e2d011a3e2a892f58d89.svg",
+    "static/media/iconprice.svg": "/static/media/iconprice.44aa1ce34817c97801a300d230e8a69d.svg",
+    "static/media/price.svg": "/static/media/price.6a23dcd05dcf7277e2c6d7dbe4d5c6ce.svg",
+    "main.e617f9bc.css.map": "/static/css/main.e617f9bc.css.map",
+    "main.8a8656c9.js.map": "/static/js/main.8a8656c9.js.map",
+    "787.316d544e.chunk.js.map": "/static/js/787.316d544e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e617f9bc.css",
+    "static/js/main.8a8656c9.js"
+  ]
+}
