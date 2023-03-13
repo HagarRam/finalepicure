@@ -24,12 +24,12 @@ console.log(users);
 export const userSlice = createSlice({
 	name: 'users',
 	initialState: {
-		value: {},
-		filteredValue: users,
+		value: users,
+		filteredValue: {},
 	},
 	reducers: {
 		setAllUsers: (state) => {
-			state.value = state.filteredValue;
+			state.value = state.value;
 		},
 		getName: (state, action) => {
 			const currentUser = action.payload;
@@ -44,7 +44,7 @@ export const userSlice = createSlice({
 			const userLogIn = users.find((user: IUser) => {
 				return user.email === currentUser.email;
 			});
-			state.value = userLogIn || {};
+			state.filteredValue = userLogIn || {};
 			console.log(userLogIn);
 		},
 	},

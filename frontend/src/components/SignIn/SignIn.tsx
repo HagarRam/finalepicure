@@ -7,7 +7,9 @@ import './Signin.css';
 
 const SignIn: React.FC = () => {
 	const data = useSelector((state: Rootstate) => state.users.value);
+	const filter = useSelector((state: Rootstate) => state.users.filteredValue);
 	console.log(data);
+
 	const [email, setEmail] = useState<string>('');
 	const [password, setPassword] = useState<string>('');
 	const [connect, setconnect] = useState<boolean>(false);
@@ -17,51 +19,27 @@ const SignIn: React.FC = () => {
 	}, [email]);
 
 	const logInUser = async (email: string, password: string) => {
-		try {
-			await fetch('http://localhost:8000/users/', {
-				method: 'POST',
-				body: JSON.stringify({
-					email: email,
-					password: password,
-					connect: true, // or whatever value is appropriate for your use case
-				}),
-
-				headers: {
-					'Content-type': 'application/json; charset=UTF-8',
-				},
-			})
-				.then((response) => response.json())
-				.then((data) => {
-					dispatch(setActiveUsers(data.email));
-					setEmail('');
-					setPassword('');
-				});
-		} catch (err) {
-			alert('please try again');
-			console.log(err);
-		}
+		dispatch(setActiveUsers(email));
+		console.log(filter);
+		message();
+		setEmail('');
+		setPassword('');
 	};
-
 	const handleRegister = (e: any) => {
 		e.preventDefault();
 		logInUser(email, password);
+		console.log(email, password);
 		setconnect(true);
 	};
 
 	const navigate = useNavigate();
-	const name = useEffect(() => {
-		if (connect) {
-			for (const key in data) {
-				if (Object.prototype.hasOwnProperty.call(data, key)) {
-					const user = data[key];
-					navigate('/', {
-						state: { message: `${user.firstName} Welcome to Epicure!` },
-					});
-				}
-			}
-		}
-	}, [connect, navigate, data]);
-
+	const message = () => {
+		navigate('/', {
+			state: {
+				message: `Welcome to Epicure, ${filter.firstName} ${filter.lastName}!`,
+			},
+		});
+	};
 	return (
 		<div id="sign-in-page">
 			{' '}

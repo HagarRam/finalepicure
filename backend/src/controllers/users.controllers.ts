@@ -49,19 +49,21 @@ export const newUser = async (req: Request, res: Response) => {
 
 export const getoldUser = async (req: Request, res: Response) => {
 	try {
-		const { email, password } = req.body;
-		if (!(email && password)) {
-			res.status(400).send('All input is required');
+		const { email, password, connect } = req.body;
+		if (!(email && password && connect)) {
+			return res.status(400).send('All input is required');
 		}
 		const user = await UsersModal.findOne({ email });
+
 		if (user && (await bcrypt.compare(password, user.password))) {
 			const token = jwt.sign({ user_id: user._id, email }, tokenKey, {
 				expiresIn: '2h',
 			});
 			user.token = token;
-			res.status(200).json(user);
+			const newuser = await createUser(user);
+			console.log(newuser);
+			return res.status(201).json(newuser);
 		}
-		res.status(400).send('Invalid Credentials');
 	} catch (err) {
 		console.log(err);
 	}
