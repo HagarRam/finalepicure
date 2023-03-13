@@ -6,7 +6,9 @@ import { Rootstate } from '../../store/store';
 import './SignUp.css';
 
 const SignUp: React.FC = () => {
-	const usersData = useSelector((state: Rootstate) => state.users.value);
+	const usersData = useSelector(
+		(state: Rootstate) => state.users.filteredValue
+	);
 	const [users, setUsers] = useState<any>(usersData);
 	const [firstName, setFirstName] = useState<string>('');
 	const [lastName, setLastName] = useState<string>('');
@@ -20,7 +22,7 @@ const SignUp: React.FC = () => {
 		password: string
 	) => {
 		try {
-			await fetch('http://localhost:8000/users/create', {
+			await fetch('http://localhost:8000/users/', {
 				method: 'POST',
 				body: JSON.stringify({
 					firstName: firstName,
@@ -39,6 +41,7 @@ const SignUp: React.FC = () => {
 					setLastName('');
 					setEmail('');
 					setPassword('');
+					navigate('/SignIn');
 				});
 		} catch (err) {
 			alert('please try again');
@@ -46,20 +49,13 @@ const SignUp: React.FC = () => {
 		}
 	};
 
+	const navigate = useNavigate();
 	const handleRegister = (e: any) => {
 		e.preventDefault();
+		console.log('registering user', firstName, lastName, email, password);
 		registerUser(firstName, lastName, email, password);
 		setconnect(true);
 	};
-	const navigate = useNavigate();
-	// useEffect(() => {
-	// 	if (connect) {
-	// 		// when connect is true (after successful sign up)
-	// 		navigate('/SignIn', {
-	// 			state: { message: `${firstName}    Welcome to Epicure!` },
-	// 		}); // navigate to home page with welcome message
-	// 	}
-	// }, [connect, navigate]);
 
 	return (
 		<div id="sign-Up-container">
@@ -96,11 +92,7 @@ const SignUp: React.FC = () => {
 						placeholder="Password"
 						type={'password'}
 					/>{' '}
-					<button
-						onClick={() => navigate('/SignIn')}
-						id="submit-button">
-						SUBMIT
-					</button>
+					<button id="submit-button">SUBMIT</button>
 				</form>
 			</div>
 		</div>

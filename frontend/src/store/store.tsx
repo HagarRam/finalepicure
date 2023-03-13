@@ -15,7 +15,7 @@ export interface Rootstate {
 	chef: IChefState;
 	restaurants: IrestaurantsState;
 	dishes: IDishesState;
-	activeUsers: IActiveuserState;
+	// activeUsers: IActiveuserState;
 }
 
 export interface IDishesState {
@@ -23,13 +23,14 @@ export interface IDishesState {
 }
 
 export interface IuserState {
+	[x: string]: any;
 	value: IUser[];
 }
-export interface IActiveuserState {
-	[x: string]: any;
-	map(arg0: (user: any) => JSX.Element): import('react').ReactNode;
-	value: IActive[];
-}
+// export interface IActiveuserState {
+// 	[x: string]: any;
+// 	map(arg0: (user: any) => JSX.Element): import('react').ReactNode;
+// 	value: IActive[];
+// }
 
 export default configureStore({
 	reducer: {

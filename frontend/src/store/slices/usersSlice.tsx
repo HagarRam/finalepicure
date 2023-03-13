@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export interface IUser {
+	name: any;
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -19,35 +20,36 @@ const datausers = async () => {
 	}
 };
 const users: IUser[] = await datausers();
-
-interface UsersState {
-	value: IUser[];
-	filteredValue: IUser[];
-}
-
-const initialState: UsersState = {
-	value: users,
-	filteredValue: users,
-};
-
+console.log(users);
 export const userSlice = createSlice({
 	name: 'users',
-	initialState,
+	initialState: {
+		value: {},
+		filteredValue: users,
+	},
 	reducers: {
 		setAllUsers: (state) => {
-			state.filteredValue = state.value;
+			state.value = state.filteredValue;
 		},
 		getName: (state, action) => {
 			const currentUser = action.payload;
-			const userLogIn = users.find((user) => {
+			const userLogIn = users.find((user: IUser) => {
 				return user.email === currentUser.email;
 			});
-			state.filteredValue = userLogIn ? [userLogIn] : [];
+			state.value = userLogIn ? [userLogIn] : [];
+			console.log(userLogIn);
+		},
+		setActiveUsers: (state, action) => {
+			const currentUser = action.payload;
+			const userLogIn = users.find((user: IUser) => {
+				return user.email === currentUser.email;
+			});
+			state.value = userLogIn || {};
 			console.log(userLogIn);
 		},
 	},
 });
 
-export const { setAllUsers, getName } = userSlice.actions;
+export const { setAllUsers, getName, setActiveUsers } = userSlice.actions;
 
 export default userSlice.reducer;

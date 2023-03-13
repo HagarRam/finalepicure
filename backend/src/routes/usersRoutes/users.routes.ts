@@ -7,6 +7,6 @@ import {
 const userRouter = express.Router();
 
 userRouter.get('/', getAllUsers);
-userRouter.get('/login', getoldUser);
-userRouter.post('/create', newUser);
+// userRouter.post('/create', getoldUser);
+userRouter.post('/', newUser);
 export default userRouter;
