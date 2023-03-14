@@ -70,13 +70,13 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			title: 'Image',
 			name: 'img',
 		},
-		{
-			id: 'dishes-input',
-			placeholder: 'Enter dishes',
-			type: 'text',
-			title: 'Dishes',
-			name: 'dishes',
-		},
+		// {
+		// 	id: 'dishes-input',
+		// 	placeholder: 'Enter dishes',
+		// 	type: 'text',
+		// 	title: 'Dishes',
+		// 	name: 'dishes',
+		// },
 		{
 			id: 'rating-input',
 			placeholder: 'Enter rating',
@@ -147,7 +147,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			openDays: [],
 			openYear: 0,
 			img: '',
-			dishes: [],
+			// dishes: [],
 			rating: 0,
 		};
 		const inputObj = e.target;
@@ -166,7 +166,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					// break;
 					credentials[obj.name] = obj.value.split(',').map(String);
 					break;
-				case 'dishes':
+				// case 'dishes':
 				case 'openYears':
 				case 'openDays':
 				case 'openHours':

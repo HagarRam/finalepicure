@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongoose';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -16,21 +17,22 @@ const ChefCard: React.FC<IChef> = (props: IChef) => {
 		description: props.description,
 		restaurant: props.restaurant,
 	};
-	let chefRest: IRestaurants[] = [];
-	restaurantData.filter((rest: IRestaurants) => {
-		const restochef = chef.restaurant?.map((chefrest: number) => {
-			if (chefrest === rest.id) chefRest.push(rest);
-		});
-		return restochef;
-	});
-	let restaurantName: string = `${chef.name}'s Restaurants`;
+	const chefRest: IRestaurants[] = restaurantData.filter(
+		(rest: IRestaurants) => {
+			return chef.restaurant?.some(
+				(chefrest: ObjectId) => chefrest.toString() === rest._id.toString()
+			);
+		}
+	);
+	const restaurantName: string = `${chef.name}'s Restaurants`;
+
 	return (
 		<div>
 			<div id="chef-image">
 				<img
 					id="img-chef"
 					alt="chef"
-					src={`${chef.img}`}
+					src={chef.img}
 				/>
 				<div id="chefName">{chef.name}</div>
 				<div id="chef-information">{chef.description}</div>
@@ -46,7 +48,7 @@ const ChefCard: React.FC<IChef> = (props: IChef) => {
 								key={index}>
 								<img
 									id="restaurant-Img"
-									src={`${restaurant.img}`}
+									src={restaurant.img}
 									alt="restaurant-Img"
 								/>
 								<div id="restaurant-name">{restaurant.name}</div>

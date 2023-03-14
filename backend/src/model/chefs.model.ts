@@ -1,7 +1,8 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, ObjectId } from 'mongoose';
 import mongoose from 'mongoose';
 
 export interface IChef {
+	_id: ObjectId;
 	id: number;
 	name: string;
 	restaurant?: number[];
@@ -15,6 +16,7 @@ export interface IChef {
 }
 
 export const chefsSchema = new Schema<IChef>({
+	_id: { type: Schema.Types.ObjectId, required: true },
 	id: { type: Number, required: false },
 	name: { type: String, required: true },
 	restaurant: { type: [Number], required: false },

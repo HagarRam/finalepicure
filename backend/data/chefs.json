@@ -2,7 +2,7 @@
 	{
 		"id": 1,
 		"name": "Yosi Shitrit",
-		"restaurant": [13, 14, 15],
+		"restaurant": ["64108886b5dca22ee8a0307d", "64108886b5dca22ee8a0307e"],
 		"age": 45,
 		"icons": "",
 		"img": "/assets/Chefs/yossiShitrit.svg",
@@ -14,7 +14,7 @@
 	{
 		"id": 2,
 		"name": "Shahaf Shabtay",
-		"restaurant": [1, 2, 3],
+		"restaurant": ["64108886b5dca22ee8a0307f"],
 		"age": 38,
 		"icons": "",
 		"img": "/assets/Chefs/shahafshabtay.png",
@@ -26,7 +26,7 @@
 	{
 		"id": 3,
 		"name": "Yuval Ben Neriah",
-		"restaurant": [1],
+		"restaurant": ["64108886b5dca22ee8a03080"],
 		"age": 32,
 		"icons": "",
 		"img": "/assets/Chefs/yuvalBenNeriah.png",
@@ -38,7 +38,7 @@
 	{
 		"id": 4,
 		"name": "Asaf Granit",
-		"restaurant": [1, 2],
+		"restaurant": ["64108886b5dca22ee8a03081", "64108886b5dca22ee8a03082"],
 		"age": 45,
 		"icons": "",
 		"img": "/assets/Chefs/asafGranit.svg",
@@ -50,7 +50,7 @@
 	{
 		"id": 5,
 		"name": "Aviv Moshe",
-		"restaurant": [1, 2, 3],
+		"restaurant": ["64108886b5dca22ee8a03083"],
 		"age": 38,
 		"icons": "",
 		"img": "/assets/Chefs/avivMoshe.svg",
@@ -62,7 +62,7 @@
 	{
 		"id": 6,
 		"name": "Eyal Shani",
-		"restaurant": [1],
+		"restaurant": ["64108886b5dca22ee8a03084", "64108886b5dca22ee8a03085"],
 		"age": 60,
 		"icons": "",
 		"img": "/assets/Chefs/eyalShani.svg",
@@ -74,7 +74,11 @@
 	{
 		"id": 7,
 		"name": "Meir Adoni",
-		"restaurant": [1, 2],
+		"restaurant": [
+			"64108886b5dca22ee8a03086",
+			"64108886b5dca22ee8a03087",
+			"64108886b5dca22ee8a03088"
+		],
 		"age": 50,
 		"icons": "",
 		"img": "/assets/Chefs/meir-adoni.svg",
@@ -85,7 +89,7 @@
 	{
 		"id": 8,
 		"name": "Omer Miller",
-		"restaurant": [1, 2, 3],
+		"restaurant": ["64108886b5dca22ee8a03089"],
 		"age": 54,
 		"icons": "",
 		"img": "/assets/Chefs/omerMiller.svg",
@@ -97,7 +101,7 @@
 	{
 		"id": 9,
 		"name": "Nitzan Raz",
-		"restaurant": [1],
+		"restaurant": ["64108886b5dca22ee8a0308a"],
 		"age": 38,
 		"icons": "",
 		"img": "/assets/Chefs/nitzanRaz.svg",

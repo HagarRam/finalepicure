@@ -2,6 +2,7 @@ import { Schema, model, ObjectId } from 'mongoose';
 import mongoose from 'mongoose';
 
 export interface IRestaurants {
+	_id: ObjectId;
 	id: number;
 	name: string;
 	address?: string[];
@@ -25,6 +26,7 @@ export interface IRestaurants {
 }
 
 export const restaurantsSchema = new Schema<IRestaurants>({
+	_id: { type: Schema.Types.ObjectId, required: false },
 	id: { type: Number, required: false },
 	name: { type: String, required: true },
 	address: { type: [String], required: false },

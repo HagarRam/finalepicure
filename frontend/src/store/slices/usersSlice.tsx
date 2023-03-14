@@ -31,23 +31,17 @@ export const userSlice = createSlice({
 		setAllUsers: (state) => {
 			state.value = state.value;
 		},
-		getName: (state, action) => {
-			const currentUser = action.payload;
-			const userLogIn = users.find((user: IUser) => {
-				return user.email === currentUser.email;
-			});
-			state.value = userLogIn ? [userLogIn] : [];
-		},
 		setActiveUsers: (state, action) => {
 			const currentUser = action.payload;
 			const userLogIn = users.find((user: IUser) => {
 				return user.email === currentUser.email;
 			});
+			console.log(userLogIn);
 			state.filteredValue = userLogIn || {};
 		},
 	},
 });
 
-export const { setAllUsers, getName, setActiveUsers } = userSlice.actions;
+export const { setAllUsers, setActiveUsers } = userSlice.actions;
 
 export default userSlice.reducer;

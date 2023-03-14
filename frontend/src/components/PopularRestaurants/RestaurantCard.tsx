@@ -16,14 +16,14 @@ const RestaurantCard: React.FC<IRestaurants> = (props: IRestaurants) => {
 		5: star5,
 	};
 
-	const { img, rating, name, title, chef, id, titleImg, titleStar } = props;
+	const { img, rating, name, title, chef, _id, titleImg, titleStar } = props;
 
 	const starsImg: string = starsEnum[Number(rating)];
 	const navigate = useNavigate();
 	return (
 		<div
 			className={title}
-			onClick={() => navigate(`/Restaurant/${id}`)}>
+			onClick={() => navigate(`/Restaurant/${_id}`)}>
 			<img
 				className={titleImg}
 				alt="dish"

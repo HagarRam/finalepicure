@@ -6,12 +6,13 @@ import NavBar from '../NavBar/NavBar';
 import ImageChef from '../ImageCard/ImageCard';
 import { useSelector } from 'react-redux';
 import { Rootstate } from '../../store/store';
+import { ObjectId } from 'mongoose';
 
 export interface IChef {
-	_id?: any;
+	_id: ObjectId;
 	id?: number;
 	name: string;
-	restaurant?: number[];
+	restaurant?: ObjectId[];
 	age?: number;
 	icons?: string;
 	img: string;
@@ -41,6 +42,7 @@ const ChefsPage: React.FC = () => {
 							img={chef.img}
 							id={chef.id}
 							key={chef.id}
+							_id={chef._id}
 						/>
 					);
 				})}

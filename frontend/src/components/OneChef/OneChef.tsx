@@ -9,6 +9,8 @@ import ImageChef from '../ImageCard/ImageCard';
 import { removeChef } from '../../store/slices/chefSlice';
 import './OneChef.css';
 import { IChef } from '../ChefPage/ChefPage';
+import { IRestaurants } from '../RestaurantPage/RestaurantPage';
+import { ObjectId } from 'mongoose';
 
 const OneChef: React.FC = () => {
 	const restaurantsData = useSelector(
@@ -16,12 +18,17 @@ const OneChef: React.FC = () => {
 	);
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const [deleteChefed, setDeleteChefed] = useState<any>(null);
-	const { id: dishID } = useParams<{ id: string }>();
-	const IdNum: number = Number(dishID) - 1;
+	// const { id: dishID } = useParams<{ id: string }>();
+	// const IdNum: number = Number(dishID) - 1;
+	let { dishID } = useParams<string>();
+	const IdNum: IChef | undefined = chefData?.find((rest: IChef) => {
+		return rest._id?.toString() === dishID;
+	});
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		setDeleteChefed(chefData[IdNum]);
+		setDeleteChefed(IdNum);
 	}, [chefData, IdNum]);
 
 	const deletechef = async (id: string) => {
@@ -64,29 +71,41 @@ const OneChef: React.FC = () => {
 					DELETE
 				</button>
 				<div id="chef-of-the-page">
-					<ImageChef
-						name={chefData[IdNum].name}
-						img={chefData[IdNum].img}
-						id={chefData[IdNum].id}
-						key={chefData[IdNum].id}
-					/>
+					{IdNum ? (
+						<ImageChef
+							name={IdNum.name}
+							img={IdNum.img}
+							id={IdNum.id}
+							key={IdNum.id}
+							_id={IdNum._id}
+						/>
+					) : (
+						<p>chef not found</p>
+					)}
 				</div>
+				// Render a list of restaurants based on an array of restaurant IDs
 				<div id="chef-restaurants">
-					{chefData[IdNum].restaurant?.map((rest: number) => {
-						let newRest = rest - 1;
-						return (
+					{IdNum?.restaurant?.map((chef: ObjectId) => {
+						const data = restaurantsData.filter(
+							(rest: IRestaurants) => rest._id === chef
+						);
+						if (data.length === 0) {
+							return null; // or some other fallback if there are no matching restaurants
+						}
+						return data.map((restData: IRestaurants) => (
 							<RestaurantCard
-								img={restaurantsData[newRest].img}
-								name={restaurantsData[newRest].name}
-								chef={restaurantsData[newRest].chef}
-								rating={restaurantsData[newRest].rating}
+								img={restData.img}
+								name={restData.name}
+								chef={restData.chef}
+								rating={restData.rating}
 								title={'chef-rest-page'}
-								id={restaurantsData[newRest].id}
+								id={restData.id}
 								titleStar={'restautant-page-stars'}
 								titleImg={'chef-rest-image'}
-								key={restaurantsData[newRest].id}
+								key={restData.id}
+								_id={restData._id}
 							/>
-						);
+						));
 					})}
 				</div>
 			</div>

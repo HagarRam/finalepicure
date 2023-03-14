@@ -24,6 +24,7 @@ const ChefOfTheWeek: React.FC = () => {
 						img={chefoftheweek.img}
 						name={chefoftheweek.name}
 						restaurant={chefoftheweek.restaurant}
+						_id={chefoftheweek._id}
 					/>
 				)}
 			</div>

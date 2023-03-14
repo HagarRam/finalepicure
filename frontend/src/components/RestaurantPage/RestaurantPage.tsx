@@ -8,7 +8,8 @@ import RestaurantFilterBar from '../RestaurantFilterBar/RestaurantFilterBar';
 import './RestaurantPage.css';
 
 export interface IRestaurants {
-	id: number;
+	_id: ObjectId;
+	id?: number;
 	name: string;
 	address?: string[];
 	chef: string;

@@ -12,6 +12,7 @@ import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 import { removeRest } from '../../store/slices/restaurantsSlice';
 import { ObjectId } from 'mongoose';
 import AddRest from '../AddRest/AddRest';
+import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
@@ -21,11 +22,22 @@ const OneRest: React.FC = () => {
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
 	const [deleteRest, setDeleteRest] = useState<any>(null);
 	let { dishID } = useParams<string>();
-	let IdNum: number = Number(dishID) - 1;
+	const IdNum: IRestaurants | undefined = restaurantsData?.find(
+		(rest: IRestaurants) => {
+			return rest._id?.toString() === dishID;
+		}
+	);
+
+	if (IdNum) {
+		console.log(IdNum);
+	} else {
+		console.log('Restaurant not found');
+	}
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		setDeleteRest(restaurantsData[IdNum]);
+		setDeleteRest(IdNum);
 	}, [restaurantsData, IdNum]);
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -70,24 +82,29 @@ const OneRest: React.FC = () => {
 				DELETE
 			</button>
 			<div id="Restaurant">
-				<RestaurantCard
-					img={restaurantsData[IdNum].img}
-					name={restaurantsData[IdNum].name}
-					chef={restaurantsData[IdNum].chef}
-					rating={restaurantsData[IdNum].rating}
-					title={'restautant-page'}
-					id={restaurantsData[IdNum].id}
-					titleStar={'restautant-page-stars'}
-					titleImg={'rest-image'}
-					key={restaurantsData[IdNum].id}
-				/>
+				{IdNum ? (
+					<RestaurantCard
+						img={IdNum.img}
+						name={IdNum.name}
+						chef={IdNum.chef}
+						rating={IdNum.rating}
+						title={'restautant-page'}
+						// id={IdNum.id}
+						_id={IdNum._id}
+						titleStar={'restautant-page-stars'}
+						titleImg={'rest-image'}
+						key={IdNum.id}
+					/>
+				) : (
+					<p>Restaurant not found</p>
+				)}
 				<div className="isOpen">
 					<img
 						src={clock}
 						id="clock"
-						alt={restaurantsData[IdNum].name}
+						alt={IdNum?.name}
 					/>
-					{checkIfRestaurantIsOpen(restaurantsData[IdNum]) ? (
+					{IdNum && checkIfRestaurantIsOpen(IdNum) ? (
 						<p id="time">Open Now</p>
 					) : (
 						<p id="time">Close Now</p>
@@ -101,13 +118,13 @@ const OneRest: React.FC = () => {
 				</button>
 			</div>{' '}
 			<div id="alltherestaurant">
-				{restaurantsData[IdNum].dishes?.map((dish: ObjectId) => {
-					const abc = dishesData.filter((dishes: IDishes) => {
+				{IdNum?.dishes?.map((dish: ObjectId) => {
+					const data = dishesData.filter((dishes: IDishes) => {
 						return dishes._id === dish;
 					});
 					return (
 						<div id="dishes-card">
-							{abc?.map((dishesData: IDishes) => {
+							{data?.map((dishesData: IDishes) => {
 								return (
 									<DishCard
 										img={dishesData.img}
