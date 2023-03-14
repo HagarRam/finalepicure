@@ -13,6 +13,7 @@ const data = async () => {
 		console.log();
 	}
 };
+
 const chefs: IChef[] = await data();
 export const chefSlice = createSlice({
 	name: 'chef',
@@ -32,9 +33,14 @@ export const chefSlice = createSlice({
 				(a: any, b: any) => b?.views - a?.views
 			);
 		},
+		removeChef: (state, action) => {
+			state.filteredValue = action.payload;
+			state.value = action.payload;
+		},
 	},
 });
 
-export const { setAllchefs, setNewChef, setMostView } = chefSlice.actions;
+export const { setAllchefs, setNewChef, setMostView, removeChef } =
+	chefSlice.actions;
 
 export default chefSlice.reducer;

@@ -42,6 +42,10 @@ export const restaurantsSlice = createSlice({
 		setMap: (state) => {
 			state.filteredValue = state.value;
 		},
+		removeRest: (state, action) => {
+			state.filteredValue = action.payload;
+			state.value = action.payload;
+		},
 	},
 });
 
@@ -51,6 +55,7 @@ export const {
 	setMap,
 	setPopularRestuarants,
 	setNewRestuarants,
+	removeRest,
 } = restaurantsSlice.actions;
 
 export default restaurantsSlice.reducer;

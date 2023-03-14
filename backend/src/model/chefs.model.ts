@@ -2,7 +2,7 @@ import { Schema, model } from 'mongoose';
 import mongoose from 'mongoose';
 
 export interface IChef {
-	id?: number;
+	id: number;
 	name: string;
 	restaurant?: number[];
 	age?: number;

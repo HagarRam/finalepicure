@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import { Rootstate } from '../../store/store';
 
 export interface IChef {
+	_id?: any;
 	id?: number;
 	name: string;
 	restaurant?: number[];

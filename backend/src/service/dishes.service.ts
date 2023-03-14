@@ -19,3 +19,13 @@ export const dishOrder = async (dish: IDishes) => {
 		throw err;
 	}
 };
+
+export const deleteDish = async (dishId: string) => {
+	try {
+		await DishesModal.findByIdAndDelete(dishId);
+		return await DishesModal.find();
+	} catch (err) {
+		console.log(err);
+		throw err;
+	}
+};

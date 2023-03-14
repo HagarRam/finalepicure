@@ -1,26 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import RestaurantCard from '../PopularRestaurants/RestaurantCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import DishCard, { IDishes } from '../SignatureDish/DishCard';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './OneRest.css';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import { Rootstate } from '../../store/store';
 import clock from './OneRestImages/clock.svg';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
+import { removeRest } from '../../store/slices/restaurantsSlice';
 
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
 		(state: Rootstate) => state.restaurants.value
 	);
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
+	const [deleteRest, setDeleteRest] = useState<any>(null);
 	let { dishID } = useParams<string>();
 	let IdNum: number = Number(dishID) - 1;
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	useEffect(() => {
+		setDeleteRest(restaurantsData[IdNum]);
+	}, [restaurantsData, IdNum]);
+
+	const deleteRestaurant = async (id: string) => {
+		try {
+			const response = await fetch(`http://localhost:8000/restaurant`, {
+				method: 'DELETE',
+				body: JSON.stringify({
+					id: id,
+				}),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			});
+			const data = await response.json();
+			if (!response.ok) {
+				throw new Error(data.message);
+			}
+			console.log(data.data);
+
+			dispatch(removeRest(data.data));
+			navigate('/Restaurant');
+		} catch (err) {
+			console.error(err);
+			throw err;
+		}
+	};
+	const handleRegister = async (id: string) => {
+		if (window.confirm(`Are you sure you want to delete?`)) {
+			await deleteRestaurant(id);
+		}
+	};
 
 	return (
 		<div id="restaurant-page ">
 			<NavBar />
+			<button
+				id="delete"
+				onClick={() => handleRegister(deleteRest._id)}>
+				DELETE
+			</button>
 			<div id="Restaurant">
 				<RestaurantCard
 					img={restaurantsData[IdNum].img}

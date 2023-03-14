@@ -37,7 +37,6 @@ export const userSlice = createSlice({
 				return user.email === currentUser.email;
 			});
 			state.value = userLogIn ? [userLogIn] : [];
-			console.log(userLogIn);
 		},
 		setActiveUsers: (state, action) => {
 			const currentUser = action.payload;
@@ -45,7 +44,6 @@ export const userSlice = createSlice({
 				return user.email === currentUser.email;
 			});
 			state.filteredValue = userLogIn || {};
-			console.log(userLogIn);
 		},
 	},
 });

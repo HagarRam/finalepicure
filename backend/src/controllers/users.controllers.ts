@@ -47,11 +47,14 @@ export const newUser = async (req: Request, res: Response) => {
 	}
 };
 
-export const getoldUser = async (req: Request, res: Response) => {
+export const getoldUser = async function (req: Request, res: Response) {
 	try {
-		const { email, password, connect } = req.body;
-		if (!(email && password && connect)) {
-			return res.status(400).send('All input is required');
+		const { email, password } = req.body;
+		console.log(email);
+		console.log(password);
+
+		if (!(email && password)) {
+			res.status(400).send('All input is required');
 		}
 		const user = await UsersModal.findOne({ email });
 
@@ -60,9 +63,7 @@ export const getoldUser = async (req: Request, res: Response) => {
 				expiresIn: '2h',
 			});
 			user.token = token;
-			const newuser = await createUser(user);
-			console.log(newuser);
-			return res.status(201).json(newuser);
+			res.status(201).json(user);
 		}
 	} catch (err) {
 		console.log(err);

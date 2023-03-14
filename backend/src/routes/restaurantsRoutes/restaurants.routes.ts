@@ -1,8 +1,11 @@
-import express, { Request, Response } from 'express';
-import { getAllRestaurants } from '../../controllers/restaurants.controllers';
-// let bcrypt = require('bcrypt');
+import express from 'express';
+import {
+	getAllRestaurants,
+	deleteRest,
+} from '../../controllers/restaurants.controllers';
 
 const RestaurantsRouter = express.Router();
 RestaurantsRouter.get('/', getAllRestaurants);
+RestaurantsRouter.delete('/', deleteRest);
 
 export default RestaurantsRouter;

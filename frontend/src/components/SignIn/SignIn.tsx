@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
-import { getName, IUser, setActiveUsers } from '../../store/slices/usersSlice';
+import { setActiveUsers } from '../../store/slices/usersSlice';
 import './Signin.css';
+import axios from 'axios';
 
 const SignIn: React.FC = () => {
 	const data = useSelector((state: Rootstate) => state.users.value);
@@ -15,29 +16,31 @@ const SignIn: React.FC = () => {
 	useEffect(() => {
 		dispatch(setActiveUsers({ email: email }));
 	}, [email]);
-	sessionStorage.setItem('data', JSON.stringify(filter));
-	const storedData = JSON.parse(sessionStorage.getItem('data') || '{}');
-	console.log(storedData);
-
-	const logInUser = async (email: string, password: string) => {
-		dispatch(setActiveUsers(email));
-		message();
-		setEmail('');
-		setPassword('');
+	const logInUser = async () => {
+		console.log(password);
+		try {
+			const userReq = await axios.post('http://localhost:8000/users/create/', {
+				email: email,
+				password: password,
+			});
+			sessionStorage.setItem('data', JSON.stringify(userReq.data));
+			dispatch(setActiveUsers(email));
+			message();
+			setEmail('');
+			setPassword('');
+		} catch (error: any) {
+			alert(error.response.data);
+			return [];
+		}
 	};
-	const handleRegister = (e: any) => {
-		e.preventDefault();
-		logInUser(email, password);
-		setconnect(true);
+
+	const handleRegister = async () => {
+		await logInUser();
 	};
 
 	const navigate = useNavigate();
 	const message = () => {
-		navigate('/', {
-			state: {
-				message: `Welcome to Epicure, ${storedData.firstName} ${storedData.lastName}!`,
-			},
-		});
+		navigate('/');
 	};
 	return (
 		<div id="sign-in-page">
@@ -67,7 +70,6 @@ const SignIn: React.FC = () => {
 
 					<div id="login-button">
 						<button
-							// onClick={handleRegister}
 							id="button-login"
 							type="submit">
 							LOGIN
