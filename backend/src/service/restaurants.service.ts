@@ -1,3 +1,4 @@
+import { DishesModal, dishesSchema, IDishes } from '../model/dishes.model';
 import { IRestaurants, RestaurantsModal } from '../model/restaurant.model';
 
 export const getRestaurants = async () => {
@@ -12,10 +13,18 @@ export const getRestaurants = async () => {
 };
 export const removeRest = async (restId: string) => {
 	try {
+		const restData = await RestaurantsModal.findById(restId);
+		if (restData && restData.dishes) {
+			for (const dish of restData.dishes) {
+				await DishesModal.findByIdAndDelete(dish);
+			}
+		} else {
+			throw new Error(`Restaurant with ID ${restId} not found`);
+		}
 		await RestaurantsModal.findByIdAndDelete(restId);
 		return await RestaurantsModal.find();
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		throw err;
 	}
 };

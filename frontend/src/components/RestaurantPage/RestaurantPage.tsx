@@ -1,3 +1,4 @@
+import { ObjectId } from 'mongoose';
 import React from 'react';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
@@ -16,7 +17,7 @@ export interface IRestaurants {
 	openDays?: number[];
 	openYear?: number;
 	img: string;
-	dishes?: number[];
+	dishes?: ObjectId[];
 	rating: number;
 	popular?: boolean;
 	newRest?: boolean;

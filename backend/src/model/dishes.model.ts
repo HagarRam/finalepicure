@@ -1,7 +1,8 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, ObjectId } from 'mongoose';
 import mongoose from 'mongoose';
 
 export interface IDishes {
+	_id: ObjectId;
 	id: number;
 	name: string;
 	time?: string[];
@@ -18,6 +19,7 @@ export interface IDishes {
 }
 
 export const dishesSchema = new Schema<IDishes>({
+	_id: { type: Schema.Types.ObjectId, required: false },
 	id: { type: Number, required: false },
 	name: { type: String, required: true },
 	time: { type: [String], required: false },

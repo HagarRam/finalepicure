@@ -10,6 +10,7 @@ import { Rootstate } from '../../store/store';
 import clock from './OneRestImages/clock.svg';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 import { removeRest } from '../../store/slices/restaurantsSlice';
+import { ObjectId } from 'mongoose';
 
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
@@ -87,12 +88,12 @@ const OneRest: React.FC = () => {
 						<p id="time">Close Now</p>
 					)}
 				</div>
-			</div>
-
+			</div>{' '}
 			<div id="alltherestaurant">
-				{restaurantsData[IdNum].dishes?.map((dish: number) => {
+				{restaurantsData[IdNum].dishes?.map((dish: ObjectId) => {
+					console.log('jj');
 					const abc = dishesData.filter((dishes: IDishes) => {
-						return dishes.id === dish;
+						return dishes._id === dish;
 					});
 					return (
 						<div id="dishes-card">

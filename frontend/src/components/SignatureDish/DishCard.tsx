@@ -4,8 +4,10 @@ import vegitarian from '../../assets/Vegitarian.svg';
 import spicy from '../../assets/spicy.svg';
 import iconPrice from '../../assets/iconprice.svg';
 import ModalRest from '../ModalRestaurant/ModalRest';
+import { ObjectId } from 'mongoose';
 
 export interface IDishes {
+	_id?: ObjectId;
 	id: number;
 	name: string;
 	time?: string[];

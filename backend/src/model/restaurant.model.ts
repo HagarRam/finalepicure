@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, ObjectId } from 'mongoose';
 import mongoose from 'mongoose';
 
 export interface IRestaurants {
@@ -11,7 +11,7 @@ export interface IRestaurants {
 	openDays?: number[];
 	openYear?: number;
 	img: string;
-	dishes?: number[];
+	dishes?: ObjectId[];
 	rating: number;
 	popular?: boolean;
 	newRest?: boolean;
@@ -34,7 +34,7 @@ export const restaurantsSchema = new Schema<IRestaurants>({
 	openDays: { type: [Number], required: false },
 	openYear: { type: [Number], required: false },
 	img: { type: String, required: true },
-	dishes: { type: [Number], required: false },
+	dishes: { type: [Schema.Types.ObjectId], required: false },
 	rating: { type: Number, required: true },
 	popular: { type: Boolean, required: false },
 	newRest: { type: Boolean, required: false },
