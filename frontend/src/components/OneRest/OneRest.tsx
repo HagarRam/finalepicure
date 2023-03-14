@@ -29,7 +29,6 @@ const OneRest: React.FC = () => {
 	);
 
 	if (IdNum) {
-		console.log(IdNum);
 	} else {
 		console.log('Restaurant not found');
 	}
@@ -136,6 +135,7 @@ const OneRest: React.FC = () => {
 										title={'card-dish-information'}
 										dishtitle={'dish-card-element-one-rest'}
 										key={dishesData.id}
+										_id={dishesData._id}
 									/>
 								);
 							})}

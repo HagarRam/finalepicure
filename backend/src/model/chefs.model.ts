@@ -5,7 +5,7 @@ export interface IChef {
 	_id: ObjectId;
 	id: number;
 	name: string;
-	restaurant?: number[];
+	restaurant?: ObjectId[];
 	age?: number;
 	icons?: string;
 	img: string;
@@ -19,7 +19,7 @@ export const chefsSchema = new Schema<IChef>({
 	_id: { type: Schema.Types.ObjectId, required: true },
 	id: { type: Number, required: false },
 	name: { type: String, required: true },
-	restaurant: { type: [Number], required: false },
+	restaurant: { type: [Schema.Types.ObjectId], required: false },
 	age: { type: Number, required: false },
 	icons: { type: String, required: false },
 	img: { type: String, required: true },

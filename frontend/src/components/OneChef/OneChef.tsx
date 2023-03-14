@@ -14,15 +14,14 @@ import { ObjectId } from 'mongoose';
 
 const OneChef: React.FC = () => {
 	const restaurantsData = useSelector(
-		(state: Rootstate) => state.restaurants.value
+		(state: Rootstate) => state.restaurants.filteredValue
 	);
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const [deleteChefed, setDeleteChefed] = useState<any>(null);
-	// const { id: dishID } = useParams<{ id: string }>();
-	// const IdNum: number = Number(dishID) - 1;
-	let { dishID } = useParams<string>();
+	let { id } = useParams<string>();
+
 	const IdNum: IChef | undefined = chefData?.find((rest: IChef) => {
-		return rest._id?.toString() === dishID;
+		return rest._id?.toString() === id;
 	});
 
 	const navigate = useNavigate();
@@ -46,7 +45,6 @@ const OneChef: React.FC = () => {
 			if (!response.ok) {
 				throw new Error(data.message);
 			}
-			console.log(data.data);
 
 			dispatch(removeChef(data.data));
 			navigate('/chefsPage');
@@ -83,7 +81,6 @@ const OneChef: React.FC = () => {
 						<p>chef not found</p>
 					)}
 				</div>
-				// Render a list of restaurants based on an array of restaurant IDs
 				<div id="chef-restaurants">
 					{IdNum?.restaurant?.map((chef: ObjectId) => {
 						const data = restaurantsData.filter(

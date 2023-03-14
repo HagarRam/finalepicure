@@ -28,6 +28,7 @@ const SignatureDish: React.FC = () => {
 									title={'card-dish-information'}
 									key={signal.id}
 									dishtitle={'dish-card-element'}
+									_id={signal._id}
 								/>
 							);
 						} else {

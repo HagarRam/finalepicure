@@ -1,11 +1,12 @@
 import { useSelector } from 'react-redux';
 import React, { useEffect, useState } from 'react';
-import DishCard from '../SignatureDish/DishCard';
+import DishCard, { IDishes } from '../SignatureDish/DishCard';
 import './ModalRest.css';
 import { Rootstate } from '../../store/store';
+import { ObjectId } from 'mongoose';
 
 interface IModal {
-	id: number;
+	id: ObjectId;
 	closeButton: Function;
 }
 
@@ -14,8 +15,10 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 	const [comment, setComment] = useState<string[]>(['']);
 	const [informationDIsh, setinformationDIsh] = useState<string[]>(['']);
 	const [quantity, setQuantity] = useState<number>(0);
-	let IdNum = props.id - 1;
-
+	let newId = props.id;
+	const IdNum: IDishes | undefined = dishesData?.find((rest: IDishes) => {
+		return rest._id?.toString() === newId?.toString();
+	});
 	const [number, setNumber] = useState(0);
 	const handlePlus = () => {
 		setNumber(number + 1);
@@ -43,16 +46,21 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 							className="close">
 							&times;
 						</span>
-						<DishCard
-							img={dishesData[IdNum].img}
-							icons={dishesData[IdNum].icons}
-							name={dishesData[IdNum].name}
-							about={dishesData[IdNum].about}
-							price={dishesData[IdNum].price}
-							id={dishesData[IdNum].id}
-							title={'card-dish-information-modal'}
-							dishtitle={'dish-card-element-Modal'}
-						/>
+						{IdNum ? (
+							<DishCard
+								img={IdNum.img}
+								icons={IdNum.icons}
+								name={IdNum.name}
+								about={IdNum.about}
+								price={IdNum.price}
+								id={IdNum.id}
+								title={'card-dish-information-modal'}
+								dishtitle={'dish-card-element-Modal'}
+								_id={IdNum._id}
+							/>
+						) : (
+							<p>Restaurant not found</p>
+						)}
 						<div className="bag-information">
 							<div id="choose-a-side">
 								<div className="highlight">Choose a side</div>

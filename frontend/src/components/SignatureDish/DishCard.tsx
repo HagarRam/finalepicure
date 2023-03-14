@@ -7,7 +7,7 @@ import ModalRest from '../ModalRestaurant/ModalRest';
 import { ObjectId } from 'mongoose';
 
 export interface IDishes {
-	_id?: ObjectId;
+	_id: ObjectId;
 	id: number;
 	name: string;
 	time?: string[];
@@ -32,7 +32,7 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-	const { img, icons, name, about, price, id, title, dishtitle } = props;
+	const { img, icons, name, about, price, _id, title, dishtitle } = props;
 
 	const handleDishClick = () => {
 		setIsModalOpen(true);
@@ -77,9 +77,9 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 					</div>
 				</div>
 			</div>
-			{isModalOpen && (
+			{isModalOpen && _id && (
 				<ModalRest
-					id={id}
+					id={_id}
 					closeButton={closeModal}
 				/>
 			)}
