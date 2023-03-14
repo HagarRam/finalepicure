@@ -11,8 +11,10 @@ import './OneChef.css';
 import { IChef } from '../ChefPage/ChefPage';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { ObjectId } from 'mongoose';
+import AddRest from '../AddRest/AddRest';
 
 const OneChef: React.FC = () => {
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const restaurantsData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
@@ -58,7 +60,12 @@ const OneChef: React.FC = () => {
 			await deletechef(id);
 		}
 	};
-
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
 	return (
 		<div id="restaurant-page ">
 			<NavBar />
@@ -68,6 +75,7 @@ const OneChef: React.FC = () => {
 					onClick={() => handleRegister(deleteChefed._id)}>
 					DELETE
 				</button>
+
 				<div id="chef-of-the-page">
 					{IdNum ? (
 						<ImageChef
@@ -81,6 +89,12 @@ const OneChef: React.FC = () => {
 						<p>chef not found</p>
 					)}
 				</div>
+				<button
+					id="ADDREST"
+					type="submit"
+					onClick={openModal}>
+					ADD REST
+				</button>
 				<div id="chef-restaurants">
 					{IdNum?.restaurant?.map((chef: ObjectId) => {
 						const data = restaurantsData.filter(
@@ -108,6 +122,7 @@ const OneChef: React.FC = () => {
 			</div>
 
 			<Footer />
+			{isModalOpen && <AddRest closeButton={closeModal} />}
 		</div>
 	);
 };

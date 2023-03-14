@@ -11,8 +11,8 @@ import clock from './OneRestImages/clock.svg';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 import { removeRest } from '../../store/slices/restaurantsSlice';
 import { ObjectId } from 'mongoose';
-import AddRest from '../AddRest/AddRest';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
+import AddDish from '../AddDIsh/AddDish';
 
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
@@ -113,7 +113,7 @@ const OneRest: React.FC = () => {
 					id="ADDREST"
 					type="submit"
 					onClick={openModal}>
-					ADD REST
+					ADD DISH
 				</button>
 			</div>{' '}
 			<div id="alltherestaurant">
@@ -144,7 +144,7 @@ const OneRest: React.FC = () => {
 				})}
 			</div>
 			<Footer />
-			{isModalOpen && <AddRest closeButton={closeModal} />}
+			{isModalOpen && <AddDish closeButton={closeModal} />}
 		</div>
 	);
 };

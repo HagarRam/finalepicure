@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { Rootstate } from '../../store/store';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
+import './AddModal.css';
 
 interface IModal {
 	closeButton: Function;
@@ -70,13 +71,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			title: 'Image',
 			name: 'img',
 		},
-		// {
-		// 	id: 'dishes-input',
-		// 	placeholder: 'Enter dishes',
-		// 	type: 'text',
-		// 	title: 'Dishes',
-		// 	name: 'dishes',
-		// },
 		{
 			id: 'rating-input',
 			placeholder: 'Enter rating',
@@ -194,10 +188,10 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						</span>
 						<div className="rest-information">
 							<div>
-								<div id="details-information">{renderInputs(restDetails)}</div>
+								<div id="information">{renderInputs(restDetails)}</div>
 							</div>
 							<button
-								id="add-rest-butoon"
+								id="add-button"
 								type="submit">
 								ADD RESTAURANT
 							</button>

@@ -1,5 +1,6 @@
 import { ObjectId } from 'mongoose';
-import React from 'react';
+import React, { useState } from 'react';
+import AddRest from '../AddRest/AddRest';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import RangeBar from '../RangeBar/RangeBar';
@@ -37,14 +38,28 @@ export interface IrestaurantsState {
 }
 
 const RestaurantPage: React.FC = () => {
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
 	return (
 		<div>
 			<NavBar />
 			<div id="mobile-title">RESTAURANTS</div>
 			<RestaurantFilterBar />
+			<button
+				id="ADDREST"
+				type="submit"
+				onClick={openModal}>
+				ADD REST
+			</button>
 			<RangeBar />
 			<RestaurantCardsPage />
 			<Footer />
+			{isModalOpen && <AddRest closeButton={closeModal} />}
 		</div>
 	);
 };

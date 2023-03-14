@@ -43,7 +43,7 @@ const ChefCard: React.FC<IChef> = (props: IChef) => {
 					<div id="restaurants-card">
 						{chefRest.map((restaurant: IRestaurants, index: number) => (
 							<div
-								onClick={() => navigate(`/Restaurant/${restaurant.id}`)}
+								onClick={() => navigate(`/Restaurant/${restaurant._id}`)}
 								id="chefs-restaurant-card"
 								key={index}>
 								<img
