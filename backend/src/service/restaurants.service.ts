@@ -28,3 +28,14 @@ export const removeRest = async (restId: string) => {
 		throw err;
 	}
 };
+
+export const newRestaurant = async (rest: IRestaurants) => {
+	const newRest = new RestaurantsModal(rest);
+	try {
+		await newRest.save();
+		return newRest;
+	} catch (err) {
+		console.log(err);
+		throw err;
+	}
+};

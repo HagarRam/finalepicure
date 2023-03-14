@@ -15,13 +15,7 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 	const [informationDIsh, setinformationDIsh] = useState<string[]>(['']);
 	const [quantity, setQuantity] = useState<number>(0);
 	let IdNum = props.id - 1;
-	useEffect(() => {
-		document.body.style.overflow = 'hidden';
-		window.scrollTo(0, 0);
-		return () => {
-			document.body.style.overflow = 'auto';
-		};
-	}, []);
+
 	const [number, setNumber] = useState(0);
 	const handlePlus = () => {
 		setNumber(number + 1);

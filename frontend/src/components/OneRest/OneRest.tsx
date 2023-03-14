@@ -11,11 +11,13 @@ import clock from './OneRestImages/clock.svg';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 import { removeRest } from '../../store/slices/restaurantsSlice';
 import { ObjectId } from 'mongoose';
+import AddRest from '../AddRest/AddRest';
 
 const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
 		(state: Rootstate) => state.restaurants.value
 	);
+	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
 	const [deleteRest, setDeleteRest] = useState<any>(null);
 	let { dishID } = useParams<string>();
@@ -25,7 +27,12 @@ const OneRest: React.FC = () => {
 	useEffect(() => {
 		setDeleteRest(restaurantsData[IdNum]);
 	}, [restaurantsData, IdNum]);
-
+	const openModal = () => {
+		setIsModalOpen(true);
+	};
+	const closeModal = () => {
+		setIsModalOpen(false);
+	};
 	const deleteRestaurant = async (id: string) => {
 		try {
 			const response = await fetch(`http://localhost:8000/restaurant`, {
@@ -41,8 +48,6 @@ const OneRest: React.FC = () => {
 			if (!response.ok) {
 				throw new Error(data.message);
 			}
-			console.log(data.data);
-
 			dispatch(removeRest(data.data));
 			navigate('/Restaurant');
 		} catch (err) {
@@ -88,10 +93,15 @@ const OneRest: React.FC = () => {
 						<p id="time">Close Now</p>
 					)}
 				</div>
+				<button
+					id="ADDREST"
+					type="submit"
+					onClick={openModal}>
+					ADD REST
+				</button>
 			</div>{' '}
 			<div id="alltherestaurant">
 				{restaurantsData[IdNum].dishes?.map((dish: ObjectId) => {
-					console.log('jj');
 					const abc = dishesData.filter((dishes: IDishes) => {
 						return dishes._id === dish;
 					});
@@ -117,6 +127,7 @@ const OneRest: React.FC = () => {
 				})}
 			</div>
 			<Footer />
+			{isModalOpen && <AddRest closeButton={closeModal} />}
 		</div>
 	);
 };
