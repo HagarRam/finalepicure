@@ -10,7 +10,7 @@ import { ObjectId } from 'mongoose';
 import AddChef from '../AddChef/AddChef';
 
 export interface IChef {
-	_id: ObjectId;
+	_id?: ObjectId;
 	id?: number;
 	name: string;
 	restaurant?: ObjectId[];

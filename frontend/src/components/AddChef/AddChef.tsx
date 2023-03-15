@@ -1,18 +1,23 @@
 import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
+import { IChef } from '../ChefPage/ChefPage';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 
 interface IModal {
-	closeButton: Function;
+	closeButton: () => void;
 }
 
 const AddChef: React.FC<IModal> = (props: IModal) => {
-	const restData = useSelector(
-		(state: Rootstate) => state.restaurants.filteredValue
-	);
-	const [rest, setRest] = useState<any>(restData);
-	const [inputValues, setInputValues] = useState({});
+	const chefsdata = useSelector((state: Rootstate) => state.chef.filteredValue);
+	const [chefs, setChefs] = useState<any>(chefsdata);
+	const [inputValues, setInputValues] = useState<Record<string, string>>({
+		name: '',
+		description: '',
+		img: '',
+	});
+
 	interface InputField {
 		id: string;
 		placeholder: string;
@@ -26,7 +31,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 			placeholder: 'Enter chef name',
 			type: 'text',
 			title: 'Chef`s Name',
-			name: 'chefName',
+			name: 'name',
 		},
 		{
 			id: 'description-input',
@@ -34,13 +39,6 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 			type: 'text',
 			title: 'Description',
 			name: 'description',
-		},
-		{
-			id: 'restaurants',
-			placeholder: 'Enter chef`s restaurants',
-			type: 'text',
-			title: 'Restaurants',
-			name: 'restaurants',
 		},
 		{
 			id: 'img-input',
@@ -52,43 +50,47 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 	];
 
 	const renderInputs = (inputFields: InputField[]) => {
-		return inputFields.map((field) => (
-			<div
-				id="input-container"
-				key={field.id}>
-				{field.title && <div id="input-title">{field.title}</div>}
-				<input
-					id="input-full-Name"
-					placeholder={field.placeholder}
-					type={field.type}
-					name={field.name}
-				/>
-			</div>
-		));
+		return (
+			<>
+				{inputFields.map((field) => (
+					<div
+						id="input-container"
+						key={field.id}>
+						{field.title && <div id="input-title">{field.title}</div>}
+						<input
+							id={field.id}
+							placeholder={field.placeholder}
+							type={field.type}
+							name={field.name}
+							value={inputValues[field.name]}
+							onChange={(e) =>
+								setInputValues({ ...inputValues, [field.name]: e.target.value })
+							}
+						/>
+					</div>
+				))}
+			</>
+		);
 	};
 
-	// const postInformation = () => {
-	// 	return comment;
-	// 	//to come back!!
-	// };
-
-	const newRest = async () => {
+	const newChef = async (obj: IChef) => {
 		try {
-			await fetch('http://localhost:8000/restaurant/', {
+			await fetch('http://localhost:8000/chef/', {
 				method: 'POST',
-				body: JSON.stringify({}),
+				body: JSON.stringify({
+					name: obj.name,
+					description: obj.description,
+					img: obj.img,
+				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
 				},
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					setRest((newRest: IRestaurants[]) => [...newRest, data]);
-					// setFirstName('');
-					// setLastName('');
-					// setEmail('');
-					// setPassword('');
-					// navigate('/SignIn');
+					setChefs((newChef: IChef[]) => [...newChef, data]);
+					setInputValues({ name: '', description: '', img: '' });
+					navigate('/');
 				});
 		} catch (err) {
 			alert('please try again');
@@ -96,44 +98,36 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		}
 	};
 
-	// const navigate = useNavigate();
-	const handleRegister = async (e: any) => {
-		await newRest();
-	};
+	const navigate = useNavigate();
+	// const handleRegister = async (e: any) => {
+	// 	// console.log(dataChef);
+	// 	// await newChef(dataChef);
+	// };
 
 	const handSaveRest = async (e: any) => {
 		e.preventDefault();
 		const credentials: any = {
-			id: 0,
 			name: '',
-			about: '',
-			chefId: '',
-			restaurantId: '',
-			price: '',
-			icons: [],
+			description: '',
 			img: '',
 		};
 		const inputObj = e.target;
-		console.log(credentials);
-
 		Object.values(inputObj).forEach((obj: any) => {
 			switch (obj.name) {
-				case 'dishPrice':
-					credentials[obj.name] = Number(obj.value);
-					break;
-				case 'chefName':
+				case 'name':
 				case 'img':
 				case 'description':
 					credentials[obj.name] = String(obj.value);
-					break;
-				case 'restaurants':
-					credentials[obj.name] = obj.value.split(',').map(String);
 					break;
 				default:
 					credentials[obj.name] = obj.value;
 					break;
 			}
 		});
+		// console.log(credentials);
+		const dataChef = credentials;
+		// console.log(dataChef);
+		await newChef(dataChef);
 	};
 
 	return (
@@ -156,7 +150,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 							<button
 								id="add-button"
 								type="submit">
-								ADD DISH
+								ADD CHEF
 							</button>
 						</div>
 					</div>

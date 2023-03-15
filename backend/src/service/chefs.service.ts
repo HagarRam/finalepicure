@@ -18,3 +18,12 @@ export const deleteChef = async (chefId: string) => {
 		throw err;
 	}
 };
+export const createChef = async (chef: IChef) => {
+	try {
+		const newChef = await chefsModal.create(chef);
+		return newChef;
+	} catch (err) {
+		console.log(err);
+		throw err;
+	}
+};
