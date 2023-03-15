@@ -19,8 +19,9 @@ export const deleteChef = async (chefId: string) => {
 	}
 };
 export const createChef = async (chef: IChef) => {
+	const newChef = await chefsModal.create(chef);
 	try {
-		const newChef = await chefsModal.create(chef);
+		await newChef.save();
 		return newChef;
 	} catch (err) {
 		console.log(err);

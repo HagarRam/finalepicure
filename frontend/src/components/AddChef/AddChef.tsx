@@ -73,14 +73,14 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		);
 	};
 
-	const newChef = async (obj: IChef) => {
+	const newChef = async (name: string, description: string, img: string) => {
 		try {
 			await fetch('http://localhost:8000/chef/', {
 				method: 'POST',
 				body: JSON.stringify({
-					name: obj.name,
-					description: obj.description,
-					img: obj.img,
+					name: name,
+					description: description,
+					img: img,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -99,11 +99,6 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const navigate = useNavigate();
-	// const handleRegister = async (e: any) => {
-	// 	// console.log(dataChef);
-	// 	// await newChef(dataChef);
-	// };
-
 	const handSaveRest = async (e: any) => {
 		e.preventDefault();
 		const credentials: any = {
@@ -124,10 +119,11 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
-		// console.log(credentials);
-		const dataChef = credentials;
-		// console.log(dataChef);
-		await newChef(dataChef);
+		const name = credentials.name;
+		const description = credentials.description;
+		const img = credentials.img;
+		console.log(name, img, description);
+		await newChef(name, img, description);
 	};
 
 	return (
