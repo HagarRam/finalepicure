@@ -129,8 +129,6 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 				case 'restaurants':
 					credentials[obj.name] = obj.value.split(',').map(String);
 					break;
-				// 	credentials[obj.name] = obj.value.split(',').map(Number);
-				// // break;
 				default:
 					credentials[obj.name] = obj.value;
 					break;
