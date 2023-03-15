@@ -16,6 +16,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 	const restData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
+	const [selectedChef, setSelectedChef] = useState('');
 	const [rest, setRest] = useState<any>(restData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
 		restName: '',
@@ -164,15 +165,17 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			console.log(err);
 		}
 	};
-
-	const handSaveRest = async (e: any) => {
+	const handleChangeChef = (e: any) => {
+		setSelectedChef(e.target.value);
+	};
+	const handSaveRest = async (e: any, value: any) => {
 		e.preventDefault();
 		const credentials: any = {
 			id: 0,
 			restName: '',
 			chefName: '',
 			address: [],
-			chefId: 0,
+			chefId: '',
 			openHours: [],
 			openDays: [],
 			openYear: 0,
@@ -184,11 +187,15 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		Object.values(inputObj).forEach((obj: any) => {
 			switch (obj.name) {
 				case 'rating':
-				case 'chefId':
 					credentials[obj.name] = Number(obj.value);
 					break;
+				// case 'chefName':
 				case 'restName':
+					credentials[obj.name] = obj.value;
+					break;
 				case 'chefName':
+					credentials[obj.name] = value;
+					break;
 				case 'img':
 				case 'address':
 					credentials[obj.name] = obj.value.split(',').map(String);
@@ -203,6 +210,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
+		console.log(credentials);
 		const restName = credentials.restName;
 		const address = credentials.address;
 		const chefId = credentials.chefId;
@@ -212,17 +220,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		const openHours = credentials.openHours;
 		const openYears = credentials.openYears;
 		const rating = credentials.rating;
-		console.log(
-			restName,
-			address,
-			chefId,
-			chefName,
-			img,
-			openDays,
-			openHours,
-			openYears,
-			rating
-		);
 		await newRest(
 			restName,
 			address,
@@ -238,7 +235,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 
 	return (
 		<div className="restaurants-card">
-			<form onSubmit={handSaveRest}>
+			<form onSubmit={(e) => handSaveRest(e, selectedChef)}>
 				<div
 					id="restaurants-card-Modal"
 					className="modal">
@@ -251,7 +248,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						</span>
 						<div className="rest-information">
 							<div id="information">
-								<select>
+								<select onChange={handleChangeChef}>
 									<option>CHEF'S</option>
 									{chefData.map((chef: IChef) => (
 										<option
@@ -261,13 +258,13 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 										</option>
 									))}
 								</select>
-								<div id="information">{renderInputs(restDetails)}</div>
+								<div>{renderInputs(restDetails)}</div>
+								<button
+									id="add-button"
+									type="submit">
+									ADD RESTAURANT
+								</button>
 							</div>
-							<button
-								id="add-button"
-								type="submit">
-								ADD RESTAURANT
-							</button>
 						</div>
 					</div>
 				</div>
