@@ -1,6 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
+import { IChef } from '../ChefPage/ChefPage';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import './AddModal.css';
 
@@ -9,11 +11,23 @@ interface IModal {
 }
 
 const AddRest: React.FC<IModal> = (props: IModal) => {
+	const navigate = useNavigate();
+	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const restData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
 	const [rest, setRest] = useState<any>(restData);
-	const [inputValues, setInputValues] = useState({});
+	const [inputValues, setInputValues] = useState<Record<string, string>>({
+		restName: '',
+		address: '',
+		chefId: '',
+		chefName: '',
+		img: '',
+		openDays: '',
+		openHours: '',
+		openYears: '',
+		rating: '',
+	});
 	interface InputField {
 		id: string;
 		placeholder: string;
@@ -91,33 +105,59 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					placeholder={field.placeholder}
 					type={field.type}
 					name={field.name}
+					value={inputValues[field.name]}
+					onChange={(e) =>
+						setInputValues({ ...inputValues, [field.name]: e.target.value })
+					}
 				/>
 			</div>
 		));
 	};
 
-	// const postInformation = () => {
-	// 	return comment;
-	// 	//to come back!!
-	// };
-
-	const newRest = async () => {
+	const newRest = async (
+		restName: string,
+		address: string,
+		chefId: string,
+		chefName: string,
+		img: string,
+		openDays: string,
+		openHours: string,
+		openYears: string,
+		rating: string
+	) => {
 		try {
 			await fetch('http://localhost:8000/restaurant/', {
 				method: 'POST',
-				body: JSON.stringify({}),
+				body: JSON.stringify({
+					restName: restName,
+					address: address,
+					chefId: chefId,
+					chefName: chefName,
+					openDays: openDays,
+					openHours: openHours,
+					openYears: openYears,
+					rating: rating,
+					img: img,
+				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
 				},
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					setRest((newRest: IRestaurants[]) => [...newRest, data]);
-					// setFirstName('');
-					// setLastName('');
-					// setEmail('');
-					// setPassword('');
-					// navigate('/SignIn');
+					setRest((newRest: [IRestaurants]) => [...newRest, data]);
+					setInputValues({
+						restName: '',
+						address: '',
+						chefId: '',
+						chefName: '',
+						img: '',
+						openDays: '',
+						openHours: '',
+						openYears: '',
+						rating: '',
+					});
+					navigate('/');
 				});
 		} catch (err) {
 			alert('please try again');
@@ -125,15 +165,11 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		}
 	};
 
-	// const navigate = useNavigate();
-	const handleRegister = async (e: any) => {
-		await newRest();
-	};
-
 	const handSaveRest = async (e: any) => {
 		e.preventDefault();
 		const credentials: any = {
 			id: 0,
+			restName: '',
 			chefName: '',
 			address: [],
 			chefId: 0,
@@ -141,26 +177,22 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			openDays: [],
 			openYear: 0,
 			img: '',
-			// dishes: [],
 			rating: 0,
 		};
 		const inputObj = e.target;
-		console.log(credentials);
 
 		Object.values(inputObj).forEach((obj: any) => {
 			switch (obj.name) {
 				case 'rating':
+				case 'chefId':
 					credentials[obj.name] = Number(obj.value);
 					break;
 				case 'restName':
 				case 'chefName':
 				case 'img':
 				case 'address':
-					// credentials[obj.name] = String(obj.value);
-					// break;
 					credentials[obj.name] = obj.value.split(',').map(String);
 					break;
-				// case 'dishes':
 				case 'openYears':
 				case 'openDays':
 				case 'openHours':
@@ -171,6 +203,37 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
+		const restName = credentials.restName;
+		const address = credentials.address;
+		const chefId = credentials.chefId;
+		const chefName = credentials.chefName;
+		const img = credentials.img;
+		const openDays = credentials.openDays;
+		const openHours = credentials.openHours;
+		const openYears = credentials.openYears;
+		const rating = credentials.rating;
+		console.log(
+			restName,
+			address,
+			chefId,
+			chefName,
+			img,
+			openDays,
+			openHours,
+			openYears,
+			rating
+		);
+		await newRest(
+			restName,
+			address,
+			chefId,
+			chefName,
+			img,
+			openDays,
+			openHours,
+			openYears,
+			rating
+		);
 	};
 
 	return (
@@ -187,7 +250,17 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 							&times;
 						</span>
 						<div className="rest-information">
-							<div>
+							<div id="information">
+								<select>
+									<option>CHEF'S</option>
+									{chefData.map((chef: IChef) => (
+										<option
+											key={chef._id?.toString()}
+											value={chef._id?.toString()}>
+											{chef.name}
+										</option>
+									))}
+								</select>
 								<div id="information">{renderInputs(restDetails)}</div>
 							</div>
 							<button
@@ -202,5 +275,4 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		</div>
 	);
 };
-
 export default AddRest;
