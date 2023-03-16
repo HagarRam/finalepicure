@@ -10,6 +10,7 @@ interface IModal {
 }
 
 const AddDish: React.FC<IModal> = (props: IModal) => {
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const navigate = useNavigate();
 	const dishData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
@@ -89,6 +90,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const newDish = async (
+		_id: string,
 		img: string,
 		about: string,
 		dishName: string,
@@ -98,7 +100,14 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		try {
 			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
-				body: JSON.stringify({}),
+				body: JSON.stringify({
+					_id: _id,
+					img: img,
+					about: about,
+					dishName: dishName,
+					dishPrice: dishPrice,
+					icons: icons,
+				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
 				},
@@ -157,7 +166,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		const dishPrice = credentials.price;
 		const icons = credentials.icons;
 
-		await newDish(img, about, dishName, dishPrice, icons);
+		await newDish(img, about, dishName, dishPrice, icons, data._id);
 	};
 
 	return (
