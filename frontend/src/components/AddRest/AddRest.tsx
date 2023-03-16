@@ -246,7 +246,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						</span>
 						<div className="rest-information">
 							<div id="information">
-								{/* <select onChange={handleChangeChef}>
+								<select onChange={handleChangeChef}>
 									<option>CHEF'S</option>
 									{chefData.map((chef: IChef) => (
 										<option
@@ -255,7 +255,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 											{chef.name}
 										</option>
 									))}
-								</select> */}
+								</select>
 								<div>{renderInputs(restDetails)}</div>
 								<button
 									id="add-button"
@@ -268,7 +268,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 				</div>
 			</form>
 			<div />
-			<div id="app-cover">
+			{/* <div id="app-cover">
 				<div id="select-box">
 					<input
 						type="checkbox"
@@ -313,7 +313,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						<div id="option-bg"></div>
 					</div>
 				</div>
-			</div>
+			</div> */}
 		</div>
 	);
 };

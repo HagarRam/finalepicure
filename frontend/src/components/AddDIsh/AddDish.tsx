@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { IDishes } from '../SignatureDish/DishCard';
@@ -9,11 +10,19 @@ interface IModal {
 }
 
 const AddDish: React.FC<IModal> = (props: IModal) => {
+	const navigate = useNavigate();
 	const dishData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
 	const [dish, setDish] = useState<any>(dishData);
-	const [inputValues, setInputValues] = useState({});
+	const [inputValues, setInputValues] = useState<Record<string, string>>({
+		dishName: '',
+		about: '',
+		dishPrice: '',
+		icons: '',
+		img: '',
+	});
+
 	interface InputField {
 		id: string;
 		placeholder: string;
@@ -70,12 +79,22 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 					placeholder={field.placeholder}
 					type={field.type}
 					name={field.name}
+					value={inputValues[field.name]}
+					onChange={(e) =>
+						setInputValues({ ...inputValues, [field.name]: e.target.value })
+					}
 				/>
 			</div>
 		));
 	};
 
-	const newDish = async () => {
+	const newDish = async (
+		img: string,
+		about: string,
+		dishName: string,
+		dishPrice: string,
+		icons: string
+	) => {
 		try {
 			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
@@ -87,14 +106,19 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 				.then((response) => response.json())
 				.then((data) => {
 					setDish((newdish: IDishes[]) => [...newdish, data]);
+					setInputValues({
+						dishName: '',
+						about: '',
+						dishPrice: '',
+						icons: '',
+						img: '',
+					});
+					navigate('/');
 				});
 		} catch (err) {
 			alert('please try again');
 			console.log(err);
 		}
-	};
-	const handleRegister = async (e: any) => {
-		await newDish();
 	};
 
 	const handSaveRest = async (e: any) => {
@@ -103,8 +127,6 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 			id: 0,
 			name: '',
 			about: '',
-			chefId: '',
-			restaurantId: '',
 			price: '',
 			icons: [],
 			img: '',
@@ -117,6 +139,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 					break;
 				case 'dishName':
 				case 'img':
+				case 'about':
 					credentials[obj.name] = String(obj.value);
 					break;
 				case 'icons':
@@ -127,8 +150,14 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
+		console.log(credentials);
+		const img = credentials.img;
+		const about = credentials.about;
+		const dishName = credentials.name;
+		const dishPrice = credentials.price;
+		const icons = credentials.icons;
 
-		await newDish();
+		await newDish(img, about, dishName, dishPrice, icons);
 	};
 
 	return (
