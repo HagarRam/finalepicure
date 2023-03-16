@@ -88,7 +88,6 @@ const OneRest: React.FC = () => {
 						chef={IdNum.chef}
 						rating={IdNum.rating}
 						title={'restautant-page'}
-						// id={IdNum.id}
 						_id={IdNum._id}
 						titleStar={'restautant-page-stars'}
 						titleImg={'rest-image'}

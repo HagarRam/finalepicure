@@ -18,6 +18,7 @@ const DishModalOrder: React.FC<IModalDishes> = (props: IModalDishes) => {
 				<div id="price-conatiner">
 					<img
 						src={icon}
+						alt="icon"
 						id="icon-price"></img>
 					<div>{price}</div>
 				</div>

@@ -21,6 +21,7 @@ export interface IDishes {
 	signatureDish?: boolean;
 	title?: string;
 	dishtitle: string;
+	key: number;
 }
 
 const DishCard: React.FC<IDishes> = (props: IDishes) => {
@@ -81,6 +82,7 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 				<ModalRest
 					id={_id}
 					closeButton={closeModal}
+					key={price}
 				/>
 			)}
 		</>

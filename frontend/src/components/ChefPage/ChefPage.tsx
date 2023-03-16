@@ -21,6 +21,7 @@ export interface IChef {
 	chefOfTheWeek?: boolean;
 	newChef?: boolean;
 	views?: number;
+	key?: number;
 }
 
 export interface IChefState {

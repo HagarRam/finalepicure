@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import DishCard, { IDishes } from '../SignatureDish/DishCard';
 import './ModalRest.css';
 import { Rootstate } from '../../store/store';
@@ -7,19 +8,22 @@ import { ObjectId } from 'mongoose';
 
 interface IModal {
 	id: ObjectId;
+	key?: any;
 	closeButton: Function;
 }
 
 const ModalRest: React.FC<IModal> = (props: IModal) => {
+	const navigate = useNavigate();
+	// const order: any[] = [];
+	// sessionStorage.setItem('order', JSON.stringify(order));
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
 	const [comment, setComment] = useState<string[]>(['']);
 	const [informationDIsh, setinformationDIsh] = useState<string[]>(['']);
-	const [quantity, setQuantity] = useState<number>(0);
+	const [number, setNumber] = useState<number>(0);
 	let newId = props.id;
 	const IdNum: IDishes | undefined = dishesData?.find((rest: IDishes) => {
 		return rest._id?.toString() === newId?.toString();
 	});
-	const [number, setNumber] = useState(0);
 	const handlePlus = () => {
 		setNumber(number + 1);
 	};
@@ -27,10 +31,48 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 	const handleMinus = () => {
 		setNumber(number - 1);
 	};
+	// const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
+	// 	event.preventDefault();
+	// 	const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '{}');
+	// 	const order = [IdNum, comment, number];
+	// 	const updatedOrders = { ...storedOrders, [Date.now()]: order };
+	// 	sessionStorage.setItem('orders', JSON.stringify(updatedOrders));
+	// 	navigate('/');
+	// 	// You can use the comment state here to send data to the server
+	// };
 
-	const postInformation = () => {
-		return comment;
-		//to come back!!
+	// const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
+	// 	event.preventDefault();
+	// 	const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '{}');
+	// 	const order = [IdNum, comment, number];
+	// 	const updatedOrders = { ...storedOrders, order };
+	// 	sessionStorage.setItem('orders', JSON.stringify(updatedOrders));
+	// 	navigate('/');
+	// 	// You can use the comment state here to send data to the server
+	// };
+
+	const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
+		event.preventDefault();
+
+		// Retrieve existing orders array from sessionStorage or create an empty array if it doesn't exist
+		const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '[]');
+
+		// Create a new order object
+		const order = { IdNum, comment, number };
+
+		// Add the new order to the existing orders array
+		const updatedOrders = [...storedOrders, order];
+
+		// Store the updated orders array back into sessionStorage
+		sessionStorage.setItem('orders', JSON.stringify(updatedOrders));
+
+		navigate('/');
+		// You can use the comment state here to send data to the server
+	};
+
+	const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+		const value = event.target.value;
+		setNumber(parseInt(value));
 	};
 
 	return (
@@ -57,6 +99,7 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 								title={'card-dish-information-modal'}
 								dishtitle={'dish-card-element-Modal'}
 								_id={IdNum._id}
+								key={IdNum.id}
 							/>
 						) : (
 							<p>Restaurant not found</p>
@@ -109,7 +152,11 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 									onClick={handleMinus}>
 									-
 								</button>
-								<div id="symbol">{number}</div>
+								<div
+									id="symbol"
+									onChange={handleNumberChange}>
+									{number}
+								</div>
 								<button
 									id="symbol"
 									onClick={handlePlus}>
@@ -121,7 +168,7 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 									value={number}
 									id="add-to-bag"
 									type="submit"
-									onChange={(e: any) => setNumber(e.target.value)}>
+									onClick={(e: any) => setNumber(e.target.value)}>
 									ADD TO BAG
 								</button>
 							</div>

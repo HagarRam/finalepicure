@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import vector from './images/Vector.svg';
 import './ModalOrder.css';
 import { Rootstate } from '../../store/store';
@@ -52,18 +52,21 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 							name={dishesData[1].name}
 							price={dishesData[1].price}
 							quantity={4}
+							key={dishesData[1].id}
 						/>
 						<DishModalOrder
 							id={0}
 							name={dishesData[1].name}
 							price={dishesData[1].price}
 							quantity={4}
+							key={dishesData[1].id}
 						/>
 						<DishModalOrder
 							id={0}
 							name={dishesData[1].name}
 							price={dishesData[1].price}
 							quantity={4}
+							key={dishesData[1].id}
 						/>
 					</div>
 					<div id="total-price">

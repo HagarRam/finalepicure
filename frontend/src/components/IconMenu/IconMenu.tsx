@@ -11,15 +11,24 @@ const IconMenu: React.FC = () => {
 				<div id="menuTitle">THE MEANING OF OUR ICONS:</div>
 				<div id="allTheIcons">
 					<div className="Icon">
-						<img src={spicy} />
+						<img
+							src={spicy}
+							alt="spice"
+						/>
 						<div id="titleIcon">Spicy</div>
 					</div>
 					<div className="Icon">
-						<img src={Vegitarian} />
+						<img
+							src={Vegitarian}
+							alt="Vegitarian"
+						/>
 						<div id="titleIcon">Vegitarian</div>
 					</div>
 					<div className="Icon">
-						<img src={vegan} />
+						<img
+							src={vegan}
+							alt="vegan"
+						/>
 						<div id="titleIcon">Vegan</div>
 					</div>
 				</div>

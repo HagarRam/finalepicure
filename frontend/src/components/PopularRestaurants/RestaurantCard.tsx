@@ -32,6 +32,7 @@ const RestaurantCard: React.FC<IRestaurants> = (props: IRestaurants) => {
 				<div className="rest-name">{name}</div>
 				<div id="chef-name">{chef}</div>
 				<img
+					alt="title"
 					className={titleStar}
 					src={starsImg}></img>
 			</div>
