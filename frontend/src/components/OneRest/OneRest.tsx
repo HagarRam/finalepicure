@@ -18,6 +18,7 @@ const OneRest: React.FC = () => {
 	const restaurantsData = useSelector(
 		(state: Rootstate) => state.restaurants.value
 	);
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
 	const [deleteRest, setDeleteRest] = useState<any>(null);
@@ -75,17 +76,21 @@ const OneRest: React.FC = () => {
 	return (
 		<div id="restaurant-page ">
 			<NavBar />
-			<button
-				id="delete"
-				onClick={() => handleRegister(deleteRest._id)}>
-				DELETE
-			</button>
-			<button
-				id="add-rest"
-				type="submit"
-				onClick={openModal}>
-				ADD DISH
-			</button>
+			{data._id === '640dae4cd58da0771cc7b736' && (
+				<div>
+					<button
+						id="delete"
+						onClick={() => handleRegister(deleteRest._id)}>
+						DELETE
+					</button>
+					<button
+						id="add-rest"
+						type="submit"
+						onClick={openModal}>
+						ADD DISH
+					</button>
+				</div>
+			)}
 			<div id="Restaurant">
 				{IdNum ? (
 					<RestaurantCard

@@ -8,7 +8,6 @@ import Logo from '../../assets/NavBarLogo.svg';
 
 const NavBar: React.FC = () => {
 	const navigator = useNavigate();
-	// const closeButton2 = document.getElementById('logout');
 	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	let message = 'Welcome Guest';
 

@@ -32,6 +32,9 @@ export interface IChefState {
 const ChefsPage: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
+	console.log(data._id);
+	console.log(typeof data._id);
 	const openModal = () => {
 		setIsModalOpen(true);
 	};
@@ -43,12 +46,14 @@ const ChefsPage: React.FC = () => {
 			<NavBar />
 			<div id="mobile-title">CHEFS</div>
 			<ChefPageFilter />
-			<button
-				id="add-rest"
-				type="submit"
-				onClick={openModal}>
-				ADD CHEF
-			</button>
+			{data._id === '640dae4cd58da0771cc7b736' && (
+				<button
+					id="add-rest"
+					type="submit"
+					onClick={openModal}>
+					ADD CHEF
+				</button>
+			)}
 			<div id="allthechefs">
 				{chefData.map((chef: IChef) => {
 					return (

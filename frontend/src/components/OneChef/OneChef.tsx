@@ -21,7 +21,7 @@ const OneChef: React.FC = () => {
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const [deleteChefed, setDeleteChefed] = useState<any>(null);
 	let { id } = useParams<string>();
-
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const IdNum: IChef | undefined = chefData?.find((rest: IChef) => {
 		return rest._id?.toString() === id;
 	});
@@ -70,17 +70,22 @@ const OneChef: React.FC = () => {
 		<div id="restaurant-page ">
 			<NavBar />
 			<div id="information-page">
-				<button
-					id="delete"
-					onClick={() => handleRegister(deleteChefed._id)}>
-					DELETE
-				</button>
-				<button
-					id="add-rest"
-					type="submit"
-					onClick={openModal}>
-					ADD REST
-				</button>
+				{data._id === '640dae4cd58da0771cc7b736' && (
+					<div>
+						<button
+							id="delete"
+							onClick={() => handleRegister(deleteChefed._id)}>
+							DELETE
+						</button>
+						<button
+							id="add-rest"
+							type="submit"
+							onClick={openModal}>
+							ADD REST
+						</button>
+					</div>
+				)}
+
 				<div id="chef-of-the-page">
 					{IdNum ? (
 						<ImageChef

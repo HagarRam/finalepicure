@@ -38,6 +38,7 @@ export interface IrestaurantsState {
 }
 
 const RestaurantPage: React.FC = () => {
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const openModal = () => {
 		setIsModalOpen(true);
@@ -50,12 +51,14 @@ const RestaurantPage: React.FC = () => {
 			<NavBar />
 			<div id="mobile-title">RESTAURANTS</div>
 			<div>
-				<button
-					id="add-rest"
-					type="submit"
-					onClick={openModal}>
-					ADD REST
-				</button>
+				{data._id === '640dae4cd58da0771cc7b736' && (
+					<button
+						id="add-rest"
+						type="submit"
+						onClick={openModal}>
+						ADD REST
+					</button>
+				)}
 				<RestaurantFilterBar />
 			</div>
 
