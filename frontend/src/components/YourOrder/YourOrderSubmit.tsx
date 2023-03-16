@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
@@ -16,6 +16,7 @@ const YourOrderSubmit: React.FC = () => {
 	const data = JSON.parse(sessionStorage.getItem('orders') || '[]');
 	const navigate = useNavigate();
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+	const [homepage, sethomepage] = useState<boolean>(false);
 	const SignatureDishData = useSelector(
 		(state: Rootstate) => state.dishes.value
 	);
@@ -42,9 +43,16 @@ const YourOrderSubmit: React.FC = () => {
 	};
 
 	const closeModal = () => {
+		sethomepage(true);
 		setIsModalOpen(false);
 	};
-	console.log(orderData);
+	useEffect(() => {
+		if (homepage) {
+			sessionStorage.clear();
+			navigate('/');
+		}
+	}, [homepage]);
+
 	return (
 		<div id="your-check-out">
 			<div id="order-card">
