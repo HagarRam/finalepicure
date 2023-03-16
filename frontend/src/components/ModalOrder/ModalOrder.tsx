@@ -1,18 +1,35 @@
 import { useSelector } from 'react-redux';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import vector from './images/Vector.svg';
 import './ModalOrder.css';
 import { Rootstate } from '../../store/store';
 import DishModalOrder from '../DishModalOrder/DishModalOrder';
 import icon from '../DishOrder/image/bold-price.svg';
+import { IDishes } from '../SignatureDish/DishCard';
 
 interface IModal {
 	time: number;
 	closeButton: Function;
 }
-
+interface IComment {
+	comment: string;
+	number: number;
+}
 const ModalOrder: React.FC<IModal> = (props: IModal) => {
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
+	const data = JSON.parse(sessionStorage.getItem('orders') || '[]');
+	const dishData = data?.map((dish: any) => {
+		return dish.IdNum._id;
+	});
+	// const [totalPrice, setTotalPrice] = useState<number>(0);
+	const orderData: IDishes[] =
+		dishesData?.filter((rest: IDishes) => {
+			return dishData?.includes(rest._id);
+		}) ?? [];
+
+	const number = Array.isArray(data)
+		? data.map((comment: IComment) => comment.number)
+		: [];
 
 	useEffect(() => {
 		document.body.style.overflow = 'hidden';
@@ -21,7 +38,7 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 			document.body.style.overflow = 'auto';
 		};
 	}, []);
-
+	let totalPrice = 0;
 	return (
 		<div className="restaurants-card">
 			<div
@@ -47,27 +64,26 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 						<div id="hour-time">mins</div>
 					</div>
 					<div id="alltheorder">
-						<DishModalOrder
-							id={0}
-							name={dishesData[1].name}
-							price={dishesData[1].price}
-							quantity={4}
-							key={dishesData[1].id}
-						/>
-						<DishModalOrder
-							id={0}
-							name={dishesData[1].name}
-							price={dishesData[1].price}
-							quantity={4}
-							key={dishesData[1].id}
-						/>
-						<DishModalOrder
-							id={0}
-							name={dishesData[1].name}
-							price={dishesData[1].price}
-							quantity={4}
-							key={dishesData[1].id}
-						/>
+						{data?.length > 0 ? (
+							<div id="order-information">
+								{orderData?.map((dish: IDishes, index: number) => {
+									const numberForDish = number?.[index] ?? 0;
+									const totalprice2 = dish.price * numberForDish;
+									totalPrice += totalprice2;
+									return (
+										<DishModalOrder
+											id={0}
+											name={dish.name}
+											price={dish.price}
+											quantity={numberForDish}
+											key={dish.id}
+										/>
+									);
+								})}
+							</div>
+						) : (
+							<p></p>
+						)}
 					</div>
 					<div id="total-price">
 						TOTAL -{' '}
@@ -75,7 +91,7 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 							src={icon}
 							alt="icon-price"
 						/>{' '}
-						98{' '}
+						{totalPrice}{' '}
 					</div>
 				</div>
 			</div>

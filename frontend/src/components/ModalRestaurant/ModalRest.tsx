@@ -24,39 +24,21 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 	const IdNum: IDishes | undefined = dishesData?.find((rest: IDishes) => {
 		return rest._id?.toString() === newId?.toString();
 	});
-	const handlePlus = () => {
+	const handlePlus = (e: any) => {
+		e.preventDefault();
 		setNumber(number + 1);
 	};
 
-	const handleMinus = () => {
+	const handleMinus = (e: any) => {
+		e.preventDefault();
 		setNumber(number - 1);
 	};
-	// const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
-	// 	event.preventDefault();
-	// 	const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '{}');
-	// 	const order = [IdNum, comment, number];
-	// 	const updatedOrders = { ...storedOrders, [Date.now()]: order };
-	// 	sessionStorage.setItem('orders', JSON.stringify(updatedOrders));
-	// 	navigate('/');
-	// 	// You can use the comment state here to send data to the server
-	// };
-
-	// const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
-	// 	event.preventDefault();
-	// 	const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '{}');
-	// 	const order = [IdNum, comment, number];
-	// 	const updatedOrders = { ...storedOrders, order };
-	// 	sessionStorage.setItem('orders', JSON.stringify(updatedOrders));
-	// 	navigate('/');
-	// 	// You can use the comment state here to send data to the server
-	// };
 
 	const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 
 		// Retrieve existing orders array from sessionStorage or create an empty array if it doesn't exist
 		const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '[]');
-
 		// Create a new order object
 		const order = { IdNum, comment, number };
 
@@ -152,11 +134,7 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 									onClick={handleMinus}>
 									-
 								</button>
-								<div
-									id="symbol"
-									onChange={handleNumberChange}>
-									{number}
-								</div>
+								<div id="symbol">{number}</div>
 								<button
 									id="symbol"
 									onClick={handlePlus}>
@@ -167,8 +145,7 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 								<button
 									value={number}
 									id="add-to-bag"
-									type="submit"
-									onClick={(e: any) => setNumber(e.target.value)}>
+									type="submit">
 									ADD TO BAG
 								</button>
 							</div>
