@@ -80,6 +80,12 @@ const OneRest: React.FC = () => {
 				onClick={() => handleRegister(deleteRest._id)}>
 				DELETE
 			</button>
+			<button
+				id="add-rest"
+				type="submit"
+				onClick={openModal}>
+				ADD DISH
+			</button>
 			<div id="Restaurant">
 				{IdNum ? (
 					<RestaurantCard
@@ -108,12 +114,6 @@ const OneRest: React.FC = () => {
 						<p id="time">Close Now</p>
 					)}
 				</div>
-				<button
-					id="ADDREST"
-					type="submit"
-					onClick={openModal}>
-					ADD DISH
-				</button>
 			</div>{' '}
 			<div id="alltherestaurant">
 				{IdNum?.dishes?.map((dish: ObjectId) => {

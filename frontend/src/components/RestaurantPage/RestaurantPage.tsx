@@ -49,13 +49,16 @@ const RestaurantPage: React.FC = () => {
 		<div>
 			<NavBar />
 			<div id="mobile-title">RESTAURANTS</div>
-			<RestaurantFilterBar />
-			<button
-				id="ADDREST"
-				type="submit"
-				onClick={openModal}>
-				ADD REST
-			</button>
+			<div>
+				<button
+					id="add-rest"
+					type="submit"
+					onClick={openModal}>
+					ADD REST
+				</button>
+				<RestaurantFilterBar />
+			</div>
+
 			<RangeBar />
 			<RestaurantCardsPage />
 			<Footer />

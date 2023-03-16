@@ -12,7 +12,7 @@ const UserLogin: React.FC = () => {
 		sessionStorage.clear();
 	};
 	return (
-		<div id="sign-in-page">
+		<div id="log-out">
 			<NavBar />
 			<div id="sign-in-container">
 				<div id="log-out-title">

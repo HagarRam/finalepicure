@@ -27,6 +27,16 @@
 	height: 180px;
 	object-fit: cover;
 }
+#delete {
+	width: 95px;
+	padding: 10px;
+	height: 40px;
+	background-color: lavender;
+	border-radius: 12px;
+}
+#delete:hover {
+	background-color: rgb(252, 137, 137);
+}
 @media only screen and (max-width: 690px) {
 	#chef-restaurants {
 		display: flex;

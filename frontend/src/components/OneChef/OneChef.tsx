@@ -75,7 +75,12 @@ const OneChef: React.FC = () => {
 					onClick={() => handleRegister(deleteChefed._id)}>
 					DELETE
 				</button>
-
+				<button
+					id="add-rest"
+					type="submit"
+					onClick={openModal}>
+					ADD REST
+				</button>
 				<div id="chef-of-the-page">
 					{IdNum ? (
 						<ImageChef
@@ -89,12 +94,7 @@ const OneChef: React.FC = () => {
 						<p>chef not found</p>
 					)}
 				</div>
-				<button
-					id="ADDREST"
-					type="submit"
-					onClick={openModal}>
-					ADD REST
-				</button>
+
 				<div id="chef-restaurants">
 					{IdNum?.restaurant?.map((chef: ObjectId) => {
 						const data = restaurantsData.filter(

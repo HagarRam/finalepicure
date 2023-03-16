@@ -2,6 +2,17 @@ body {
 	width: 100%;
 	height: 100%;
 }
+#add-rest {
+	width: 95px;
+	padding: 10px;
+	height: 40px;
+	background-color: lavender;
+	border-radius: 12px;
+	margin-left: 50px;
+}
+#add-rest:hover {
+	background-color: rgb(171, 255, 171);
+}
 
 #allthechefs {
 	gap: 20px;

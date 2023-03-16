@@ -44,7 +44,7 @@ const ChefsPage: React.FC = () => {
 			<div id="mobile-title">CHEFS</div>
 			<ChefPageFilter />
 			<button
-				id="ADDREST"
+				id="add-rest"
 				type="submit"
 				onClick={openModal}>
 				ADD CHEF
