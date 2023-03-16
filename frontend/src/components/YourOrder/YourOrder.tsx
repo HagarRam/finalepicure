@@ -3,17 +3,40 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import DishOrder from '../DishOrder/DishOrder';
+import { IDishes } from '../SignatureDish/DishCard';
 import './YourOrder.css';
+import emptyBag from './Image/empty-bag.svg';
 
 interface IOrder {
 	closeButton: Function;
 }
+interface IComment {
+	comment: string;
+	number: number;
+}
 
 const YourOrder: React.FC<IOrder> = (props: IOrder) => {
+	const data = JSON.parse(sessionStorage.getItem('orders') || '[]');
 	const navigate = useNavigate();
 	const SignatureDishData = useSelector(
 		(state: Rootstate) => state.dishes.value
 	);
+	const dishData = data?.map((dish: any) => {
+		return dish.IdNum._id;
+	});
+
+	const orderData: IDishes[] =
+		SignatureDishData?.filter((rest: IDishes) => {
+			return dishData?.includes(rest._id);
+		}) ?? [];
+	const comment = Array.isArray(data)
+		? data.map((comment: IComment) => comment.comment).join(' | ')
+		: '';
+	console.log(comment);
+	const number = Array.isArray(data)
+		? data.map((comment: IComment) => comment.number)
+		: [];
+
 	return (
 		<div id="your-order">
 			<span
@@ -24,37 +47,32 @@ const YourOrder: React.FC<IOrder> = (props: IOrder) => {
 			</span>
 			<div id="order-card">
 				<div id="title-order">YOUR ORDER</div>
-				<div id="rest-order-name">Mashya</div>
 				<div className="bag">
-					<div id="order-information">
-						<DishOrder
-							id={0}
-							name={SignatureDishData[1].name}
-							price={SignatureDishData[1].price}
-							img={SignatureDishData[1].img}
-							dishtitle={'dish-order-card-element'}
-							comment={'no spicy'}
-							quantity={5}
+					{data?.length > 0 ? (
+						<div id="order-information">
+							{orderData?.map((dish: IDishes, index: number) => {
+								const commentForDish = comment.split(' | ')[index] ?? '';
+								const numberForDish = number?.[index] ?? 0;
+								return (
+									<DishOrder
+										id={0}
+										price={dish.price}
+										img={dish.img}
+										name={dish.name}
+										comment={commentForDish}
+										quantity={numberForDish}
+										dishtitle={'dish-order-card-element'}
+									/>
+								);
+							})}
+						</div>
+					) : (
+						<img
+							src={emptyBag}
+							id="emptyBag"
+							alt="empty-bag"
 						/>
-						<DishOrder
-							id={0}
-							name={SignatureDishData[2].name}
-							price={SignatureDishData[2].price}
-							img={SignatureDishData[2].img}
-							dishtitle={'dish-order-card-element'}
-							comment={'no spicy'}
-							quantity={3}
-						/>
-						<DishOrder
-							id={0}
-							name={SignatureDishData[4].name}
-							price={SignatureDishData[4].price}
-							img={SignatureDishData[4].img}
-							dishtitle={'dish-order-card-element'}
-							comment={'no spicy'}
-							quantity={1}
-						/>
-					</div>
+					)}
 					<div id="comment-and-buttons-container">
 						<div id="add-comment">Add A Comment</div>
 						<input

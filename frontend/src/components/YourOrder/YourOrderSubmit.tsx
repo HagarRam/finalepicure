@@ -5,6 +5,7 @@ import { Rootstate } from '../../store/store';
 import DishOrder from '../DishOrder/DishOrder';
 import ModalOrder from '../ModalOrder/ModalOrder';
 import { IDishes } from '../SignatureDish/DishCard';
+import emptyBag from './Image/empty-bag.svg';
 import './YourOrderSubmit.css';
 interface IComment {
 	comment: string;
@@ -48,7 +49,6 @@ const YourOrderSubmit: React.FC = () => {
 		<div id="your-check-out">
 			<div id="order-card">
 				<div id="title-order">YOUR ORDER</div>
-				<div id="rest-order-name">Mashya</div>
 				<div className="bag">
 					{data?.length > 0 ? (
 						<div id="order-information">
@@ -69,7 +69,11 @@ const YourOrderSubmit: React.FC = () => {
 							})}
 						</div>
 					) : (
-						<p>No dishes in the order.</p>
+						<img
+							src={emptyBag}
+							id="emptyBag"
+							alt="empty-bag"
+						/>
 					)}
 					<div id="comment-and-buttons-container">
 						<div id="add-comment">Add A Comment</div>
