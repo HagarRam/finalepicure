@@ -7,6 +7,7 @@ import logo from './imageNavBar/logo.svg';
 import titleLogo from './imageNavBar/TitleLogo.svg';
 
 const NavBarLeft: React.FC = () => {
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	return (

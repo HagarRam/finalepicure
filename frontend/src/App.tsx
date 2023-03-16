@@ -8,6 +8,7 @@ import SignInPage from './components/SignInPage/SignInPage';
 import SignUpPage from './components/SignUpPage/SignUpPage';
 import OneChef from './components/OneChef/OneChef';
 import CheckOut from './components/CheckOut/CheckOut';
+import UserLogin from './components/UserLogin/UserLogin';
 
 function App() {
 	return (
@@ -46,6 +47,10 @@ function App() {
 						<Route
 							path="/CheckOut"
 							element={<CheckOut />}
+						/>
+						<Route
+							path="/log-out"
+							element={<UserLogin />}
 						/>
 					</Routes>
 				</BrowserRouter>

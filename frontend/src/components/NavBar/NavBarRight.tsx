@@ -7,6 +7,7 @@ import { useState } from 'react';
 import YourOrder from '../YourOrder/YourOrder';
 
 const NavBarRight: React.FC = () => {
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const navigate = useNavigate();
 	const [showSearchInput, setShowSearchInput] = useState<boolean>(false);
 	const [isOrderOpen, setIsOrderOpen] = useState<boolean>(false);
@@ -43,9 +44,8 @@ const NavBarRight: React.FC = () => {
 					id="icon"
 					alt="PersonLogo"
 					src={personLogo}
-					onClick={() => navigate('/SignIn')}
+					onClick={() => navigate(data.firstName ? '/log-out' : '/SignIn')}
 				/>
-
 				<img
 					id="icon"
 					alt="bagLogo"
