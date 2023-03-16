@@ -83,6 +83,7 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 					id={_id}
 					closeButton={closeModal}
 					key={price}
+					closeBag={closeModal}
 				/>
 			)}
 		</>

@@ -10,6 +10,7 @@ interface IModal {
 	id: ObjectId;
 	key?: any;
 	closeButton: Function;
+	closeBag: Function;
 }
 
 const ModalRest: React.FC<IModal> = (props: IModal) => {
@@ -36,19 +37,15 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 
 	const postInformation = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
-
 		// Retrieve existing orders array from sessionStorage or create an empty array if it doesn't exist
 		const storedOrders = JSON.parse(sessionStorage.getItem('orders') || '[]');
 		// Create a new order object
 		const order = { IdNum, comment, number };
-
 		// Add the new order to the existing orders array
 		const updatedOrders = [...storedOrders, order];
-
 		// Store the updated orders array back into sessionStorage
 		sessionStorage.setItem('orders', JSON.stringify(updatedOrders));
-
-		navigate('/');
+		props.closeBag();
 		// You can use the comment state here to send data to the server
 	};
 

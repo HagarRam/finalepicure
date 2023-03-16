@@ -37,11 +37,11 @@
 	overflow: inherit;
 }
 #card-dish-information-modal #hr-left {
-	width: 5%;
+	width: 30%;
 	margin-left: 10%;
 }
 #card-dish-information-modal #hr-right {
-	width: 5%;
+	width: 30%;
 	margin-right: 10%;
 }
 .modalTitle {
