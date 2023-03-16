@@ -61,11 +61,10 @@ const RestaurantPage: React.FC = () => {
 				)}
 				<RestaurantFilterBar />
 			</div>
-
 			<RangeBar />
+			{isModalOpen && <AddRest closeButton={closeModal} />}
 			<RestaurantCardsPage />
 			<Footer />
-			{isModalOpen && <AddRest closeButton={closeModal} />}
 		</div>
 	);
 };

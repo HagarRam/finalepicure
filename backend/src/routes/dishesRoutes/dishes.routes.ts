@@ -11,5 +11,5 @@ const dishesRouter = express.Router();
 
 dishesRouter.get('/', getAllDishes);
 dishesRouter.delete('/', deleteDishes);
-dishesRouter.post('/orderdish', isAdmin('640dae4cd58da0771cc7b736'), postDish);
+dishesRouter.post('/', isAdmin('640dae4cd58da0771cc7b736'), postDish);
 export default dishesRouter;

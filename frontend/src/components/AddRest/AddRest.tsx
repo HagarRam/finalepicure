@@ -189,7 +189,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 				case 'rating':
 					credentials[obj.name] = Number(obj.value);
 					break;
-				// case 'chefName':
 				case 'restName':
 					credentials[obj.name] = obj.value;
 					break;
@@ -210,7 +209,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
-		console.log(credentials);
 		const restName = credentials.restName;
 		const address = credentials.address;
 		const chefId = credentials.chefId;
@@ -239,7 +237,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 				<div
 					id="restaurants-card-Modal"
 					className="modal">
-					<div className="content">
+					<div className="add-information">
 						<span
 							id="closeButton"
 							onClick={() => props.closeButton()}
@@ -248,7 +246,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						</span>
 						<div className="rest-information">
 							<div id="information">
-								<select onChange={handleChangeChef}>
+								{/* <select onChange={handleChangeChef}>
 									<option>CHEF'S</option>
 									{chefData.map((chef: IChef) => (
 										<option
@@ -257,7 +255,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 											{chef.name}
 										</option>
 									))}
-								</select>
+								</select> */}
 								<div>{renderInputs(restDetails)}</div>
 								<button
 									id="add-button"
@@ -269,6 +267,53 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					</div>
 				</div>
 			</form>
+			<div />
+			<div id="app-cover">
+				<div id="select-box">
+					<input
+						type="checkbox"
+						id="options-view-button"
+					/>
+					<div
+						id="select-button"
+						className="brd">
+						<div id="selected-value">
+							<span>Select a Chef</span>
+						</div>
+						<div id="chevrons">
+							<i className="fas fa-chevron-up"></i>
+							<i className="fas fa-chevron-down"></i>
+						</div>
+					</div>
+					<div id="options">
+						{chefData.map((chef: IChef) => (
+							<div
+								className="option"
+								key={chef._id?.toString()}>
+								<input
+									className="s-c top"
+									type="radio"
+									name="chef"
+									id={chef._id?.toString()}
+									value={chef._id?.toString()}
+									onChange={handleChangeChef}
+								/>
+								<input
+									className="s-c bottom"
+									type="radio"
+									name="chef"
+									id={chef._id?.toString()}
+									value={chef._id?.toString()}
+									onChange={handleChangeChef}
+								/>
+								<span className="label">{chef.name}</span>
+								<span className="opt-val">{chef.name}</span>
+							</div>
+						))}
+						<div id="option-bg"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 	);
 };

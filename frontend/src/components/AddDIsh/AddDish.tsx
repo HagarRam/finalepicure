@@ -2,16 +2,17 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Rootstate } from '../../store/store';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
+import { IDishes } from '../SignatureDish/DishCard';
 
 interface IModal {
 	closeButton: Function;
 }
 
 const AddDish: React.FC<IModal> = (props: IModal) => {
-	const restData = useSelector(
+	const dishData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
-	const [rest, setRest] = useState<any>(restData);
+	const [dish, setDish] = useState<any>(dishData);
 	const [inputValues, setInputValues] = useState({});
 	interface InputField {
 		id: string;
@@ -74,14 +75,9 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		));
 	};
 
-	// const postInformation = () => {
-	// 	return comment;
-	// 	//to come back!!
-	// };
-
-	const newRest = async () => {
+	const newDish = async () => {
 		try {
-			await fetch('http://localhost:8000/restaurant/', {
+			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
 				body: JSON.stringify({}),
 				headers: {
@@ -90,22 +86,15 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 			})
 				.then((response) => response.json())
 				.then((data) => {
-					setRest((newRest: IRestaurants[]) => [...newRest, data]);
-					// setFirstName('');
-					// setLastName('');
-					// setEmail('');
-					// setPassword('');
-					// navigate('/SignIn');
+					setDish((newdish: IDishes[]) => [...newdish, data]);
 				});
 		} catch (err) {
 			alert('please try again');
 			console.log(err);
 		}
 	};
-
-	// const navigate = useNavigate();
 	const handleRegister = async (e: any) => {
-		await newRest();
+		await newDish();
 	};
 
 	const handSaveRest = async (e: any) => {
@@ -121,8 +110,6 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 			img: '',
 		};
 		const inputObj = e.target;
-		console.log(credentials);
-
 		Object.values(inputObj).forEach((obj: any) => {
 			switch (obj.name) {
 				case 'dishPrice':
@@ -135,13 +122,13 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 				case 'icons':
 					credentials[obj.name] = obj.value.split(',').map(String);
 					break;
-				// credentials[obj.name] = obj.value.split(',').map(Number);
-				// break;
 				default:
 					credentials[obj.name] = obj.value;
 					break;
 			}
 		});
+
+		await newDish();
 	};
 
 	return (
