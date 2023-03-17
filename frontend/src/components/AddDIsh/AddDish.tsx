@@ -1,4 +1,4 @@
-import { Types } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -99,10 +99,18 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		icons: string
 	) => {
 		try {
+			// Check if the provided _id is a valid ObjectId
+			if (!mongoose.Types.ObjectId.isValid(icons)) {
+				throw new Error('Invalid ObjectId');
+			}
+			// Use the provided _id to create a valid ObjectId
+			const objectId = mongoose.Types.ObjectId.createFromHexString(icons);
+
+			console.log('objectId:', objectId);
 			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
 				body: JSON.stringify({
-					_id: Types.ObjectId.createFromHexString(_id),
+					_id: objectId, // Use the valid objectId instead of the _id parameter
 					img: img,
 					about: about,
 					dishName: dishName,

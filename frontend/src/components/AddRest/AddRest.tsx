@@ -131,13 +131,10 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		rating: string
 	) => {
 		try {
-			console.log('_id:', rating);
-
 			// Check if the provided _id is a valid ObjectId
 			if (!mongoose.Types.ObjectId.isValid(rating)) {
 				throw new Error('Invalid ObjectId');
 			}
-
 			// Use the provided _id to create a valid ObjectId
 			const objectId = mongoose.Types.ObjectId.createFromHexString(rating);
 

@@ -24,18 +24,18 @@ export const dishesSchema = new Schema<IDishes>({
 		auto: true,
 	},
 	id: { type: Number, required: false },
-	name: { type: String, required: true },
+	name: { type: String, required: false },
 	time: { type: [String], required: false },
-	about: { type: String, required: true },
-	price: { type: Number, required: true },
+	about: { type: String, required: false },
+	price: { type: Number, required: false },
 	allergan: { type: [String], required: false },
 	icons: { type: [String], required: false },
 	sides: { type: [String], required: false },
 	changes: { type: [String], required: false },
-	img: { type: String, required: true },
+	img: { type: String, required: false },
 	signatureDish: { type: Boolean, required: false },
 	title: { type: String, required: false },
-	dishtitle: { type: String, required: true },
+	dishtitle: { type: String, required: false },
 });
 
 export const DishesModal = mongoose.model<IDishes>('dishes', dishesSchema);
