@@ -11,6 +11,7 @@ interface IModal {
 }
 
 const AddRest: React.FC<IModal> = (props: IModal) => {
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const navigate = useNavigate();
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const restData = useSelector(
@@ -116,6 +117,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const newRest = async (
+		_id: string,
 		restName: string,
 		address: string,
 		chefId: string,
@@ -139,6 +141,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					openYears: openYears,
 					rating: rating,
 					img: img,
+					_id: _id,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -218,6 +221,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		const openHours = credentials.openHours;
 		const openYears = credentials.openYears;
 		const rating = credentials.rating;
+		const _id = data._id;
 		await newRest(
 			restName,
 			address,
@@ -227,7 +231,8 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			openDays,
 			openHours,
 			openYears,
-			rating
+			rating,
+			_id
 		);
 	};
 

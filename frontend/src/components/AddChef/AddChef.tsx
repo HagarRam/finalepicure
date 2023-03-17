@@ -9,6 +9,7 @@ interface IModal {
 }
 
 const AddChef: React.FC<IModal> = (props: IModal) => {
+	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const chefsdata = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const [chefs, setChefs] = useState<any>(chefsdata);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
@@ -72,7 +73,12 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		);
 	};
 
-	const newChef = async (name: string, description: string, img: string) => {
+	const newChef = async (
+		name: string,
+		description: string,
+		img: string,
+		_id: string
+	) => {
 		try {
 			await fetch('http://localhost:8000/chef/', {
 				method: 'POST',
@@ -80,6 +86,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 					name: name,
 					description: description,
 					img: img,
+					_id: _id,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -121,8 +128,8 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		const name = credentials.name;
 		const description = credentials.description;
 		const img = credentials.img;
-		console.log(name, img, description);
-		await newChef(name, img, description);
+		const _id = data._id;
+		await newChef(name, img, description, _id);
 	};
 
 	return (

@@ -10,6 +10,6 @@ import isAdmin from '../../middleWare/AdminMiddleWare';
 const dishesRouter = express.Router();
 
 dishesRouter.get('/', getAllDishes);
-dishesRouter.delete('/', deleteDishes);
+dishesRouter.delete('/', isAdmin('640dae4cd58da0771cc7b736'), deleteDishes);
 dishesRouter.post('/', isAdmin('640dae4cd58da0771cc7b736'), postDish);
 export default dishesRouter;

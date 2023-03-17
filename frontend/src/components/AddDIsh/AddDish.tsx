@@ -165,8 +165,9 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		const dishName = credentials.name;
 		const dishPrice = credentials.price;
 		const icons = credentials.icons;
+		const _id = data._id;
 
-		await newDish(img, about, dishName, dishPrice, icons, data._id);
+		await newDish(img, about, dishName, dishPrice, icons, _id);
 	};
 
 	return (
