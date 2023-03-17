@@ -1,4 +1,4 @@
-import { Types } from 'mongoose';
+import mongoose, { Types } from 'mongoose';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -117,6 +117,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			</div>
 		));
 	};
+
 	const newRest = async (
 		_id: string,
 		restName: string,
@@ -130,13 +131,22 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		rating: string
 	) => {
 		try {
-			if (!Types.ObjectId.isValid(_id)) {
+			console.log('_id:', rating);
+
+			// Check if the provided _id is a valid ObjectId
+			if (!mongoose.Types.ObjectId.isValid(rating)) {
 				throw new Error('Invalid ObjectId');
 			}
+
+			// Use the provided _id to create a valid ObjectId
+			const objectId = mongoose.Types.ObjectId.createFromHexString(rating);
+
+			console.log('objectId:', objectId);
 
 			await fetch('http://localhost:8000/restaurant/', {
 				method: 'POST',
 				body: JSON.stringify({
+					_id: objectId, // Use the valid objectId instead of the _id parameter
 					restName: restName,
 					address: address,
 					chefId: chefId,
@@ -146,7 +156,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					openYears: openYears,
 					rating: rating,
 					img: img,
-					_id: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',

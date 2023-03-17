@@ -10,7 +10,7 @@ import { Rootstate } from '../../store/store';
 import clock from './OneRestImages/clock.svg';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
 import { removeRest } from '../../store/slices/restaurantsSlice';
-import { ObjectId } from 'mongoose';
+import { ObjectId, Types } from 'mongoose';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import AddDish from '../AddDIsh/AddDish';
 
@@ -45,12 +45,13 @@ const OneRest: React.FC = () => {
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
-	const deleteRestaurant = async (id: string) => {
+	const deleteRestaurant = async (id: string, _id: string) => {
 		try {
 			const response = await fetch(`http://localhost:8000/restaurant`, {
 				method: 'DELETE',
 				body: JSON.stringify({
 					id: id,
+					_id: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -69,7 +70,7 @@ const OneRest: React.FC = () => {
 	};
 	const handleRegister = async (id: string) => {
 		if (window.confirm(`Are you sure you want to delete?`)) {
-			await deleteRestaurant(id);
+			await deleteRestaurant(id, data._id);
 		}
 	};
 
