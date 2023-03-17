@@ -143,9 +143,9 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		e.preventDefault();
 		const credentials: any = {
 			id: 0,
-			name: '',
+			dishName: '',
 			about: '',
-			price: '',
+			dishPrice: '',
 			icons: [],
 			img: '',
 		};

@@ -22,44 +22,6 @@ const data = async () => {
 	}
 };
 
-// const orderDish = async (
-// 	id: number,
-// 	name: string,
-// 	price: number,
-// 	img: string,
-// 	comment: string,
-// 	quantity: number
-// ) => {
-// 	await fetch('http://localhost:8000/dishes/orderdish/', {
-// 		method: 'POST',
-// 		body: JSON.stringify({
-// 			id: id,
-// 			name: name,
-// 			price: price,
-// 			img: img,
-// 			dishtitle: 'dish-order-card-element',
-// 			comment: comment,
-// 			quantity: quantity,
-// 		}),
-// 		headers: {
-// 			'Content-type': 'application/json; charset=UTF-8',
-// 		},
-// 	})
-// 		.then((response) => response.json())
-// 		.then((data) => {
-// 			setDishes((dish: any) => [data, ...dish]),
-// 				setId(0),
-// 				setName(''),
-// 				setPrice(0),
-// 				setQuantity(0),
-// 				setImg(''),
-// 				setComment(['']);
-// 		})
-// 		.catch((err) => {
-// 			console.log(err.message);
-// 		});
-// };
-
 const dishes: IDishes[] = await data();
 
 export const dishesSlice = createSlice({
@@ -72,7 +34,11 @@ export const dishesSlice = createSlice({
 		createOrder: (state) => {
 			state.filteredValue = state.value;
 		},
+		removeDish: (state, action) => {
+			state.filteredValue = action.payload;
+			state.value = action.payload;
+		},
 	},
 });
-
+export const { createOrder, removeDish } = dishesSlice.actions;
 export default dishesSlice.reducer;
