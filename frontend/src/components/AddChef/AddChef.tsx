@@ -58,7 +58,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 						key={field.id}>
 						{field.title && <div id="input-title">{field.title}</div>}
 						<input
-							id={field.id}
+							id="input-full-Name"
 							placeholder={field.placeholder}
 							type={field.type}
 							name={field.name}
@@ -139,7 +139,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 				<div
 					id="restaurants-card-Modal"
 					className="modal">
-					<div className="content">
+					<div className="add-information">
 						<span
 							id="closeButton"
 							onClick={() => props.closeButton()}
@@ -150,12 +150,13 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 							<div>
 								<div id="information">{renderInputs(restDetails)}</div>
 							</div>
-							<button
-								id="add-button"
-								type="submit">
-								ADD CHEF
-							</button>
-						</div>
+						</div>{' '}
+						<button
+							className="submit"
+							// id="add-button"
+							type="submit">
+							<span>ADD CHEF </span>
+						</button>
 					</div>
 				</div>
 			</form>

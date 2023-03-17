@@ -185,7 +185,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 				<div
 					id="restaurants-card-Modal"
 					className="modal">
-					<div className="content">
+					<div className="add-information">
 						<span
 							id="closeButton"
 							onClick={() => props.closeButton()}
@@ -197,9 +197,10 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 								<div id="information">{renderInputs(restDetails)}</div>
 							</div>
 							<button
-								id="add-button"
+								className="submit"
+								// id="add-button"
 								type="submit">
-								ADD DISH
+								<span>ADD DISH </span>
 							</button>
 						</div>
 					</div>

@@ -263,24 +263,28 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						</span>
 						<div className="rest-information">
 							<div id="information">
-								<select onChange={handleChangeChef}>
-									<option>CHEF'S</option>
+								<select
+									onChange={handleChangeChef}
+									id="selectChef">
+									<option>SELECT YOUR CHEF'S</option>
 									{chefData.map((chef: IChef) => (
 										<option
+											id="option"
 											key={chef._id?.toString()}
 											value={chef._id?.toString()}>
 											{chef.name}
 										</option>
 									))}
 								</select>
-								<div>{renderInputs(restDetails)}</div>
-								<button
-									id="add-button"
-									type="submit">
-									ADD RESTAURANT
-								</button>
-							</div>
-						</div>
+								<div id="render">{renderInputs(restDetails)}</div>
+							</div>{' '}
+						</div>{' '}
+						<button
+							className="submit"
+							// id="add-button"
+							type="submit">
+							<span>ADD RESTAURANT </span>
+						</button>
 					</div>
 				</div>
 			</form>
