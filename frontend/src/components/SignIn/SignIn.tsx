@@ -25,9 +25,9 @@ const SignIn: React.FC = () => {
 			});
 			sessionStorage.setItem('data', JSON.stringify(userReq.data));
 			dispatch(setActiveUsers(email));
-			message();
 			setEmail('');
 			setPassword('');
+			navigate('/');
 		} catch (error: any) {
 			alert(error.response.data);
 			return [];
@@ -39,9 +39,9 @@ const SignIn: React.FC = () => {
 	};
 
 	const navigate = useNavigate();
-	const message = () => {
-		navigate('/');
-	};
+	// const message = () => {
+	// 	navigate('/');
+	// };
 	return (
 		<div id="sign-in-page">
 			{' '}

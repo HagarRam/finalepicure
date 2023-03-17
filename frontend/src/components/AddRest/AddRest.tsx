@@ -117,7 +117,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			</div>
 		));
 	};
-
 	const newRest = async (
 		_id: string,
 		restName: string,
@@ -131,6 +130,10 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		rating: string
 	) => {
 		try {
+			if (!Types.ObjectId.isValid(_id)) {
+				throw new Error('Invalid ObjectId');
+			}
+
 			await fetch('http://localhost:8000/restaurant/', {
 				method: 'POST',
 				body: JSON.stringify({
@@ -236,6 +239,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			rating,
 			_id
 		);
+		console.log(credentials);
 	};
 
 	return (

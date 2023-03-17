@@ -10,7 +10,7 @@ import { removeChef } from '../../store/slices/chefSlice';
 import './OneChef.css';
 import { IChef } from '../ChefPage/ChefPage';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
-import { ObjectId } from 'mongoose';
+import { ObjectId, Types } from 'mongoose';
 import AddRest from '../AddRest/AddRest';
 
 const OneChef: React.FC = () => {
@@ -32,12 +32,13 @@ const OneChef: React.FC = () => {
 		setDeleteChefed(IdNum);
 	}, [chefData, IdNum]);
 
-	const deletechef = async (id: string) => {
+	const deletechef = async (id: string, _id: string) => {
 		try {
 			const response = await fetch(`http://localhost:8000/chef`, {
 				method: 'DELETE',
 				body: JSON.stringify({
 					id: id,
+					_id: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -57,7 +58,7 @@ const OneChef: React.FC = () => {
 	};
 	const handleRegister = async (id: string) => {
 		if (window.confirm(`Are you sure you want to delete?`)) {
-			await deletechef(id);
+			await deletechef(id, data._id);
 		}
 	};
 	const openModal = () => {
