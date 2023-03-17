@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -12,6 +13,7 @@ interface IModal {
 
 const AddRest: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
+	console.log(data);
 	const navigate = useNavigate();
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const restData = useSelector(
@@ -141,7 +143,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					openYears: openYears,
 					rating: rating,
 					img: img,
-					_id: _id,
+					_id: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',

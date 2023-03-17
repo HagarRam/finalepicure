@@ -1,12 +1,19 @@
 import { Request, Response, NextFunction } from 'express';
-import { ObjectId } from 'mongoose';
 
 const isAdmin =
 	(admin: string) =>
 	async (req: Request, res: Response, next: NextFunction) => {
-		if (req.body?.id === admin) {
+		const id = req.body._id;
+		console.log(id);
+		if (!id) {
+			return res.status(403).send('access denied');
+		}
+
+		if (id === admin) {
 			return next();
 		}
+
 		return res.status(403).send('access denied');
 	};
+
 export default isAdmin;

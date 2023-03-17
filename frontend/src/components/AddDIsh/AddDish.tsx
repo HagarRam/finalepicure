@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -101,7 +102,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
 				body: JSON.stringify({
-					_id: _id,
+					_id: Types.ObjectId.createFromHexString(_id),
 					img: img,
 					about: about,
 					dishName: dishName,

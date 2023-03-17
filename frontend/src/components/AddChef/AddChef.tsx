@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
 import { IChef } from '../ChefPage/ChefPage';
-
+import { Types } from 'mongoose';
 interface IModal {
 	closeButton: () => void;
 }
@@ -35,16 +35,16 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		},
 		{
 			id: 'description-input',
-			placeholder: 'Enter about the chef',
+			placeholder: 'Enter image URL',
 			type: 'text',
-			title: 'Description',
+			title: 'Image',
 			name: 'description',
 		},
 		{
 			id: 'img-input',
-			placeholder: 'Enter image URL',
+			placeholder: 'Enter about the chef',
 			type: 'text',
-			title: 'Image',
+			title: 'Description',
 			name: 'img',
 		},
 	];
@@ -86,7 +86,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 					name: name,
 					description: description,
 					img: img,
-					_id: _id,
+					_id: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -129,6 +129,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		const description = credentials.description;
 		const img = credentials.img;
 		const _id = data._id;
+		console.log(credentials);
 		await newChef(name, img, description, _id);
 	};
 

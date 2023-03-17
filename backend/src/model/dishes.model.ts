@@ -19,7 +19,10 @@ export interface IDishes {
 }
 
 export const dishesSchema = new Schema<IDishes>({
-	_id: { type: Schema.Types.ObjectId, required: false },
+	_id: {
+		type: mongoose.Schema.Types.ObjectId,
+		auto: true,
+	},
 	id: { type: Number, required: false },
 	name: { type: String, required: true },
 	time: { type: [String], required: false },

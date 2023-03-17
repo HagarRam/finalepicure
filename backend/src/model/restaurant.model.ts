@@ -26,7 +26,10 @@ export interface IRestaurants {
 }
 
 export const restaurantsSchema = new Schema<IRestaurants>({
-	_id: { type: Schema.Types.ObjectId, required: false },
+	_id: {
+		type: mongoose.Schema.Types.ObjectId,
+		auto: true,
+	},
 	id: { type: Number, required: false },
 	name: { type: String, required: true },
 	address: { type: [String], required: false },
