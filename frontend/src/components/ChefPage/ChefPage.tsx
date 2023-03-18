@@ -33,8 +33,6 @@ const ChefsPage: React.FC = () => {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
-	console.log(data._id);
-	console.log(typeof data._id);
 	const openModal = () => {
 		setIsModalOpen(true);
 	};

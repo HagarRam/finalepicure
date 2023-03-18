@@ -132,7 +132,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			await fetch('http://localhost:8000/restaurant/', {
 				method: 'POST',
 				body: JSON.stringify({
-					_id: objectId, // Use the valid objectId instead of the _id parameter
+					userId: objectId, // Use the valid objectId instead of the _id parameter
 					name: name,
 					address: address,
 					chef: chef,

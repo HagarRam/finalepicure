@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 const isAdmin =
 	(admin: string) =>
 	async (req: Request, res: Response, next: NextFunction) => {
-		const id = req.body._id;
+		const id = req.body.userId;
 		console.log(id);
 		if (!id) {
 			return res.status(403).send('access denied');

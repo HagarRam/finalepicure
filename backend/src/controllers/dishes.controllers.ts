@@ -1,6 +1,7 @@
 import { dishOrder, getDishes, deleteDish } from '../service/dishes.service';
 import express, { Request, Response } from 'express';
 import { DishesModal } from '../model/dishes.model';
+import { RestaurantsModal } from '../model/restaurant.model';
 
 export const getAllDishes = async (req: Request, res: Response) => {
 	try {
@@ -13,18 +14,26 @@ export const getAllDishes = async (req: Request, res: Response) => {
 };
 export const postDish = async (req: Request, res: Response) => {
 	try {
-		const { about, dishName, dishPrice, icons, img } = req.body;
-		if (!(about && dishName && dishPrice && icons && img)) {
+		const { restId, img, about, name, price, icons } = req.body;
+		console.log(req.body);
+		if (!(restId && about && name && price && icons && img)) {
 			return res.status(400).send('All input is required');
 		}
 		const dish = await DishesModal.create({
 			about,
-			dishName,
-			dishPrice,
+			name,
+			price,
 			icons,
 			img,
 		});
 		const newdish = await dishOrder(req.body);
+		const restaurant = await RestaurantsModal.findById(restId);
+		if (!restaurant) {
+			return res.status(404).send('Restaurant not found');
+		}
+		restaurant.dishes?.push(dish._id);
+		await restaurant.save();
+
 		res.status(201).json(newdish);
 	} catch (err: any) {
 		console.log(err);
@@ -35,10 +44,19 @@ export const postDish = async (req: Request, res: Response) => {
 export const deleteDishes = async (req: Request, res: Response) => {
 	try {
 		const dishes = await deleteDish(req.body.id);
+		console.log(req.body);
+		const restaurant = await RestaurantsModal.findById(req.body.id);
+		if (!restaurant) {
+			return res.status(404).send('Restaurant not found');
+		}
+		restaurant.dishes = restaurant.dishes?.filter(
+			(dish) => dish.toString() !== req.body.id
+		);
+		await restaurant.save();
 		return res.status(200).json({
 			status: 200,
 			data: dishes,
-			message: 'Successfully removed chef',
+			message: 'Successfu	lly removed chef',
 		});
 	} catch (err: any) {
 		console.log(err);

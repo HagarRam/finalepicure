@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 export interface IChef {
 	_id: ObjectId;
 	id?: number;
+	userId: ObjectId;
 	name: string;
 	restaurant?: ObjectId[];
 	age?: number;
@@ -17,6 +18,10 @@ export interface IChef {
 
 export const chefsSchema = new Schema<IChef>({
 	_id: {
+		type: mongoose.Schema.Types.ObjectId,
+		auto: true,
+	},
+	userId: {
 		type: mongoose.Schema.Types.ObjectId,
 		auto: true,
 	},

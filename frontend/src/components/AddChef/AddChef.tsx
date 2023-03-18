@@ -86,7 +86,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 					name: name,
 					description: description,
 					img: img,
-					_id: Types.ObjectId.createFromHexString(_id),
+					userId: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',

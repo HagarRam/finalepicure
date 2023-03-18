@@ -58,7 +58,7 @@ const DishCard: React.FC<IDishes> = (props: IDishes) => {
 				method: 'DELETE',
 				body: JSON.stringify({
 					id: id,
-					_id: Types.ObjectId.createFromHexString(_id),
+					userId: Types.ObjectId.createFromHexString(_id),
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',

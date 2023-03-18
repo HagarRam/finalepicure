@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 export interface IDishes {
 	_id: ObjectId;
 	id: number;
+	userId: ObjectId;
 	name: string;
 	time?: string[];
 	about: string;
@@ -24,6 +25,10 @@ export const dishesSchema = new Schema<IDishes>({
 		auto: true,
 	},
 	id: { type: Number, required: false },
+	userId: {
+		type: mongoose.Schema.Types.ObjectId,
+		auto: true,
+	},
 	name: { type: String, required: true },
 	time: { type: [String], required: false },
 	about: { type: String, required: true },

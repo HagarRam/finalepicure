@@ -1,9 +1,8 @@
 import mongoose, { Types } from 'mongoose';
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Rootstate } from '../../store/store';
-import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { IDishes } from '../SignatureDish/DishCard';
 
 interface IModal {
@@ -16,6 +15,8 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 	const dishData = useSelector(
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
+	const restaurantId = useParams<string>();
+
 	const [dish, setDish] = useState<any>(dishData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
 		dishName: '',
@@ -92,6 +93,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 
 	const newDish = async (
 		_id: string,
+		restId: string,
 		img: string,
 		about: string,
 		dishName: string,
@@ -100,22 +102,23 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 	) => {
 		try {
 			// Check if the provided _id is a valid ObjectId
-			if (!mongoose.Types.ObjectId.isValid(icons)) {
+			if (!mongoose.Types.ObjectId.isValid(_id)) {
 				throw new Error('Invalid ObjectId');
 			}
 			// Use the provided _id to create a valid ObjectId
-			const objectId = mongoose.Types.ObjectId.createFromHexString(icons);
+			const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
 
 			console.log('objectId:', objectId);
 			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
 				body: JSON.stringify({
-					_id: objectId, // Use the valid objectId instead of the _id parameter
+					userId: objectId, // Use the valid objectId instead of the _id parameter
 					img: img,
 					about: about,
-					dishName: dishName,
-					dishPrice: dishPrice,
+					name: dishName,
+					price: dishPrice,
 					icons: icons,
+					restId: restId,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -143,6 +146,7 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		e.preventDefault();
 		const credentials: any = {
 			id: 0,
+			restId: '',
 			dishName: '',
 			about: '',
 			dishPrice: '',
@@ -168,15 +172,14 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
-		console.log(credentials);
 		const img = credentials.img;
 		const about = credentials.about;
-		const dishName = credentials.name;
-		const dishPrice = credentials.price;
+		const dishName = credentials.dishName;
+		const dishPrice = credentials.dishPrice;
 		const icons = credentials.icons;
 		const _id = data._id;
-
-		await newDish(img, about, dishName, dishPrice, icons, _id);
+		const restId: string = restaurantId.dishID ?? 'undefined ';
+		await newDish(_id, restId, img, about, dishName, dishPrice, icons);
 	};
 
 	return (

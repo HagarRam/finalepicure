@@ -5,6 +5,7 @@ import {
 } from '../service/restaurants.service';
 import express, { Request, Response } from 'express';
 import { RestaurantsModal } from '../model/restaurant.model';
+import { chefsModal } from '../model/chefs.model';
 
 export const getAllRestaurants = async (req: Request, res: Response) => {
 	try {
@@ -19,6 +20,14 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
 export const deleteRest = async (req: Request, res: Response) => {
 	try {
 		const restaurants = await removeRest(req.body.id);
+		const chefs = await chefsModal.findById(req.body.id);
+		if (!chefs) {
+			return res.status(404).send('Restaurant not found');
+		}
+		chefs.restaurant = chefs.restaurant?.filter(
+			(dish) => dish.toString() !== req.body.id
+		);
+		await chefs.save();
 		return res.status(200).json({
 			status: 200,
 			data: restaurants,
@@ -67,7 +76,12 @@ export const newRest = async (req: Request, res: Response) => {
 			rating,
 		});
 		const newrest = await newRestaurant(req.body);
-		console.log(newrest);
+		const restChef = await chefsModal.findById(chefId);
+		if (!restChef) {
+			return res.status(404).send('chef not found');
+		}
+		restChef.restaurant?.push(rest._id);
+		await restChef.save();
 		res.status(201).json(newrest);
 	} catch (err: any) {
 		console.log(err);
