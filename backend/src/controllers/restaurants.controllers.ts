@@ -35,45 +35,35 @@ export const deleteRest = async (req: Request, res: Response) => {
 
 export const newRest = async (req: Request, res: Response) => {
 	try {
-		const {
-			restName,
-			address,
-			chefId,
-			chefName,
-			img,
-			openDays,
-			openHours,
-			openYears,
-			rating,
-		} = req.body;
+		const { name, address, chefId, chef, img, openDays, openHours, rating } =
+			req.body;
+		console.log(req.body);
 		if (
 			!(
-				restName &&
+				name &&
 				address &&
-				chefName &&
 				chefId &&
-				img &&
+				chef &&
 				openDays &&
 				openHours &&
-				openYears &&
+				img &&
 				rating
 			)
 		) {
 			return res.status(400).send('All input is required');
 		}
-		const oldrest = await RestaurantsModal.findOne({ restName });
+		const oldrest = await RestaurantsModal.findOne({ name });
 		if (oldrest) {
 			return res.status(409).send('User Already Exist. Please write again');
 		}
 		const rest = await RestaurantsModal.create({
-			restName,
+			name,
 			address,
 			chefId,
-			chefName,
+			chef,
 			img,
 			openDays,
 			openHours,
-			openYears,
 			rating,
 		});
 		const newrest = await newRestaurant(req.body);

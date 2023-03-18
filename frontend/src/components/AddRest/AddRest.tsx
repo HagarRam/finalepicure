@@ -22,7 +22,7 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 	const [selectedChef, setSelectedChef] = useState('');
 	const [rest, setRest] = useState<any>(restData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
-		restName: '',
+		name: '',
 		address: '',
 		chefId: '',
 		chefName: '',
@@ -45,14 +45,14 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			placeholder: 'Enter restaurant name',
 			type: 'text',
 			title: 'Restaurant Name',
-			name: 'restName',
+			name: 'name',
 		},
 		{
 			id: 'chef-input',
 			placeholder: 'Enter chef name',
 			type: 'text',
 			title: 'Chef Name',
-			name: 'chefName',
+			name: 'chef',
 		},
 		{
 			id: 'open-hours-input',
@@ -74,13 +74,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 			type: 'text',
 			title: 'Open Days',
 			name: 'openDays',
-		},
-		{
-			id: 'open-year-input',
-			placeholder: 'Enter open year',
-			type: 'text',
-			title: 'Open Year',
-			name: 'openYears',
 		},
 		{
 			id: 'img-input',
@@ -120,37 +113,33 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 
 	const newRest = async (
 		_id: string,
-		restName: string,
+		name: string,
 		address: string,
 		chefId: string,
-		chefName: string,
+		chef: string,
 		img: string,
 		openDays: string,
 		openHours: string,
-		openYears: string,
 		rating: string
 	) => {
 		try {
 			// Check if the provided _id is a valid ObjectId
-			if (!mongoose.Types.ObjectId.isValid(rating)) {
+			if (!mongoose.Types.ObjectId.isValid(_id)) {
 				throw new Error('Invalid ObjectId');
 			}
 			// Use the provided _id to create a valid ObjectId
-			const objectId = mongoose.Types.ObjectId.createFromHexString(rating);
-
-			console.log('objectId:', objectId);
+			const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
 
 			await fetch('http://localhost:8000/restaurant/', {
 				method: 'POST',
 				body: JSON.stringify({
 					_id: objectId, // Use the valid objectId instead of the _id parameter
-					restName: restName,
+					name: name,
 					address: address,
 					chefId: chefId,
-					chefName: chefName,
+					chef: chef,
 					openDays: openDays,
 					openHours: openHours,
-					openYears: openYears,
 					rating: rating,
 					img: img,
 				}),
@@ -162,14 +151,13 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 				.then((data) => {
 					setRest((newRest: [IRestaurants]) => [...newRest, data]);
 					setInputValues({
-						restName: '',
+						name: '',
 						address: '',
 						chefId: '',
-						chefName: '',
+						chef: '',
 						img: '',
 						openDays: '',
 						openHours: '',
-						openYears: '',
 						rating: '',
 					});
 					navigate('/');
@@ -186,34 +174,30 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 		e.preventDefault();
 		const credentials: any = {
 			id: 0,
-			restName: '',
-			chefName: '',
+			name: '',
 			address: [],
+			chef: '',
 			chefId: '',
 			openHours: [],
 			openDays: [],
-			openYear: 0,
-			img: '',
+			dishes: [],
 			rating: 0,
+			img: '',
 		};
 		const inputObj = e.target;
-
 		Object.values(inputObj).forEach((obj: any) => {
 			switch (obj.name) {
 				case 'rating':
 					credentials[obj.name] = Number(obj.value);
 					break;
-				case 'restName':
+				case 'name':
+				case 'chef':
+				case 'img':
 					credentials[obj.name] = obj.value;
 					break;
-				case 'chefName':
-					credentials[obj.name] = value;
-					break;
-				case 'img':
 				case 'address':
 					credentials[obj.name] = obj.value.split(',').map(String);
 					break;
-				case 'openYears':
 				case 'openDays':
 				case 'openHours':
 					credentials[obj.name] = obj.value.split(',').map(Number);
@@ -223,29 +207,27 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 					break;
 			}
 		});
-		const restName = credentials.restName;
+		const restName = credentials.name;
 		const address = credentials.address;
+		credentials.chefId = selectedChef;
 		const chefId = credentials.chefId;
-		const chefName = credentials.chefName;
+		const chefName = credentials.chef;
 		const img = credentials.img;
 		const openDays = credentials.openDays;
 		const openHours = credentials.openHours;
-		const openYears = credentials.openYears;
 		const rating = credentials.rating;
 		const _id = data._id;
 		await newRest(
+			_id,
 			restName,
 			address,
-			chefId,
 			chefName,
+			chefId,
 			img,
 			openDays,
 			openHours,
-			openYears,
-			rating,
-			_id
+			rating
 		);
-		console.log(credentials);
 	};
 
 	return (
@@ -281,7 +263,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 						</div>{' '}
 						<button
 							className="submit"
-							// id="add-button"
 							type="submit">
 							<span>ADD RESTAURANT </span>
 						</button>
@@ -289,52 +270,6 @@ const AddRest: React.FC<IModal> = (props: IModal) => {
 				</div>
 			</form>
 			<div />
-			{/* <div id="app-cover">
-				<div id="select-box">
-					<input
-						type="checkbox"
-						id="options-view-button"
-					/>
-					<div
-						id="select-button"
-						className="brd">
-						<div id="selected-value">
-							<span>Select a Chef</span>
-						</div>
-						<div id="chevrons">
-							<i className="fas fa-chevron-up"></i>
-							<i className="fas fa-chevron-down"></i>
-						</div>
-					</div>
-					<div id="options">
-						{chefData.map((chef: IChef) => (
-							<div
-								className="option"
-								key={chef._id?.toString()}>
-								<input
-									className="s-c top"
-									type="radio"
-									name="chef"
-									id={chef._id?.toString()}
-									value={chef._id?.toString()}
-									onChange={handleChangeChef}
-								/>
-								<input
-									className="s-c bottom"
-									type="radio"
-									name="chef"
-									id={chef._id?.toString()}
-									value={chef._id?.toString()}
-									onChange={handleChangeChef}
-								/>
-								<span className="label">{chef.name}</span>
-								<span className="opt-val">{chef.name}</span>
-							</div>
-						))}
-						<div id="option-bg"></div>
-					</div>
-				</div>
-			</div> */}
 		</div>
 	);
 };

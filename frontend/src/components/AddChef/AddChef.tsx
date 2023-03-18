@@ -129,7 +129,6 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 		const description = credentials.description;
 		const img = credentials.img;
 		const _id = data._id;
-		console.log(credentials);
 		await newChef(name, img, description, _id);
 	};
 
@@ -153,7 +152,6 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 						</div>{' '}
 						<button
 							className="submit"
-							// id="add-button"
 							type="submit">
 							<span>ADD CHEF </span>
 						</button>
