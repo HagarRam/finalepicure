@@ -110,30 +110,3 @@ const YourOrderSubmit: React.FC = () => {
 };
 
 export default YourOrderSubmit;
-// if (data) {
-// 	const comment = data.map((comment: any) => {
-// 		return comment.comment;
-// 	});
-// 	// rest of your code
-// } else {
-// 	// handle the case where data is undefined
-// }
-
-// if (data) {
-// 	const number = data.map((number: any) => {
-// 		return number.number;
-// 	});
-// 	// rest of your code
-// } else {
-// 	// handle the case where data is undefined
-// }
-
-// // const number =
-// // 	data?.map((number: any) => {
-// // 		return number.number;
-// // 	}) ?? [];
-
-// const orderData: IDishes[] =
-// 	SignatureDishData?.filter((rest: IDishes) => {
-// 		return dishData?.includes(rest._id);
-// 	}) ?? [];

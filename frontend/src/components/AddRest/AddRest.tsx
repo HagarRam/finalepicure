@@ -13,7 +13,6 @@ interface IModal {
 
 const AddRest: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
-	console.log(data);
 	const navigate = useNavigate();
 	const chefData = useSelector((state: Rootstate) => state.chef.filteredValue);
 	const restData = useSelector(

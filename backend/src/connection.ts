@@ -6,7 +6,7 @@ const uri = token;
 export const connectToDB = async () => {
 	try {
 		await connect(`${uri}`);
-		console.log('db connected');
+		('db connected');
 	} catch (err) {
 		console.log('error connecting to db', err);
 	}

@@ -14,21 +14,7 @@ const NavBar: React.FC = () => {
 	if (data.firstName && data.lastName) {
 		const closeButton2 = document.getElementById('logout');
 		message = `Welcome to Epicure, ${data.firstName} ${data.lastName}!`;
-		// if (closeButton2) {
-		// 	closeButton2.style.display = 'block';
-		// }
 	}
-
-	// function closeButton(): void {
-	// 	const messageDiv = document.getElementById('welcomeMessage');
-	// 	const closeButton2 = document.getElementById('logout');
-	// 	if (messageDiv && closeButton2) {
-	// 		messageDiv.style.display = 'none';
-	// 		closeButton2.style.display = 'none';
-	// 		sessionStorage.clear();
-	// 	}
-	// }
-
 	return (
 		<div id="navbar">
 			<NavBarLeft />

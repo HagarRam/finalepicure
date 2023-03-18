@@ -6,7 +6,7 @@ const UserLogin: React.FC = () => {
 	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 
 	const navigate = useNavigate();
-	const logOut = (e: any) => {
+	const logOut = (e: React.MouseEvent) => {
 		e.preventDefault();
 		navigate('/');
 		sessionStorage.clear();

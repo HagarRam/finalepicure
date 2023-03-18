@@ -16,7 +16,6 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		(state: Rootstate) => state.restaurants.filteredValue
 	);
 	const restaurantId = useParams<string>();
-
 	const [dish, setDish] = useState<any>(dishData);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
 		dishName: '',
@@ -107,8 +106,6 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 			}
 			// Use the provided _id to create a valid ObjectId
 			const objectId = mongoose.Types.ObjectId.createFromHexString(_id);
-
-			console.log('objectId:', objectId);
 			await fetch('http://localhost:8000/dishes/', {
 				method: 'POST',
 				body: JSON.stringify({
@@ -142,7 +139,9 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 		}
 	};
 
-	const handSaveRest = async (e: any) => {
+	const handSaveRest = async (
+		e: React.FormEvent<HTMLFormElement>
+	): Promise<void> => {
 		e.preventDefault();
 		const credentials: any = {
 			id: 0,
@@ -201,7 +200,6 @@ const AddDish: React.FC<IModal> = (props: IModal) => {
 							</div>
 							<button
 								className="submit"
-								// id="add-button"
 								type="submit">
 								<span>ADD DISH </span>
 							</button>

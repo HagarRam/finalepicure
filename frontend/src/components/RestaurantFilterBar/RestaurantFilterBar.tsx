@@ -8,7 +8,6 @@ import {
 	setOpenNow,
 	setMap,
 } from '../../store/slices/restaurantsSlice';
-// import MapContainer from '../MapView/MapContainer';
 import { IRestaurants } from '../RestaurantPage/RestaurantPage';
 import { Rootstate } from '../../store/store';
 import checkIfRestaurantIsOpen from '../OpenClose/OpenClose';
@@ -87,14 +86,7 @@ const RestaurantFilterBar: React.FC = () => {
 				onClick={() => handleSetActive('Map')}>
 				Map View
 			</button>
-			{isActiveMap && (
-				<div className="Map-Container">
-					{/* <MapContainer
-						lat={0}
-						lng={0}
-					/> */}
-				</div>
-			)}
+			{isActiveMap && <div className="Map-Container"></div>}
 		</div>
 	);
 };

@@ -1,7 +1,6 @@
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import SignUp from '../SignUp/SignUp';
-import './SignUpPage.css';
 
 const SignUpPage: React.FC = () => {
 	return (

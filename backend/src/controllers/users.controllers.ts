@@ -11,7 +11,7 @@ export const getAllUsers = async (req: Request, res: Response) => {
 	try {
 		const users = await getUsers();
 		return res.status(200).json(users);
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		throw err;
 	}
@@ -50,9 +50,6 @@ export const newUser = async (req: Request, res: Response) => {
 export const getoldUser = async function (req: Request, res: Response) {
 	try {
 		const { email, password } = req.body;
-		console.log(email);
-		console.log(password);
-
 		if (!(email && password)) {
 			res.status(400).send('All input is required');
 		}

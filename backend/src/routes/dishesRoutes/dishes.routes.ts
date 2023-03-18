@@ -5,7 +5,6 @@ import {
 	deleteDishes,
 } from '../../controllers/dishes.controllers';
 import isAdmin from '../../middleWare/AdminMiddleWare';
-// let bcrypt = require('bcrypt');
 
 const dishesRouter = express.Router();
 

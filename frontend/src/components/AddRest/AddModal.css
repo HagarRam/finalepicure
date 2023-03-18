@@ -6,7 +6,6 @@
 #selectChef {
 	all: unset;
 	border: solid 2.2px pink;
-	/* border: double; */
 }
 #option {
 	background-color: pink;
@@ -45,7 +44,6 @@
 	color: #ffffff;
 	text-align: center;
 	font-size: 28px;
-	/* padding: 20px; */
 	width: 200px;
 	transition: all 0.5s;
 	cursor: pointer;

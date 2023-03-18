@@ -2,7 +2,6 @@ import { configureStore } from '@reduxjs/toolkit';
 import chefReducer from './slices/chefSlice';
 import restaurantsReducer from './slices/restaurantsSlice';
 import userReducer from './slices/usersSlice';
-import activeUsersReducer from './slices/activeUsers';
 import dishesReducer from './slices/dishesSlice';
 import { IChefState } from '../components/ChefPage/ChefPage';
 import { IDishes } from '../components/SignatureDish/DishCard';

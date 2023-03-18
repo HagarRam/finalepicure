@@ -11,7 +11,7 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
 	try {
 		const restaurants = await getRestaurants();
 		return res.status(200).json(restaurants);
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		throw err;
 	}
@@ -33,7 +33,7 @@ export const deleteRest = async (req: Request, res: Response) => {
 			data: restaurants,
 			message: 'Successfully removed chef',
 		});
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		return res.status(500).json({
 			status: 500,
@@ -46,7 +46,6 @@ export const newRest = async (req: Request, res: Response) => {
 	try {
 		const { name, address, chefId, chef, img, openDays, openHours, rating } =
 			req.body;
-		console.log(req.body);
 		if (
 			!(
 				name &&
@@ -83,7 +82,7 @@ export const newRest = async (req: Request, res: Response) => {
 		restChef.restaurant?.push(rest._id);
 		await restChef.save();
 		res.status(201).json(newrest);
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		throw err;
 	}

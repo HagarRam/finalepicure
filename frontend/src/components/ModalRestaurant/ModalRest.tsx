@@ -8,15 +8,12 @@ import { ObjectId } from 'mongoose';
 
 interface IModal {
 	id: ObjectId;
-	key?: any;
 	closeButton: Function;
 	closeBag: Function;
 }
 
 const ModalRest: React.FC<IModal> = (props: IModal) => {
 	const navigate = useNavigate();
-	// const order: any[] = [];
-	// sessionStorage.setItem('order', JSON.stringify(order));
 	const dishesData = useSelector((state: Rootstate) => state.dishes.value);
 	const [comment, setComment] = useState<string[]>(['']);
 	const [informationDIsh, setinformationDIsh] = useState<string[]>(['']);
@@ -25,12 +22,12 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 	const IdNum: IDishes | undefined = dishesData?.find((rest: IDishes) => {
 		return rest._id?.toString() === newId?.toString();
 	});
-	const handlePlus = (e: any) => {
+	const handlePlus = (e: React.MouseEvent) => {
 		e.preventDefault();
 		setNumber(number + 1);
 	};
 
-	const handleMinus = (e: any) => {
+	const handleMinus = (e: React.MouseEvent) => {
 		e.preventDefault();
 		setNumber(number - 1);
 	};
@@ -48,7 +45,6 @@ const ModalRest: React.FC<IModal> = (props: IModal) => {
 		props.closeBag();
 		// You can use the comment state here to send data to the server
 	};
-
 	const handleNumberChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value;
 		setNumber(parseInt(value));

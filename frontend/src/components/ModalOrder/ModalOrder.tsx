@@ -21,7 +21,6 @@ const ModalOrder: React.FC<IModal> = (props: IModal) => {
 	const dishData = data?.map((dish: any) => {
 		return dish.IdNum._id;
 	});
-	// const [totalPrice, setTotalPrice] = useState<number>(0);
 	const orderData: IDishes[] =
 		dishesData?.filter((rest: IDishes) => {
 			return dishData?.includes(rest._id);

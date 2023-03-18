@@ -11,7 +11,7 @@ interface IModal {
 const AddChef: React.FC<IModal> = (props: IModal) => {
 	const data = JSON.parse(sessionStorage.getItem('data') || '{}');
 	const chefsdata = useSelector((state: Rootstate) => state.chef.filteredValue);
-	const [chefs, setChefs] = useState<any>(chefsdata);
+	const [chefs, setChefs] = useState<IChef[]>(chefsdata);
 	const [inputValues, setInputValues] = useState<Record<string, string>>({
 		name: '',
 		description: '',
@@ -105,15 +105,15 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 	};
 
 	const navigate = useNavigate();
-	const handSaveRest = async (e: any) => {
+	const handSaveRest = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		const credentials: any = {
+		const credentials: Record<string, string> = {
 			name: '',
 			description: '',
 			img: '',
 		};
 		const inputObj = e.target;
-		Object.values(inputObj).forEach((obj: any) => {
+		Object.values(inputObj).forEach((obj: HTMLInputElement) => {
 			switch (obj.name) {
 				case 'name':
 				case 'img':

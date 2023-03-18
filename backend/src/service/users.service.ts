@@ -3,7 +3,6 @@ import { IUser, UsersModal } from '../model/users.model';
 export const getUsers = async () => {
 	try {
 		const users = await UsersModal.find();
-		console.log(users);
 		return users;
 	} catch (err) {
 		console.log(err);

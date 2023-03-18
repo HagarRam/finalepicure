@@ -17,7 +17,6 @@ const SignIn: React.FC = () => {
 		dispatch(setActiveUsers({ email: email }));
 	}, [email]);
 	const logInUser = async () => {
-		console.log(password);
 		try {
 			const userReq = await axios.post('http://localhost:8000/users/create/', {
 				email: email,
@@ -51,9 +50,6 @@ const SignIn: React.FC = () => {
 		sessionStorage.setItem('data', JSON.stringify(id));
 	};
 	const navigate = useNavigate();
-	// const message = () => {
-	// 	navigate('/');
-	// };
 	return (
 		<div id="sign-in-page">
 			{' '}

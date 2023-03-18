@@ -1,21 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import { IDishes } from '../../components/SignatureDish/DishCard';
-// const [newDishes, setDishes] = useState<any>([]);
-// const [id, setId] = useState<number>();
-// const [name, setName] = useState<string>('');
-// const [price, setPrice] = useState<number>();
-// const [quantity, setQuantity] = useState<number>();
-// const [img, setImg] = useState<string>('');
-// const [comment, setComment] = useState<string[]>(['']);
-
 const data = async () => {
 	try {
 		const response = await fetch('http://localhost:8000/dishes/', {
 			method: 'GET',
 		});
 		const data = await response.json();
-		console.log(data);
 		return data;
 	} catch (err) {
 		console.log();

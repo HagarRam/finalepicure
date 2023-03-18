@@ -7,7 +7,7 @@ export const getAllDishes = async (req: Request, res: Response) => {
 	try {
 		const dishes = await getDishes();
 		return res.status(200).json(dishes);
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		throw err;
 	}
@@ -15,7 +15,6 @@ export const getAllDishes = async (req: Request, res: Response) => {
 export const postDish = async (req: Request, res: Response) => {
 	try {
 		const { restId, img, about, name, price, icons } = req.body;
-		console.log(req.body);
 		if (!(restId && about && name && price && icons && img)) {
 			return res.status(400).send('All input is required');
 		}
@@ -35,7 +34,7 @@ export const postDish = async (req: Request, res: Response) => {
 		await restaurant.save();
 
 		res.status(201).json(newdish);
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		throw err;
 	}
@@ -44,7 +43,6 @@ export const postDish = async (req: Request, res: Response) => {
 export const deleteDishes = async (req: Request, res: Response) => {
 	try {
 		const dishes = await deleteDish(req.body.id);
-		console.log(req.body);
 		const restaurant = await RestaurantsModal.findById(req.body.id);
 		if (!restaurant) {
 			return res.status(404).send('Restaurant not found');
@@ -58,7 +56,7 @@ export const deleteDishes = async (req: Request, res: Response) => {
 			data: dishes,
 			message: 'Successfu	lly removed chef',
 		});
-	} catch (err: any) {
+	} catch (err) {
 		console.log(err);
 		return res.status(500).json({
 			status: 500,

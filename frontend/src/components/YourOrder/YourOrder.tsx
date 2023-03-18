@@ -32,7 +32,6 @@ const YourOrder: React.FC<IOrder> = (props: IOrder) => {
 	const comment = Array.isArray(data)
 		? data.map((comment: IComment) => comment.comment).join(' | ')
 		: '';
-	console.log(comment);
 	const number = Array.isArray(data)
 		? data.map((comment: IComment) => comment.number)
 		: [];
