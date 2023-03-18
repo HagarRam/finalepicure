@@ -17,6 +17,7 @@ const SignIn: React.FC = () => {
 		dispatch(setActiveUsers({ email: email }));
 	}, [email]);
 	const logInUser = async () => {
+		console.log(email);
 		try {
 			const userReq = await axios.post('http://localhost:8000/users/create/', {
 				email: email,

@@ -25,7 +25,7 @@ export const deleteRest = async (req: Request, res: Response) => {
 			return res.status(404).send('Restaurant not found');
 		}
 		chefs.restaurant = chefs.restaurant?.filter(
-			(dish) => dish.toString() !== req.body.id
+			(rest) => rest.toString() !== req.body.id
 		);
 		await chefs.save();
 		return res.status(200).json({
