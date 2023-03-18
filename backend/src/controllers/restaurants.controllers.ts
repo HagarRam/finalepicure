@@ -42,8 +42,8 @@ export const newRest = async (req: Request, res: Response) => {
 			!(
 				name &&
 				address &&
-				chefId &&
 				chef &&
+				chefId &&
 				openDays &&
 				openHours &&
 				img &&
@@ -59,14 +59,15 @@ export const newRest = async (req: Request, res: Response) => {
 		const rest = await RestaurantsModal.create({
 			name,
 			address,
-			chefId,
 			chef,
+			chefId,
 			img,
 			openDays,
 			openHours,
 			rating,
 		});
 		const newrest = await newRestaurant(req.body);
+		console.log(newrest);
 		res.status(201).json(newrest);
 	} catch (err: any) {
 		console.log(err);
