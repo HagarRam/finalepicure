@@ -96,6 +96,7 @@ const AddChef: React.FC<IModal> = (props: IModal) => {
 				.then((data) => {
 					setChefs((newChef: IChef[]) => [...newChef, data]);
 					setInputValues({ name: '', description: '', img: '' });
+					window.location.reload();
 					navigate('/');
 				});
 		} catch (err) {

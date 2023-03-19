@@ -50,6 +50,7 @@ const OneChef: React.FC = () => {
 			}
 
 			dispatch(removeChef(data.data));
+			window.location.reload();
 			navigate('/chefsPage');
 		} catch (err) {
 			console.error(err);

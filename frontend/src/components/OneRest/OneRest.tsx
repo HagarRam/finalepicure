@@ -45,13 +45,18 @@ const OneRest: React.FC = () => {
 	const closeModal = () => {
 		setIsModalOpen(false);
 	};
-	const deleteRestaurant = async (id: string, _id: string) => {
+	const deleteRestaurant = async (
+		id: string,
+		_id: string,
+		dishID: string | undefined
+	) => {
 		try {
 			const response = await fetch(`http://localhost:8000/restaurant`, {
 				method: 'DELETE',
 				body: JSON.stringify({
 					id: id,
 					userId: Types.ObjectId.createFromHexString(_id),
+					dishID: dishID,
 				}),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -62,6 +67,7 @@ const OneRest: React.FC = () => {
 				throw new Error(data.message);
 			}
 			dispatch(removeRest(data.data));
+			window.location.reload();
 			navigate('/Restaurant');
 		} catch (err) {
 			console.error(err);
@@ -70,7 +76,7 @@ const OneRest: React.FC = () => {
 	};
 	const handleRegister = async (id: string) => {
 		if (window.confirm(`Are you sure you want to delete?`)) {
-			await deleteRestaurant(id, data._id);
+			await deleteRestaurant(id, data._id, dishID);
 		}
 	};
 
