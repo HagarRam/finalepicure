@@ -45,7 +45,8 @@ const DishOrder: React.FC<IOrderDishes> = (props: IOrderDishes) => {
 							<img
 								alt="price"
 								src={icon}
-								id="icon-price"></img>
+								id="icon-price"
+							/>
 							<div>{price}</div>
 						</div>
 					</div>

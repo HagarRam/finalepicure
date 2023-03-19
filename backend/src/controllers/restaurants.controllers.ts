@@ -20,13 +20,10 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
 export const deleteRest = async (req: Request, res: Response) => {
 	try {
 		const restaurants = await removeRest(req.body.id);
-		const chefs = await chefsModal.findById(req.body.id);
+		const chefs = await chefsModal.findByIdAndDelete(req.body.id);
 		if (!chefs) {
-			return res.status(404).send('Restaurant not found');
+			return res.status(404).send('chef not found');
 		}
-		chefs.restaurant = chefs.restaurant?.filter(
-			(rest) => rest.toString() !== req.body.id
-		);
 		await chefs.save();
 		return res.status(200).json({
 			status: 200,

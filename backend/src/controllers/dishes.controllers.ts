@@ -43,13 +43,10 @@ export const postDish = async (req: Request, res: Response) => {
 export const deleteDishes = async (req: Request, res: Response) => {
 	try {
 		const dishes = await deleteDish(req.body.id);
-		const restaurant = await RestaurantsModal.findById(req.body.id);
+		const restaurant = await RestaurantsModal.findByIdAndDelete(req.body.id);
 		if (!restaurant) {
 			return res.status(404).send('Restaurant not found');
 		}
-		restaurant.dishes = restaurant.dishes?.filter(
-			(dish) => dish.toString() !== req.body.id
-		);
 		await restaurant.save();
 		return res.status(200).json({
 			status: 200,
